@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day03/form_lecture</title>
+    <link rel="stylesheet" href="css/myform.css"/>
+</head>
+<body>
+    <h3>form tag</h3>
+    <ul>
+        <li>size는 width 결정, maxlength/minlength는 글자수 결정</li>
+        <li>select 에서 multiple은 복수선택 가능</li>
+        <li>required는 서버에서 반드시 필요할 때 적용(폼과 서브밋 없으면 적용안됨)</li>
+        <li>placeholder는 입력에 대한 메시지</li>
+        <li>autofocus는 해당 인풋에 커서 자동 위치</li>
+        <li>readonly는 수정 불가, type에 hidden은 화면에 보이지 않음</li>
+        <li>type에 image를 쓰면 submit의 기능을 이미지로 처리할 수 있음</li>
+    </ul>
+    <form method="post" action="hello.jsp">
+        <ul>
+            <li>
+                <label for="email" class="sub">email</label>
+                <input type="text" name="email" id="email"/>
+            </li>
+            <li>
+                <label for="pw" class="sub">password</label>
+                <input type="text" name="pw" id="pw"/>
+            </li>
+            <li>
+                <label for="name" class="sub">name</label>
+                <input type="text" name="name" id="name"/>
+            </li>
+            <li>
+                <label class="sub">gender</label>
+                <input type="radio" id="male" name="gender" value="male" checked/>
+                <label for="male">male</label>
+                <input type="radio" id="female" name="gender" value="female"/>
+                <label for="female">female</label>
+            </li>
+            <li>
+                <label>loved food</label>
+            </li>
+            <li>
+                <input type="checkbox" id="dduk" name="food" value="dduk"/>
+                <label for="dduk">dduk</label>
+                <input type="checkbox" id="chick" name="food" value="chicken"/>
+                <label for="chick">chicken</label>
+                <input type="checkbox" id="pizza" name="food" value="pizza"/>
+                <label for="pizza">pizza</label>
+                <input type="checkbox" id="sam" name="food" value="sam"/>
+                <label for="sam">sam</label>
+            </li>
+            <li>
+                <label class="sub">address</label>
+                <select name="addr" id="addr">
+                    <option value="seoul">seoul</option>
+                    <option value="gyunggi">gyunggi</option>
+                    <option value="gangwon">gangwon</option>
+                </select>
+            </li>
+            <li>
+                <input type="image" src="img/fabien-bellanger-zKFoVBS_WGE-unsplash.jpg" alt="클릭"/>
+            </li>
+            <li>
+                <input type="submit" value="submit">
+                <input type="reset" value="reset">
+                <input type="button" id="btn" value="check">
+            </li>
+        </ul>
+    </form>
+    <script>
+        document.getElementById('btn').onclick=function () {
+            console.log("hi,btn");
+        }
+    </script>
+</body>
+</html>

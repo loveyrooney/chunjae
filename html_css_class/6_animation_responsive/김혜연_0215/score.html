@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <label for="name">이름</label>
+      <input type="text" id="name" />
+      <label for="kor">국어</label>
+      <input type="text" id="kor" />
+      <label for="eng">영어</label>
+      <input type="text" id="eng" />
+      <label for="math">수학</label>
+      <input type="text" id="math" />
+      <button type="button" id="btn">입력</button>
+    </form>
+    <script>
+      let btn = document.getElementById("btn");
+      btn.addEventListener("click", () => {
+        let name = document.getElementById("name").value;
+        let kor = document.getElementById("kor").value;
+        let eng = document.getElementById("eng").value;
+        let math = document.getElementById("math").value;
+        let avg = (Number(kor) + Number(eng) + Number(math)) / 3;
+        console.log(name);
+        console.log(kor);
+        console.log(eng);
+        console.log(math);
+        console.log(`총점 : ${Number(kor) + Number(eng) + Number(math)}`);
+        console.log(`평균 : ${avg}`);
+        avg >= 60 ? console.log("합격") : console.log("불합격");
+        if (avg >= 90) console.log("수");
+        else if (avg >= 80) console.log("우");
+        else if (avg >= 70) console.log("미");
+        else if (avg >= 60) console.log("양");
+        else console.log("가");
+        if (Number(kor) >= 90 && Number(eng) >= 90 && Number(math) >= 90)
+          console.log("very good");
+        else if (Number(kor) >= 90 || Number(eng) >= 90 || Number(math) >= 90)
+          console.log("good");
+        else console.log("bad");
+      });
+    </script>
+  </body>
+</html>

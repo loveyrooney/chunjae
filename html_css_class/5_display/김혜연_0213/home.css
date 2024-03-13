@@ -1,0 +1,60 @@
+body {
+  margin: 0vw;
+  background-color: lightgrey;
+}
+#wrap {
+  width: 100vw;
+}
+
+header {
+  background-color: black;
+  color: white;
+  padding: 2vw;
+}
+
+.nav_list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  display: block;
+  padding: 1vw 0vw;
+  margin: 0vw 2vw;
+  text-decoration: none;
+  color: white;
+}
+
+nav ul li a:hover {
+  font-weight: 900;
+}
+
+.mid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+article {
+  width: 65vw;
+  padding: 1vw;
+}
+
+aside {
+  width: 25vw;
+  padding: 2vw;
+}
+
+aside div ul {
+  list-style: none;
+}
+
+footer {
+  padding: 2vw;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #a~p {background-color: rgba(255,10,100,0.3);}
+        #a+p {color: red;}
+    </style>
+</head>
+<body>
+    <ul>
+        <li>#a~p : #a 밑에 있는 형제들 중 p</li>
+        <li>#a+p : #a 바로 밑에 있는 p</li>
+        <li>css 선택자가 꽤 디테일하기 때문에 class 수를 줄이려면 적절한 태그 틀이 중요함</li>
+    </ul>
+    <hr>
+    <p>p1</p>
+    <div id="a">div1</div>
+    <p>p2</p>
+    <p>p3</p>
+    <div>div2</div>
+    <p>p4</p>
+    <div>div3</div>
+    <div>div4</div>
+</body>
+</html>

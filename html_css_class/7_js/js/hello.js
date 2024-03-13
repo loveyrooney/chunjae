@@ -1,0 +1,1 @@
+console.log('this is in hello.js next head script');

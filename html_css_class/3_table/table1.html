@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day03/lecture</title>
+    <style>
+        table {width:750px; border-collapse: collapse; margin:5% }
+        tr td, tr th {border: 1px solid silver; text-align: center; padding:2%;}
+        .yellow {background-color: yellow;}
+        tr th { background-color: aquamarine; border-bottom: double silver;}
+        .korean {background-color: antiquewhite;}
+    </style>
+</head>
+<body>
+    <h3>Table tag</h3>
+    <ul>
+        <li>colspan, rowspan 적용 시, 가로줄(tr) 단위로 최종 칸(td)의 개수를 생각하기</li>
+        <li>border css 순서는 width style color</li>
+        <li>thead/th: 맨윗줄, tbody/td: 내용, tfoot/td: 마지막</li>
+        <li>table 태그는 html 구조를 만들땐 쓰지않고, 표 자료 하나를 만들때 쓴다</li>
+    </ul>
+    <hr/>
+    <table>
+        <tr><td class="yellow">1</td><td colspan="2">2</td><td>3</td></tr>
+        <tr><td rowspan="2" class="yellow">4</td><td colspan="3">5</td></tr>
+        <tr><td>6</td><td>7</td><td>8</td></tr>
+    </table>
+    <hr/>
+    <table>
+        <caption>student score</caption>
+        <colgroup>
+            <col class="bg">
+            <col class="korean">
+            <col>
+        </colgroup>
+        <thead>
+            <tr><th>name</th><th>korean</th><th>english</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>kim</td><td>90</td><td>80</td></tr>
+            <tr><td>lee</td><td>90</td><td>80</td></tr>
+        </tbody>
+        <tfoot>
+            <tr><td>sum</td><td>180</td><td>160</td></tr>
+        </tfoot>
+    </table>
+    <hr/>
+    <h3>Img insert</h3>
+    <ul>
+        <li>상대경로는 해커가 중간경로 탈취위험 있으니 절대경로로 사용하는 것이 좋다</li>
+    </ul>
+    <img src="https://images.unsplash.com/photo-1706463631724-2860bff820f9?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8" alt="img"/>
+    <p>절대경로 이미지</p>
+    <img src="./img/fabien-bellanger-zKFoVBS_WGE-unsplash.jpg" alt="img"/>
+    <p>상대경로 이미지</p>
+    <img src="http://localhost:63342/day03/img/nasa/nasa-hubble-space-telescope-vagjE4GOJf8-unsplash.jpg" alt="img"/>
+    <p>내 서버 절대경로 이미지</p>
+    <hr/>
+</body>
+</html>

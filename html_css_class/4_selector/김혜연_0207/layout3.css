@@ -1,0 +1,34 @@
+#wrap {
+    width: 95%;
+}
+
+#wrap, header, section, aside, footer {
+    border: 1px solid silver;
+}
+
+header, footer {
+    margin: 2%;
+}
+
+header h1 {
+    padding: 2% 5%;
+}
+aside {
+    width: 20%;
+}
+.side1 {margin: 0% 0% 0% 2%; float: left;}
+.side2 {margin: 0% 2% 0% 0%; float: right;}
+aside h3 {padding: 0% 5%;}
+aside nav ul {padding: 0% 20%;}
+
+section {
+    width: 51%;
+    float: left;
+    margin: 0% 2% 2% 2%;
+}
+
+section h3 { padding: 0% 5%;}
+section p {padding: 0% 10%;}
+
+footer { clear: both;}
+footer p {padding: 2% 5%;}

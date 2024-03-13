@@ -1,0 +1,59 @@
+#wrap {
+ width: 90%; margin: 0 auto;
+}
+
+#wrap, header, section, aside, footer {
+    border: 1px solid silver;
+}
+header, footer {
+    margin: 5px;
+}
+aside {
+    margin: 0px 5px;
+}
+
+header h1 {padding: 0% 2%;}
+
+.mid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+section {
+    width: 65%;
+    flex-grow: 2;
+    flex-shrink: 1;
+    margin: 0px 5px 0px 0px;
+}
+
+section h3 {
+    padding: 0% 2%;
+}
+
+section p {
+    padding: 0% 5%;
+
+}
+
+aside {
+    width: 30%;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+aside h3 {
+    padding: 0% 5%;
+}
+
+aside nav ul {
+    padding: 0% 10%;
+    list-style: none;
+}
+footer {
+    clear:both;
+}
+
+footer p {padding: 0% 2%;}
+

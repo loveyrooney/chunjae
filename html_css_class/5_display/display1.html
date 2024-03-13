@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * { margin: 0; padding: 0;}
+        div {
+            width:700px; height: 700px;
+            background-color: silver;
+            position: absolute;
+            top: 150px; left: 30px;
+        }
+        p {
+            border: 3px solid blue;
+            width: 100px; height: 100px;
+        }
+        .a {background-color: yellowgreen;
+            position: relative; top:-10px; left:100px; }
+        .b {background-color: yellow;
+            position: relative; top:50px; left:0px;}
+        .c{background-color: cornflowerblue;
+            position: relative; top:50px; left:200px;}
+        .d {background-color: orange;
+            position: relative; top:250px; left:100px; }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>inline 은 width, height를 사용할 수 없다. 이 두가지를 사용하기 위해 만든 게 inline-block</li>
+        <li>display와 width/height , padding 의 관계 연습</li>
+        <li>position static : top, left 사용불가, 고정값</li>
+        <li>absolute의 기준점은 부모태그의 좌상단 꼭지점이다. body기준 음수값으로 가면 요소가 짤린다(어쨌든 그만큼 움직인다)</li>
+        <li>레이어 순서는 z-index, 적용 요소 모두에 써줘야하고 숫자 클수록 상위레이어</li>
+    </ul>
+    <div>
+        <p class="a">문단1</p>
+        <p class="b">문단2</p>
+        <p class="c">문단3</p>
+        <p class="d">문단4</p>
+    </div>
+</body>
+</html>

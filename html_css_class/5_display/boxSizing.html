@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            box-sizing: border-box;
+            width: 300px; height: 300px;
+            border: 1px solid silver;
+            padding: 10px 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 30vw;
+            border-top: 2px solid red;
+            border-bottom: 2px solid black;
+            text-align: center;
+        }
+        tr th { background-color: yellowgreen; border-bottom: 2px solid red;}
+        tbody tr:nth-child(2) {background-color: silver;}
+        ul {list-style: none; margin: 1vw; padding: 0; width: 100vw;}
+        ul li {display: inline-block; width: 90px; float: left;}
+        ul li a {display: inline-block; text-decoration: none; color:black; background-color: grey;
+            width: 50px; padding: 10px 20px; text-align: center;}
+        ul li a:hover {background-color: black; color:white; }
+    </style>
+</head>
+<body>
+  <div>border-box는 마진 패딩까지 전부 포함한 최종 사이즈, content-box는 컨텐츠 영역만</div>
+  <br>
+  <table>
+      <thead><tr><th>이름</th><th>나이</th><th>주소</th></tr></thead>
+      <tbody>
+        <tr><td>홍길동</td><td>20</td><td>서울</td></tr>
+        <tr><td>김하나</td><td>21</td><td>경기</td></tr>
+        <tr><td>김지연</td><td>22</td><td>강원</td></tr>
+      </tbody>
+  </table>
+  <br>
+  <ul>
+      <li><a href="">메뉴1</a></li>
+      <li><a href="">메뉴2</a></li>
+      <li><a href="">메뉴3</a></li>
+      <li><a href="">메뉴4</a></li>
+  </ul>
+</body>
+</html>

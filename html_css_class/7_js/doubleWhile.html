@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script>
+      /*
+      //j값의 초기화를 어디에서 하는 것이 효율적인지 고민해 볼것
+    let i =1, j=1;
+    while(i<=2){
+        j=1; //여기서 j를 선언하는 방법과의 성능차이 고민해 볼 것
+      while(j<=2){
+          document.write('* &nbsp');
+          j++;
+      }
+      document.write('<br>');
+      i++;
+    }
+    */
+      let i=1, j=2;
+      while(i<=9){
+          j=2;
+          while(j<=4){
+              document.write(`${j}*${i}=${j*i} &nbsp`);
+              j++;
+          }
+          document.write('<br>');
+          i++;
+      }
+  </script>
+</head>
+<body>
+
+</body>
+</html>

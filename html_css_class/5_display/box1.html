@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{ margin: 0px; padding: 0px;}
+      .a {width: 100px; height: 100px;
+        border: 3px solid silver; padding: 10px; margin: 30px;
+        vertical-align: center;}
+      .b {
+          border: 1px solid silver;
+          display: inline-block;
+          padding: 100px;
+          margin: 30px;
+      }
+      .c {background-color: yellowgreen;
+         border: 3px solid silver;
+         width: 100px; height: 100px;
+         border-radius: 5px 70px;}
+    </style>
+</head>
+<body>
+    <div class="a">hello</div>
+    <div class="b">hello2</div>
+    <div class="c">hello3</div>
+    <div class="d">hello4</div>
+    <ul>
+        <li>width,height 쓰면 요소를 정가운데 정렬 어려움 (vertical-align 불가)</li>
+        <li>padding과 margin 이용해서 요소 가운데로 만들기. inline-block을 해야 정한 div 크기 내에서 적용</li>
+        <li>자세한 크기 커스텀 시 padding: 북, 동, 남, 서 / padding: 북남, 동서 / padding : 북, 동서, 남</li>
+        <li>border-radius: 20 50 은 각 꼭지점 얼마나 굴릴지, 20/50은 한 꼭지점의 왼쪽/오른쪽 각도 얼마나</li>
+    </ul>
+</body>
+</html>

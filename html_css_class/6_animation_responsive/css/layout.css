@@ -1,0 +1,217 @@
+@media screen and (min-width: 1024px),
+    screen and (min-height: 1024px) and (orientation: landscape)
+{
+    #wrap {
+        width:95vw; margin:0 auto;
+    }
+    a {
+        text-decoration: none;
+    }
+
+    header {
+        margin-top: 2vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .logo {
+        position: relative; left:1.5vw; top:3vh;
+    }
+    .hamburger {
+        display: none;
+    }
+    .menu {
+        margin-right: 1vw;
+        position: relative; top: 1vh;
+    }
+    .menu>ul li {
+        list-style: none;
+        display: inline-block;
+    }
+    .menu>ul>li a {
+        padding: 2vw 1vh;
+        display: inline-block;
+        color: #555;
+        font-size:1rem;
+    }
+    .menu>ul>li a:hover {
+        color:white; background-color: blue;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .list li {
+        list-style: none;
+        justify-content: space-between;
+    }
+    .inner {
+        margin: 4px;
+        position: relative;
+        display: table-cell; table-layout: fixed;
+        border-top: 1px solid silver;
+        color: black;
+    }
+    .thumb {
+        display: table-cell;
+    }
+    /*.thumb img {*/
+    /*    width: 100px; height: auto; vertical-align: top;*/
+    /*}*/
+    .title {
+        padding: 8px;
+        position: relative; right: auto; left: auto; bottom: auto;
+        display: table-cell;
+        vertical-align: middle; text-align: left;
+        background-color: white;
+        text-overflow: inherit; white-space: inherit;
+    }
+
+    footer {
+        background-color: silver;
+    }
+    footer>p {
+        padding: 1vw 0vh;
+        position: relative; left: 4vw;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px),
+    screen and (min-height: 760px) and (max-height: 1023px)
+        and (orientation: landscape)
+{
+    #wrap {
+        width: 95%; margin: 0 auto;
+    }
+    a {
+        text-decoration: none;
+    }
+
+    header {
+        height: 10vh;
+        display: flex; flex-direction: row;
+        justify-content: space-between;
+        background-color: dodgerblue;
+    }
+    .logo {
+        position: relative; left: 3vw; top:1vh;
+    }
+    .hamburger {
+        display: none;
+    }
+    .menu ul li {
+        list-style: none;
+        display: inline-block;
+        position: relative; right: 2vw;
+    }
+    .menu ul li a {
+        font-size: 1.2rem; text-decoration: none;
+        display: inline-block;
+        padding: 1vh 1.5vw;
+        color: white;
+    }
+    .menu ul li a:hover {
+        background-color: white; color: dodgerblue;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .list li {
+        list-style: none;
+        justify-content: space-between;
+    }
+    .inner {
+        display: table; table-layout: fixed;
+        border-top: 1px solid silver; margin: 0;
+        color:black;
+    }
+    .thumb {
+        display: table-cell;
+    }
+    .title {
+        display: table-cell; vertical-align: middle;
+    }
+
+    footer {
+        background-color: lightcoral;
+    }
+    footer>p {
+        position: relative; left: 2vw; color: white;
+        padding: 2vh;
+    }
+
+}
+
+@media screen and (max-width: 767px),
+    screen and (max-height: 479px) and (orientation: landscape)
+{
+    #wrap {
+        width: 100%; margin: 0 auto;
+    }
+
+    header {
+        width: 100vw; height: 15vh;
+        background-color: cornflowerblue;
+    }
+    .logo {
+        position: relative; left: 5vw; top:3vh;
+    }
+    .hamburger {
+        width: 40px; height: 30px;
+        display: block;
+        position: absolute; right: 5vw; top: 7vh;
+        color: transparent;
+        background: linear-gradient(white 50%, transparent 50%);
+        background-size: 100% 10px;
+    }
+    .menu {
+        position: absolute; top: 15vh; right: 1vw;
+        margin: 2vh 0vw;
+        background-color: beige;
+    }
+    .menu ul {
+        margin: 0; padding: 0;
+    }
+    .menu ul li {
+        list-style: none;
+        text-align: center;
+    }
+    .menu ul li a {
+        padding: 3vh 10vw;
+        font-size: 1rem; text-decoration: none;
+        display: inline-block;
+        color: black;
+    }
+    .menu ul li a:hover {
+        background-color: dodgerblue; color: white;
+    }
+
+    .list {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .list li {
+        list-style: none;
+    }
+    .inner {
+        display: table; table-layout: fixed; width: 60vw;
+        border-top: 1px solid silver; margin: 0;
+        text-decoration: none;
+        color:black;
+    }
+    .thumb {
+        display: table-cell;
+    }
+    .title {
+        display: table-cell; vertical-align: middle;
+    }
+    .visible {
+        display: none;
+    }
+}

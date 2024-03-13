@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div>span {color:red;}
+        div span {background-color: yellow;}
+    </style>
+</head>
+<body>
+  <h2>css</h2>
+  <ul>
+      <li>부모>자식 선택자로 지정하면 직계자식만, 부모 자식 선택자로 지정하면 자손 전부</li>
+      <li>div.a는 모든 div 태그 중에 a클래스 지정된 애만, div>.a는 div 직계자식 중 클래스 a, div .a는 div 자손들 중에 클래스a</li>
+  </ul>
+  <div>
+    <span>div-span</span>
+    <p><span>div-p-span</span></p>
+    div-hello
+  </div>
+  <span>span</span>
+</body>
+</html>

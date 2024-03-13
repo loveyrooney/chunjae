@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            border: 1px solid silver;
+        }
+        a[href="http://naver.com"] { background-color: yellowgreen;}
+        a[href$="com"] {background-color: yellow;}
+        a[href^="mailto"] {background-color: deepskyblue;}
+        a[href*="daum"] {background-color: aquamarine;}
+    </style>
+</head>
+<body>
+  <p>^는 시작 $는 끝  *은 포함 (정규식 비슷)</p>
+  <a href="http://naver.com">naver</a>
+  <a href="http://google.com">google</a>
+  <a href="http://daum.net">daum</a>
+  <a href="mailto:hello@google.com">gmail</a>
+</body>
+</html>

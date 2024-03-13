@@ -1,0 +1,40 @@
+form {
+    padding: 2%;
+}
+
+fieldset {
+    width: 500px;
+}
+
+ul li {
+    list-style: none;
+}
+
+.items {
+    width: 120px;
+    display: inline-block;
+    margin: 1%;
+}
+
+select {
+    width: 100px;
+    margin: 1%;
+}
+
+input {
+    margin: 2%;
+}
+
+div {
+    margin: 20px 50px;
+}
+
+button {
+    width: 150px;
+    margin: 10px;
+}
+
+
+
+
+

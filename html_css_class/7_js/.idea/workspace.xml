@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c7c66381-b319-426a-90b2-ed8932f863ef" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2cHyOBKpePfggI34U9GqaUwxbvF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/java",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\html_css_class\7_js\김혜연_0219" />
+      <recent name="D:\html_css_class\day06\img" />
+      <recent name="D:\html_css_class\day06\css" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.dom.html">
+    <configuration name="assignment.html (2)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/7_js/김혜연_0220/assignment.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="assignment.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/7_js/김혜연_0219/assignment.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="dom.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/7_js/dom.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="hello_js2.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/7_js/hello_js2.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="hello_js4.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/7_js/hello_js4.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="hello_js.3.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/7_js/hello_js.3.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.dom.html" />
+        <item itemvalue="JavaScript Debug.assignment.html" />
+        <item itemvalue="JavaScript Debug.hello_js4.html" />
+        <item itemvalue="JavaScript Debug.hello_js2.html" />
+        <item itemvalue="JavaScript Debug.hello_js.3.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c7c66381-b319-426a-90b2-ed8932f863ef" name="Changes" comment="" />
+      <created>1707782763879</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707782763879</updated>
+      <workItem from="1707782765015" duration="597000" />
+      <workItem from="1707869123849" duration="20118000" />
+      <workItem from="1707954748775" duration="436000" />
+      <workItem from="1707955195307" duration="9000" />
+      <workItem from="1707962615175" duration="17616000" />
+      <workItem from="1708041032516" duration="24703000" />
+      <workItem from="1708300701821" duration="24243000" />
+      <workItem from="1708386833455" duration="3414000" />
+      <workItem from="1708391894105" duration="23118000" />
+      <workItem from="1708473303611" duration="19408000" />
+      <workItem from="1708572967648" duration="359000" />
+      <workItem from="1708585348491" duration="505000" />
+      <workItem from="1708653848968" duration="17129000" />
+      <workItem from="1708905540532" duration="1908000" />
+      <workItem from="1708991277252" duration="610000" />
+      <workItem from="1709088226963" duration="18000" />
+      <workItem from="1709519885738" duration="631000" />
+      <workItem from="1709596371971" duration="1475000" />
+      <workItem from="1709855763731" duration="1309000" />
+      <workItem from="1710201227500" duration="17000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

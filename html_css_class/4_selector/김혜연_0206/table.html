@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        text-align: left;
+        margin: 0px;
+      }
+      tr {
+        display: block;
+        width: 300px;
+        height: 30px;
+        margin: 0px;
+      }
+      th,
+      td {
+        display: inline-block;
+        width: 90px;
+      }
+      tbody tr:first-child {
+        display: block;
+        color: white;
+        background-color: blue;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+      }
+      tbody tr:nth-child(2n) {
+        background-color: silver;
+      }
+      tbody tr:last-child {
+        border-bottom: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tbody>
+        <tr>
+          <th>이름</th>
+          <th>주소</th>
+          <th>나이</th>
+        </tr>
+        <tr>
+          <td>홍길동</td>
+          <td>서울</td>
+          <td>20</td>
+        </tr>
+        <tr>
+          <td>김하나</td>
+          <td>경기</td>
+          <td>25</td>
+        </tr>
+        <tr>
+          <td>김지연</td>
+          <td>강원</td>
+          <td>20</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

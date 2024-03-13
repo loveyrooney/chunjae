@@ -1,0 +1,11 @@
+.info button {
+    margin-top:10px;
+  }
+  
+  label, button {
+    font-weight: bold;
+  }
+  
+  option {
+    text-align: right;
+  }

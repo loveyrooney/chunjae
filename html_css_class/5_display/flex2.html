@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {width: 100px; height: 100px;}
+        div.container {height: 20vh; width:100vw; background-color: grey;
+            display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start;}
+        div.d1:nth-child(odd) {background-color: pink; height: 100px;
+            flex-shrink: 10; flex-grow: 10;}
+        div.d1:nth-child(even) {background-color: skyblue; height: 300px;
+            flex-shrink: 1; flex-grow:1;}
+        div.t2 {order:1; }
+        div.t1 {order : 2; }
+        div.t3 {order : 3;}
+        div.t4 {order:4;}
+        div.t5 {order: 5;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="d1 t1">div1</div>
+    <div class="d1 t2">div2</div>
+    <div class="d1 t3">div3</div>
+    <div class="d1 t4">div4</div>
+    <div class="d1 t5">div5</div>
+</div>
+</body>
+</html>

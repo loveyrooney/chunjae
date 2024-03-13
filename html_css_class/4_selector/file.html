@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day04_form_lecture</title>
+</head>
+<body>
+    <h1>Form 2</h1>
+    <ul>
+        <li>
+            button type 지정 안하면  submit과 같은 기능을 한다.<br>
+            즉 submit 기능은 input type="submit", input type="image", button 세가지
+        </li>
+        <li>type number, range 에는 min, max, step 지정 가능</li>
+        <li>type date 의 min/max 는 기간 지정</li>
+        <li>type tel은 모바일 환경에서 숫자 키패드 기능을 함</li>
+        <li>textarea는 value가 없음</li>
+    </ul>
+    <form action="hello.jsp">
+        <label>upload</label>
+        <input type="file" name="name">
+        <button>button</button>
+    </form>
+    <hr>
+    <form>
+        <fieldset>
+            <legend>required condition</legend>
+            <label for="email">email</label>
+            <input type="email" name="email" id="email"><br>
+            <label for="age">age</label>
+            <input type="number" name="age" id="age" min="3" max="10" step="2" value="5"><br>
+        </fieldset>
+        <label for="range">range</label>
+        <input type="range" name="range" id="range" value="0" min="0" max="10" step="2"><br>
+        <label for="date">date</label>
+        <input type="date" name="date" id="date" value="2024-02-06" min="2024-01-01" max="2024-04-01"><br>
+        <label for="tel">Tel</label>
+        <input type="tel" name="tel" id="tel"><br>
+        <label for="textarea">textarea</label><br>
+        <textarea name="talk" id="textarea" cols="15" rows="3"></textarea><br>
+        <input type="submit" value="submit">
+    </form>
+    <hr>
+    <form action="a.jsp">
+        <input type="text" name="name" id="name"><br>
+        <button>그냥버튼태그</button>
+        <button type="submit">인풋submit</button>
+        <button type="button">버튼button</button>
+        <button type="reset">버튼reset</button>
+    </form>
+    <hr>
+    <select name="dept" id="dept" size="10">
+        <optgroup label="language">
+            <option value="a1">java</option>
+            <option value="a2">python</option>
+            <option value="a3">c</option>
+        </optgroup>
+        <optgroup label="db">
+            <option value="a1">oracle</option>
+            <option value="a2">mysql</option>
+            <option value="a3">mongodb</option>
+        </optgroup>
+    </select>
+</body>
+</html>

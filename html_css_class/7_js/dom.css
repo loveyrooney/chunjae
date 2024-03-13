@@ -1,0 +1,30 @@
+#view {
+    display: block;
+    width: 60vw;
+    border: 1px solid silver;
+    margin-bottom: 3vh;
+}
+img.layout {
+    display: inline-block;
+    width: 20vw;
+    height: 20vh;
+}
+
+.yellow { background-color: yellow;}
+.green {background-color: green;}
+.orange {background-color: orange;}
+
+table { border-collapse: collapse;}
+
+.userinput {display: block;}
+
+.left_select, .right_select, .btns {
+    display: inline-block;
+}
+.right_select, .left_select {
+    width: 100px;
+}
+
+#left, #right {
+    display: block;
+}

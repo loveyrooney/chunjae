@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>day05</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+        @font-face {
+            font-family: 'kccHanBit';
+            src: url("http://localhost:63342/day04/font/KCC-Hanbit.woff");
+        }
+        body { font-size: 1.5em; font-family: 'kccHanBit'; }
+        div {
+            font-size: 2.3rem;
+        }
+        ul li {font-family:'Gowun Dodum', sans-serif;}
+        body>p {text-transform: capitalize; text-decoration: overline underline dotted deepskyblue;}
+        .textalign p{text-align: right; color:yellowgreen;}
+        table {width: 500px; height: 350px; border-collapse: collapse;}
+        tr td {text-align: center; vertical-align: top; border: 1px solid silver;}
+    </style>
+</head>
+<body>
+  em을 쓰면 자식 태그는 바디에 비례한다
+  <div>
+      rem은 절대값으로 쓸수 있다
+  </div>
+  <ul>
+      <li>ttf 파일은 woff파일로 변환해야 웹폰트로 사용할 수 있다 (변환기 구글링)</li>
+      <li>외부 웹 폰트 url임포트(구글폰트)하는 방법과, 있는폰트 fontface로 직접 등록하는 방법(kcc한빛)</li>
+      <li>text-transform: capitalize는 앞글자만 대문자로</li>
+      <li>text-decoration: line, style, color 한번에 적을 수 있다</li>
+  </ul>
+  <hr>
+  <p>hello HELLO hEllo</p>
+  <div class="textalign">
+      <p>
+          셀트리온은 파트너사인 미국 라니 테라퓨틱스의 경구형 우스테키누맙(개발명 RT-111) 임상 1상에서 긍정적인 톱라인(주요 지표) 결과를 확인했다고 7일 밝혔다.
+      </p>
+      <p>
+          ‘RT-111’은 셀트리온의 자가면역질환 치료 주사제 ‘스텔라라’의 바이오시밀러 ‘CT-P43’을 경구형으로 개발 중인 제품이다. 스텔라라는 지난해에만 전 세계 14조원 매출을 기록한 의약품으로, 경구형까지 개발되면 획기적인 시장 확대가 기대된다.
+      </p>
+      <p>
+           호주에서 진행한 이번 임상은 건강한 성인 55명을 대상으로 RT-111의 약동학(PK)·안전성을 확인했다. 임상 결과에 따르면, 경구형인 RT-111은 우스테키누맙 피하주사(SC) 제형 대비 84%의 높은 생체이용률(경구투여한 약물이 전신순환에 도달하는 비율)을 나타냈고 심각한 이상 반응은 관찰되지 않았다.
+      </p>
+  </div>
+  <table>
+      <tr>
+          <td>hello1</td>
+          <td>hello2</td>
+          <td>hello3</td>
+      </tr>
+  </table>
+</body>
+</html>
