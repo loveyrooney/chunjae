@@ -37,5 +37,7 @@ public class TypeCast {
         int data2 = 103;
         char char2 = (char)data2; //char는 int보다 작으므로 강제 형변환을 해야만 가능
         System.out.println(char2);
+
+        //switch문에 들어갈 수 있는 타입 : int(byte,short,char), String, enum
     }
 }

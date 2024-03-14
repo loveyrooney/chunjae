@@ -18,7 +18,7 @@ class Student1 {
     밑에서는 매개변수 없는 생성자와 매개변수 2개 있는 생성자의 이름을 같은 Student로 사용했다. (생성자 오버로딩)
      */
 
-    //기본 생성자. 생성자 함수가 없는 경우 기본으로 만들어진다.
+    //기본 생성자. 생성자 함수가 없는 경우 매개변수 없는 기본 생성자가 디폴트로 만들어진다.
     Student1(){
         System.out.println("default constructor");
     }
@@ -35,10 +35,13 @@ class Student1 {
     final 클래스는 상속이 불가능한 종단클래스
      */
 
-    /* static 변수
+    /* static
     클래스변수(Student1.arr 로 사용), jvm 메모리의 메서드 영역에 생성, 클래스가 로드될때 1회만 최초 실행
     static block에서 static 변수를 초기화 하거나 클래스 로드시 최초 실행 로직 작성
     static method 안에는 인스턴스 변수나 메서드를 사용할 수 없다.
+
+    private final : 객체마다 처음 정의는 다른데 이후에 변경 안하는거, 인스턴스 내 상수
+    private static final : 객체마다 처음 정의도 같고 이후에 변경도 안하는 거, 클래스 내 상수
     */
     public static final int[] arr;
     static {
