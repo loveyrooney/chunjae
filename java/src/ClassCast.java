@@ -40,6 +40,16 @@ public class ClassCast {
         branch2.prt();
         branch2.test();
 
+        //형변환을 할 수 있는 방법
+        Develop d3 = new Feature();
+        Feature f3 = (Feature)d3;
+        f3.test();
+
+        Feature f4 = new Feature();
+        Develop d4 = (Develop)f4;
+        d4.test();
+
+
         /* instanceof : 형변환이 가능한 지 여부를 묻는 명령어
         a instance of B 는 a(가 가리키는 인스턴스)가 B 타입으로 형변환이 가능한지 여부를 boolean 으로 답한다.
         a의 타입이 아니라 a가 현재 가리키는 실제 만들어진 인스턴스의 타입에 따라 형변환 가능의 여부가 결정.
@@ -60,9 +70,6 @@ public class ClassCast {
 
         Feature2 ins = new Feature2();
         System.out.println(ins instanceof Develop);
-
-
-
 
 
     }

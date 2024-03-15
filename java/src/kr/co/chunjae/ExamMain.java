@@ -14,7 +14,11 @@ public class ExamMain {
         arr = ins.calDouble(arr);
         ins.prt(arr);
 
-
+        //Object.equals()
+        System.out.println("------------");
+        System.out.println(s);
+        System.out.println(s.hashCode()); //jvm 메모리 주소
+        System.out.println(Integer.toHexString(s.hashCode()));
 
 
     }

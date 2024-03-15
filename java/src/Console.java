@@ -56,15 +56,16 @@ public class Console {
         a.prt(arr);
         //a.prt(new String[]{"a","b"}); 직접 넣으려면 이렇게 써야한다.
 
-        System.out.println("학번");
-        String hakeno = sc.nextLine();
-        System.out.println("name");
-        String name = sc.nextLine();
-        System.out.println("tel");
-        String tel = sc.nextLine();
-        UserStudent u1 = new UserStudent(hakeno,name,tel);
-        UserStudent u2 = new UserStudent();
-        System.out.printf("%s, %s, %s",u1.hakno, u1.name, u1.tel);
+//        System.out.println("학번");
+//        String hakeno = sc.nextLine();
+//        System.out.println("name");
+//        String name = sc.nextLine();
+//        System.out.println("tel");
+//        String tel = sc.nextLine();
+//        UserStudent u1 = new UserStudent(hakeno,name,tel);
+//        UserStudent u2 = new UserStudent();
+//        System.out.printf("%s, %s, %s",u1.hakno, u1.name, u1.tel);
+
 
     }
 }
