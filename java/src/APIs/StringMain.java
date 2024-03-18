@@ -118,10 +118,5 @@ public class StringMain {
             System.out.println(next);
         }
 
-
-
-
-
-
     }
 }
