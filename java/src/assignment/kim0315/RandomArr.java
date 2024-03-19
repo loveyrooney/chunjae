@@ -40,5 +40,20 @@ public class RandomArr {
         }
         util.prtArr();
 
+        //lecture
+        int[] data = new int[5];
+        data[0] = (int)(Math.random()*10);
+        for(int i=1; i<data.length; i++){
+            data[i] = (int)(Math.random()*10);
+            for(int j=0; j<i; j++){
+                if(data[j]==data[i]){
+                    i--;
+                    break;
+                }
+            }
+        }
+        for(int i:data){
+            System.out.print(i+"\t");
+        }
     }
 }

@@ -7,8 +7,9 @@ import java.util.Iterator;
 public class ArrayListMain {
     public static void main(String[] args) {
         /* List : List interface 를 상속받아 만들어짐. 순서를 보장하고, 중복이 허용되는 자료구조.
-        ArrayList : 객체 배열, async, 검색빠름, 추가/삭제 느림 (vector : sync)
+        ArrayList : 객체 배열, 가변 배열, async, 검색빠름, 추가/삭제 느림 (vector : sync)
         LinkedList : 노드와 노드의 연결, 검색느림, 추가/삭제 빠름
+        Collections.synchronized어쩌구()를 쓰면 비동기 자료의 동기화 가능
         */
 
         //제네릭을 사용하지 않으면 어떤 타입의 객체도 추가 가능.

@@ -19,11 +19,12 @@ public class StringMain {
         System.out.println(name3.equals(name4));
         System.out.println(name3.equals(name5));
         //메모리주소 비교
-        System.out.println(name3 == name4); //같은 문자열을 가리키고 있다.
-        System.out.println(name3 == name5);
+        System.out.println(name3 == name4); //같은 문자열 상수를 가리키고 있다.
+        System.out.println(name3 == name5); //다른 문자열 객체를 가리키고 있다.
         /* 문자열 상수(문자열 리터럴)는 constant pool에 저장된다.
         일반 인스턴스처럼 계속해서 새롭게 만들지 않고, 같은 문자열을 가리키게 되며, 수정 불가 (immutable)
         "hong"+"gildong" 을 사용하면 기존 "hong"이란 상수가 변경되는 게 아니라 "honggildong"이라는 새로운 문자열 상수 생성.
+        new String()은 문자열 객체.
         */
 
         /* StringBuffer(sync), StringBuilder(async)
