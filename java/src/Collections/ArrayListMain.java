@@ -6,7 +6,8 @@ import java.util.Iterator;
 
 public class ArrayListMain {
     public static void main(String[] args) {
-        /* List : List interface 를 상속받아 만들어짐. 순서를 보장하고, 중복이 허용되는 자료구조.
+        /* List : List interface 를 상속받아 만들어짐.
+        순서를 보장하고(index 있음, get(index)사용 가능, for문 출력), 중복이 허용되는 자료구조.
         ArrayList : 객체 배열, 가변 배열, async, 검색빠름, 추가/삭제 느림 (vector : sync)
         LinkedList : 노드와 노드의 연결, 검색느림, 추가/삭제 빠름
         Collections.synchronized어쩌구()를 쓰면 비동기 자료의 동기화 가능
@@ -18,8 +19,10 @@ public class ArrayListMain {
         al.add(true);  //이것도 boolean 이 아니라 Boolean wrapper 객체
         al.add(new Date());
         al.add(10);
+
+        //순서를 보장하는 자료는 for문 으로 나열할 수 있다.
         for(int i=0; i<al.size(); i++){
-            System.out.println(al.get(i)); //배열 요소가 Object 이기 때문에 .get()으로 받아온다.
+            System.out.println(al.get(i)); //배열 요소가 Object 이기 때문에 .get(i)로 받아온다.
         }
         String data = (String) al.get(0); //배열 요소가 Object 이기 때문에 강제 형변환 필요
         System.out.println(data);

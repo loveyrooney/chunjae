@@ -21,6 +21,7 @@ public class StringMain {
         //메모리주소 비교
         System.out.println(name3 == name4); //같은 문자열 상수를 가리키고 있다.
         System.out.println(name3 == name5); //다른 문자열 객체를 가리키고 있다.
+        //메모리주소와 값이 모두 같은 객체는 동일하다고 하고, 메모리주소는 다르지만 값이 같은 것을 동등하다고 한다.
         /* 문자열 상수(문자열 리터럴)는 constant pool에 저장된다.
         일반 인스턴스처럼 계속해서 새롭게 만들지 않고, 같은 문자열을 가리키게 되며, 수정 불가 (immutable)
         "hong"+"gildong" 을 사용하면 기존 "hong"이란 상수가 변경되는 게 아니라 "honggildong"이라는 새로운 문자열 상수 생성.
@@ -32,12 +33,19 @@ public class StringMain {
         append를 이용해 문자열 변경 가능.
         */
         System.out.println("------------------");
-        StringBuffer sbf = new StringBuffer("hong");
+        StringBuffer sbf = new StringBuffer(5);
+        System.out.println(sbf.capacity());
+        System.out.println(sbf.length());
         System.out.println(name3.contentEquals(sbf)); //문자열 상수와 StringBuffer 객체는 달라서, 값의 비교를 위한.
         System.out.println(sbf.hashCode()+","+sbf);
         sbf.append("gildong");
         System.out.println(sbf.hashCode()+","+sbf);
+        System.out.println(sbf.capacity());
+        System.out.println(sbf.length());
+        sbf.append("hong");
+        System.out.println(sbf.capacity());
 
+        System.out.println("------------------");
         StringBuilder sbd = new StringBuilder();
         StringBuilder sbd2 = new StringBuilder(10);
         StringBuilder sbd3 = new StringBuilder("hello");
@@ -113,7 +121,7 @@ public class StringMain {
             System.out.println(next);
         }
 
-        tok = new StringTokenizer("a1,a2,a3",",");
+        tok = new StringTokenizer("b1,b2,b3",",");
         while(tok.hasMoreElements()){
             String next = (String) tok.nextElement();
             System.out.println(next);

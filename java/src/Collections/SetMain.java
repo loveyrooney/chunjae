@@ -36,8 +36,8 @@ class Person1{
 }
 public class SetMain {
     public static void main(String[] args) {
-        /* Set : 순서 보장 x, 중복 허용 x
-        get()이 없다. iterator로 출력
+        /* Set : Set interface 상속하여 만들어짐.
+        순서 보장 x(index 없음, get()사용 x, iterator로 출력), 중복(동등성) 허용 x
         */
 
         HashSet<String> hs = new HashSet<>();
@@ -50,12 +50,15 @@ public class SetMain {
         hs.add(new String("a1")); //이것은 문자열 상수와 다른 객체이지만, equals와 hashcode가 같으면 중복으로 생각함.
         hs.add(null); //null 추가가 되긴 하지만 권장 x
 
+        System.out.println(hs.size());
+
         //순서가 보장되지 않는 요소들은 열거형을 통해 나열할 수 있다.
         Iterator<String> ita = hs.iterator();
         while(ita.hasNext()){
             System.out.print(ita.next()+"\t");
         }
 
+        System.out.println();
         System.out.println("-------------------------");
         HashSet<Person1> hs2 = new HashSet<>();
         hs2.add(new Person1("hong",20));

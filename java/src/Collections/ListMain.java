@@ -7,7 +7,8 @@ import java.util.Stack;
 
 public class ListMain {
     public static void main(String[] args) {
-        /* List : List interface 를 상속받아 만들어짐. 순서를 보장하고, 중복이 허용되는 자료구조.
+        /* List : List interface 를 상속받아 만들어짐.
+        순서를 보장하고(index 있음, get(index)사용 가능, for문 출력), 중복이 허용되는 자료구조.
         ArrayList : 객체 배열, 가변 배열, async, 검색빠름, 추가/삭제 느림 (vector : sync)
         LinkedList : 노드와 노드의 연결, 검색느림, 추가/삭제 빠름
         Collections.synchronizedList()를 쓰면 비동기 자료의 동기처리 가능
@@ -27,7 +28,7 @@ public class ListMain {
         System.out.println(arr.pop());
         System.out.println(arr.getFirst());
 
-        //Stack : Vector를 상속받음
+        // Stack : Vector를 상속받음. LIFO (List In First Out) 알고리즘, push/pop
         System.out.println("-------------------");
         Stack<String> stack = new Stack<>();
         System.out.println(stack.empty());
@@ -39,7 +40,7 @@ public class ListMain {
         System.out.println(stack.indexOf("a2"));
         System.out.println(stack.peek()); //스택 최상위 요소를 리턴
 
-        //Queue
+        //Queue : FIFO(First In First Out) 알고리즘, offer/poll
         System.out.println("-------------------");
         PriorityQueue<Integer> q = new PriorityQueue<>();
         q.offer(10);

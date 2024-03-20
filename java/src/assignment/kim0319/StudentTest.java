@@ -3,6 +3,7 @@ package assignment.kim0319;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Hashtable;
 
 class StudentDTO{
     private String hak_no;
@@ -56,25 +57,61 @@ class UserTable{
         hm.put(hak_no,dto);
         System.out.println("입력완료");
     }
-    public StudentDTO getOne(String hak_no){
-        return hm.get(hak_no);
-    }
 
     public void updateAge(String hak_no, int age){
-        StudentDTO target = getOne(hak_no);
+        StudentDTO target = hm.get(hak_no);
         target.setAge(age);
         System.out.println("수정완료");
     }
 
     public void removeKey(String hak_no){
-        hm.remove(getOne(hak_no));
+        hm.remove(hm.get(hak_no));
         System.out.println("삭제완료");
     }
+}
+
+//lecture
+class UserTable2{
+    private Hashtable<String,StudentDTO> ht = new Hashtable<>();
+
+    public boolean isCheckHakNo(String hak_no){
+        return ht.containsKey(hak_no);
+    }
+
+    public boolean insertStudent(String hak_no, String name, int age){
+        //put은 key값에 대응하는 이전에 있던 밸류를 리턴한다.
+        StudentDTO dto = ht.put(hak_no,new StudentDTO(hak_no,name,age));
+        boolean result = false;
+        if(dto==null)
+            result = true;
+        return result;
+    }
+
+    public boolean modifyStudent(String hak_no,int age){
+        StudentDTO dto = ht.get(hak_no);
+        boolean result = false;
+        if(dto != null){
+            dto.setAge(age);
+            result = true;
+        }
+        return result;
+    }
+
+    public boolean removeStudent(String hak_no){
+        //remove는 삭제되는 해당 객체의 밸류를 리턴한다.
+        StudentDTO dto = ht.remove(hak_no);
+        boolean result = false;
+        if(dto != null)
+            result = true;
+        return result;
+    }
+
 }
 public class StudentTest {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         UserTable table = new UserTable();
+        HashMap<String,StudentDTO> list = table.getHm();
         String hak_no;
         int age;
         while(true){
@@ -87,10 +124,10 @@ public class StudentTest {
             } else if("5".equals(input)){
                 while(true) {
                     System.out.println("5.전체보기");
-                    Iterator<String> keys = table.getHm().keySet().iterator();
+                    Iterator<String> keys = list.keySet().iterator();
                     while (keys.hasNext()) {
-                        String key = keys.next();
-                        System.out.println(table.getOne(key));
+                        StudentDTO dto = list.get(keys.next());
+                        System.out.printf("%s  %s  %d\n",dto.getHak_no(),dto.getName(),dto.getAge());
                     }
                     System.out.println("계속 보시겠습니까?");
                     if (!"y".equals(sc.nextLine()))
@@ -119,7 +156,7 @@ public class StudentTest {
                     System.out.println("학번을 입력하세요");
                     hak_no = sc.nextLine();
                     if(table.isKey(hak_no)){
-                        System.out.println(table.getOne(hak_no));
+                        System.out.println(list.get(hak_no));
                     } else
                         System.out.println("학번이 없습니다");
                     System.out.println("계속 조회하시겠습니까?");
@@ -141,7 +178,7 @@ public class StudentTest {
                     if(!"y".equals(sc.nextLine()))
                         break;
                 }
-            } else{
+            } else {
                 while(true){
                     System.out.println("3.삭제");
                     System.out.println("학번을 입력하세요");
