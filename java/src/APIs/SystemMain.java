@@ -1,16 +1,14 @@
 package APIs;
 
-import java.io.PrintStream;
+import java.io.*;
 import java.util.Date;
 import java.util.Scanner;
 
 public class SystemMain {
-    public static void main(String[] args) {
-        PrintStream ps = System.out;
-        ps.print(new Date());
-        ps.printf("%s\t %d\t %o\n","hong",10,10);
-
-        for(int i=0; i<10; i++)
+    public static void main(String[] args) throws IOException {
+        //System methods
+        System.out.println();
+        for(int i=0; i<3; i++)
             //현재 시간을 1/1000 초(ms)로 알려줌
             System.out.println(System.currentTimeMillis());
 

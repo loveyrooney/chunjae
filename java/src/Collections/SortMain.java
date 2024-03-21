@@ -25,7 +25,7 @@ class Person2 implements Comparable{
     //비교는 해당 객체와 매개변수 o 객체 사이에서 이루어진다.
     @Override
     public int compareTo(Object o) {
-        int result=0;
+        int result;
         if(o instanceof Person2){
             Person2 p = (Person2) o;
             result = name.compareTo(p.name);
@@ -71,6 +71,10 @@ class StudentSort implements Comparator<Person3>{
 }
 public class SortMain {
     public static void main(String[] args) {
+        /* Comparable 은 비교를 원하는 클래스에 상속하고, Comparator 는 메서드 구현체 클래스를 따로 만들어 쓴다.
+        Comparator 구현체 클래스는 메서드 오버라이드한 것만 존재하는 클래스로 두고 쓰는 것이 좋다.
+        Collections.sort()의 매개변수는 List<> 로 하자.
+        */
         ArrayList<Integer> data = new ArrayList<>();
         data.add(1);
         data.add(5);
@@ -79,8 +83,8 @@ public class SortMain {
         data.add(2);
 
         //그냥 출력
-        for(int i=0; i<data.size(); i++)
-            System.out.print(data.get(i)+" ");
+        for (Integer datum : data)
+            System.out.print(datum + " ");
         System.out.println();
         System.out.println("--------------------");
 

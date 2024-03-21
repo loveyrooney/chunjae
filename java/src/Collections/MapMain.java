@@ -29,8 +29,8 @@ class Name{
 public class MapMain {
     public static void main(String[] args) {
         /* Map : Map interface 상속받아 만들어짐.
-        순서 보장 x(index 없음, get(key)사용, iterator로 출력), 키와 밸류로 이루어진 자료구조. 중복(동등)은 키는 x 밸류는 허용
-        HashTable(sync), HashMap(async) : key들을 16개의 버킷으로 나누어 관리. key의 해시코드를 통해 어떤 버킷에 배정할지 결정한다.
+        순서 보장 x(index 없음, get(key)사용, iterator 로 출력), 키와 밸류로 이루어진 자료구조. 중복(동등)은 키는 x 밸류는 허용
+        HashTable(sync), HashMap(async) : key 들을 16개의 버킷으로 나누어 관리. key 의 해시코드를 통해 어떤 버킷에 배정할지 결정한다.
         Collections.synchronizedMap()으로 비동기 자료의 동기처리 가능.
         Map<K,V> syncMap = Collections.synchronizedMap(new HashMap<>());
         HashTable<K,V> hashtable = new HashTable<>();
@@ -49,14 +49,14 @@ public class MapMain {
 //        System.out.println(hm.get("a2"));
 //        System.out.println(hm.get("a3"));
 
-        //key들을 한꺼번에 가져와서 출력한다. 이때 keySet()을 사용한다.
+        //key 들을 한꺼번에 가져와서 출력한다. 이때 keySet()을 사용한다.
         //keySet()은 set 타입이다.
         //1. iterator 활용
         Iterator<String> iterKey = hm.keySet().iterator();
         while(iterKey.hasNext()){
             String key = iterKey.next();
             System.out.printf("%s : %d\n",key,hm.get(key));
-            //get을 하는 순간 key의 해시코드를 통해 key가 담겨있는 버킷에 가서 버킷 내에서 key-value 탐색을 시작한다.
+            //get 을 하는 순간 key 의 해시코드를 통해 key 가 담겨있는 버킷에 가서 버킷 내에서 key-value 탐색을 시작한다.
         }
         System.out.println("--------------------------");
         //2. 향상된 for문 활용

@@ -37,13 +37,6 @@ public class Company {
             Employee e = map.get(i);
             System.out.printf("%s  %s  %d  %.1f\n",e.getName(),e.getDepartment(),e.getSalary(),e.tax());
             //여기서는 형변환 할 필요가 없다. override 된 것으로 나오기 때문.
-//            if("secretary".equals(e.getDepartment())){
-//                Secretary s = (Secretary) e;
-//                System.out.printf("%s  %s  %d  %.1f\n",s.getName(),s.getDepartment(),s.getSalary(),s.tax());
-//            } else if("sales".equals(e.getDepartment())){
-//                Sales s = (Sales) e;
-//                System.out.printf("%s  %s  %d  %.1f\n",s.getName(),s.getDepartment(),s.getSalary(),s.tax());
-//            }
         }
 
     }
