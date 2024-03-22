@@ -7,10 +7,11 @@ public class IOMain {
     public static void main(String[] args) throws IOException {
         /* 입출력의 기준은 jvm 입장에서 생각한다. file 작성은 출력, file 받아오는 것은 입력.
         스트림이란? 데이터가 흐르는 단방향
-        기반 스트림 : 표준 입출력, 파일, 네트워크
         Reader : 문자 단위, 입력   InputStream : 바이트 단위, 입력
         Writer : 문자 단위, 출력   OutputStream : 바이트 단위, 출력
-        보조 스트림 : 기반 스트림을 꾸며주는 기능을 가진 스트림 (decoration pattern)
+        기반 스트림 : 표준 입출력 (System in/out), 파일(File~), 네트워크
+        보조 스트림 : 기반 스트림을 꾸며주는 기능을 가진 스트림 (decoration pattern).
+        Buffered~ (성능향상), Input(Output)StreamReader (문자관련)
         */
 
         //InputStreamReader : 바이트 단위의 InputStream 을 문자 단위로 direct 입력
@@ -75,6 +76,23 @@ public class IOMain {
             System.out.println(e);
         } finally {
             if(bw !=null) try {bw.close();} catch (IOException e){}
+        }
+
+        //FileReader : AutoCloseable 을 상속하고 있다.
+        try(FileReader fr = new FileReader("./src/APIs/hello.txt")){
+//            while(true){
+//                int data = fr.read();
+//                if(data == -1)
+//                    break;
+//                System.out.print((char)data);
+//            }
+            int data;
+            while((data = fr.read()) != -1){ //위의 코드 줄여서 표현할 수 있음.
+                char ch = (char) data;
+                System.out.print(ch);
+            }
+        } catch (IOException e){
+            System.out.println(e);
         }
 
 
