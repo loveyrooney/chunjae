@@ -8,6 +8,7 @@ DESC employees;
 SELECT emp_no, first_name, gender
 FROM employees
 WHERE hire_date LIKE '1999-08%';
+#date 타입에 like(문자열에 대한 연산)를 쓰는 것은 좋지않다. between이나 비교연산자 쓸 것.
 
 # Q2
 SELECT last_name, first_name, hire_date, birth_date
