@@ -1,3 +1,4 @@
+USE employees;
 #function exam
 
 # 1.10501~10550 사번인 사원 중 홀수인 사원
@@ -108,3 +109,139 @@ SELECT dayname(LAST_DAY('2024-03-01'));
 # Q4 어제는 무슨요일 
 SELECT DAYNAME(NOW()-INTERVAL 1 DAY);
 #SELECT dayname(ADDDATE(NOW(), -1));
+
+
+# Q1 근속년수 30년 이상 직원 
+SELECT emp_no, first_name, hire_date, year(NOW())-year(hire_date) AS 근무년수
+FROM employees
+WHERE year(NOW())-year(hire_date) >= 30; 
+# year로만 계산하면 근무 시작일 기준이 아니기 때문에 datediff 사용
+SELECT emp_no, FIRST_name, hire_date, DATEDIFF(NOW(),hire_date) DIV 365 AS 근무년수
+FROM employees
+WHERE DATEDIFF(NOW(),hire_date) DIV 365 >= 30;
+#period_diff, date_format으로도 쓸 수 있다. 
+select PERIOD_DIFF(DATE_FORMAT(NOW(),'%Y%m'),DATE_FORMAT(hire_date,'%Y%m')) div 12
+FROM employees;
+
+# Q2 나이가 70세 이상인 직원
+SELECT emp_no, first_name, hire_date, birth_date, YEAR(NOW())-YEAR(birth_date) AS 나이
+FROM employees
+WHERE YEAR(NOW())-YEAR(birth_date) >=70;
+
+# Q4
+SELECT *
+FROM employees
+WHERE gender = 'M' AND month(birth_date) = 3;
+
+SELECT * FROM emp;
+# Q5
+SELECT emp_no, ename, age, sal, ifnull(sal*12, 'nodata') AS 연봉  
+FROM emp;
+
+SELECT emp_no, first_name, birth_date, hire_date
+FROM employees
+WHERE hire_date BETWEEN '1985-04-01' AND '1985-04-30';
+WHERE EXTRACT(YEAR_MONTH FROM hire_date) =198504;
+WHERE DATE_FORMAT(hire_date, '%Y-%m') = '1985-04';
+
+
+# case when exams
+SELECT *
+	, case when year(hire_date) >= 1985 AND year(hire_date) <=1989 then 'before'
+	       when year(hire_date) >= 1990 AND year(hire_date) <=1999 then '1990s'
+	       ELSE 'after 2000'
+	END AS result
+FROM employees;
+
+SELECT emp_no, dept_no
+	, case when dept_no IN ('d001','d002','d003') then 'group-A'
+	       when dept_no IN ('d004','d005') then 'group-B'
+	       ELSE 'group-C'
+	END AS result
+FROM dept_emp
+WHERE to_date = '9999-01-01';  
+
+
+#
+SELECT emp_no, first_name, birth_date, hire_date
+FROM employees
+#WHERE YEAR(hire_date) >= 2000;
+#WHERE DATE_FORMAT(hire_date,'%Y') >= 2000;
+#WHERE EXTRACT(YEAR FROM hire_date) >= 2000;
+#WHERE to_char(hire_date,'yyyy') >=2000;
+WHERE SUBSTRING_INDEX(hire_date,'-',1) >= 2000;
+
+SELECT emp_no, first_name, last_name
+FROM employees
+#WHERE last_name LIKE 'A%' OR last_name LIKE 'B%';
+#WHERE substring(last_name,1,1) = 'A' OR SUBSTRING(last_name,1,1) = 'B';
+WHERE LEFT(last_name,1) IN ('A','B');
+
+SELECT emp_no, first_name, birth_date
+FROM employees
+#WHERE first_name LIKE '%e_';
+WHERE SUBSTRING(first_name,-2,1) = 'e';     
+
+SELECT emp_no, first_name, hire_date
+FROM employees
+#WHERE first_name LIKE '____';
+WHERE char_length(first_name) = 4;
+
+
+#group by
+# Q1
+SELECT hak, ban, AVG(kor)
+FROM sungjuck
+GROUP BY hak, ban;
+
+# Q2 평균이 50이상인 학급
+SELECT hak, ban, AVG(kor)
+FROM sungjuck
+GROUP BY hak, ban
+HAVING AVG(kor)>=50;
+
+# Q3 50점 이상의 평균 
+SELECT hak, AVG(kor)
+FROM sungjuck
+WHERE kor>=50
+GROUP BY hak;
+
+# Q1 
+SELECT MAX(salary), MIN(salary), truncate(AVG(salary),0) 
+FROM salaries
+WHERE to_date = '9999-01-01';
+
+# Q2 입사년도별 인원수
+SELECT year(hire_date), COUNT(*)
+FROM employees
+GROUP BY YEAR(hire_date);
+
+# Q3 입사인원이 10000명 이상인 연도와 인원
+SELECT YEAR(hire_date), COUNT(*)
+FROM employees
+GROUP BY YEAR(hire_date)
+HAVING COUNT(*)>=10000;
+
+# Q4 성별, 입사연도별 인원 
+SELECT gender, YEAR(hire_date), COUNT(*)
+FROM employees
+GROUP BY gender, YEAR(hire_date);
+
+# Q5 1993년 입사한 남녀 인원 
+SELECT gender, COUNT(*)
+FROM employees
+WHERE year(hire_date) = 1993
+GROUP BY gender;
+
+
+# 같은 조건을 having, where로 쓸 때 having에 year(hire_date) 실행 안됨 
+SELECT YEAR(hire_date) AS ipsa, COUNT(*)
+FROM employees
+GROUP BY YEAR(hire_date)
+HAVING ipsa = 1985;
+
+SELECT YEAR(hire_date) AS ipsa, COUNT(*)
+FROM employees
+WHERE YEAR(hire_date) = 1985
+GROUP BY YEAR(hire_date);
+

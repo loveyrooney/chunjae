@@ -26,8 +26,6 @@ SELECT RIGHT('hong gil dong',4), LEFT('hong gil dong',4);
 SELECT INSERT('hello world hong gil dong',7,5,'this is'),
 	INSERT('hello world hong gil dong',13,100,'harry potter');
 SELECT FORMAT(12345678910,2); #소수점 2째자리까지 1000단위로
-SELECT emp_no, CAST(emp_no AS CHAR), birth_date, CAST(birth_date AS CHAR)
-FROM employees;
 SELECT repeat('hong',2);
 SELECT REPLACE('hong gil dong','gil','joon');
 SELECT REVERSE('hong gil');
@@ -106,3 +104,22 @@ SELECT NOW(), ADDTIME(NOW(),'1:0:0');
 SELECT NOW(), curdate(), CURRENT_DATE(), CURRENT_TIME(), CURTIME();
 SELECT DATEDIFF(NOW(),'2024-03-01');
 SELECT EXTRACT(YEAR FROM NOW()), YEAR(NOW());
+#일년을 주차별로 계산, 모드에 따라 기준 다름 
+SELECT WEEK('2024-01-01',0), WEEK('2024-01-01',1),WEEK('2024-01-01',2),
+	WEEK('2024-01-01',3), WEEK('2024-01-01',4), WEEK('2024-01-01',5),
+	WEEK('2024-01-01',6), WEEK('2024-01-01',7);
+SELECT DATE_FORMAT(NOW(),'%Y-%m-%d');
+SELECT DATE_FORMAT(NOW(), '%i %U %u %w');
+
+
+#cast, convert, to_char
+SELECT emp_no, CAST(emp_no AS CHAR), CAST(birth_date AS CHAR),
+	CAST(DATE_FORMAT(birth_date,'%Y-%m') AS INT),
+	CONVERT(birth_date,int), CONVERT('1000',INT), CONVERT('2024-03-26',DATE)
+FROM employees;
+SELECT NOW(), DATE_FORMAT(NOW(),'%Y-%m-%d'), to_char(NOW(), 'hh:mi:ss'),
+	to_char(NOW(),'DD DY DAY'), to_char(NOW(),'MONTH MON');
+
+SELECT first_name
+from employees
+where MIN(char_LENGTH(first_name));
