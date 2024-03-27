@@ -245,3 +245,77 @@ FROM employees
 WHERE YEAR(hire_date) = 1985
 GROUP BY YEAR(hire_date);
 
+
+SELECT month(birth_date), gender COUNT(*)
+FROM employees
+GROUP BY MONTH(birth_date), gender;
+
+# 위 테이블의 피벗 컬럼 만들기  
+/* count(if(gender='M',1,null)) : null을 제외한 row 개수를 센다.  
+sum(if(gender='M',1,0)) : 모든 row의 '값'을 계산. sum += 1 처럼 */
+SELECT month(birth_date), COUNT(if(gender='M',1,NULL)) AS M, COUNT(if(gender='F',1,NULL)) AS F
+FROM employees
+GROUP BY MONTH(birth_date);
+
+#decode_oracle
+SELECT MONTH(birth_date)
+		,sum(decode_oracle(gender,'M',1,0)) AS M
+		,sum(decode_oracle(gender,'F',1,0)) AS F
+FROM employees
+GROUP BY MONTH(birth_date);
+
+#case when then 
+SELECT gender
+		,count(case when quarter(birth_date)=1 then 1 END) AS '1-3'
+		,count(case when quarter(birth_date)=2 then 1 END) AS '4-6'
+		,count(case when quarter(birth_date)=3 then 1 END) AS '7-9'
+		,count(case when quarter(birth_date)=4 then 1 END) AS '10-12'
+FROM employees
+GROUP BY gender; 
+
+
+# Q1 각 년도 입사자 피벗 
+SELECT COUNT(*)
+		,COUNT(if(YEAR(hire_date)=1992,1,null)) AS '1992'
+		,COUNT(if(YEAR(hire_date)=1993,1,null)) AS '1993'
+		,COUNT(if(DATE_FORMAT(hire_date,'%Y')=1994,1,null)) AS '1994'
+		,COUNT(if(EXTRACT(YEAR FROM hire_date)=1995,1,null)) AS '1995'
+FROM employees;
+
+# Q2 각 년도 입사자 성별 피벗
+SELECT gender,COUNT(*)
+		,COUNT(if(YEAR(hire_date)=1992,1,null)) AS '1992'
+		,COUNT(if(YEAR(hire_date)=1993,1,null)) AS '1993'
+		,COUNT(if(DATE_FORMAT(hire_date,'%Y')=1994,1,null)) AS '1994'
+		,COUNT(if(EXTRACT(YEAR FROM hire_date)=1995,1,null)) AS '1995'
+FROM employees
+GROUP BY gender;
+
+# Q3 연대별 평균 급여
+USE hr;
+
+SELECT job_id
+	,round(avg(if(YEAR(hire_date)>=1987 AND YEAR(hire_date)<=1990,salary,NULL)),1) AS '1987-1990'
+	,round(avg(if(YEAR(hire_date)>=1991 AND YEAR(hire_date)<=1994,salary,NULL)),1) AS '1991-1994'
+	,round(avg(if(YEAR(hire_date)>=1995 AND YEAR(hire_date)<=1997,salary,NULL)),1) AS '1995-1997'
+	,round(AVG(if(YEAR(hire_date)>1997,salary,NULL)),1) AS others
+FROM employees
+GROUP BY job_id;
+# if문에 else값에 0을 넣으면, 샐러리를 0으로 정하고 전체의 평균값을 구하게 된다. 
+
+# Q1 
+SELECT manager_id, MIN(salary)
+FROM employees
+GROUP BY manager_id
+HAVING MIN(salary)>6000
+ORDER BY MIN(salary);
+
+# Q2
+SELECT * FROM employees;
+SELECT job_id 
+		,case when job_id='AD_PRES' then 'A'
+				when job_id='ST_MAN' then 'B'
+				when job_id='IT_PROG' then 'C'
+				when job_id NOT IN('AD_PRES','ST_MAN','IT_PROG') then 'others'
+		END AS result
+FROM employees;		

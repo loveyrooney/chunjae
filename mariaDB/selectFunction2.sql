@@ -109,4 +109,18 @@ FROM sungjuck
 WHERE hak=1
 GROUP BY hak;
 
+
+SELECT GROUP_CONCAT(distinct kor ORDER BY kor DESC SEPARATOR '_') FROM sungjuck;
+
+# group by에 적은 순서에 reverse 방향으로 null을 포함한 그룹 집계 
+SELECT hak, ban, AVG(kor)
+FROM sungjuck
+GROUP BY hak, ban
+WITH ROLLUP;
+# 1-1, 1-n, 1-Null, 2-1, 2-n, 2-Null, n-n, n-Null, Null-Null
+
+# limit(시작idx, length) : 시작 idx 0부터
+SELECT * FROM employees LIMIT 0,5;
+SELECT * FROM employees WHERE employee_id >=150 LIMIT 0,10;
 	
+
