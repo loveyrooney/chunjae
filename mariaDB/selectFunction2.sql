@@ -83,6 +83,14 @@ USE employees;
 SELECT COUNT(*), COUNT(kor), SUM(kor), AVG(kor), MAX(kor), MIN(kor)
 FROM sungjuck;
 
+/* count(*) : null포함 전체 
+count(column) : 컬럼의 전체 카운트
+count(disting column) : 컬럼에서 중복 제외 카운트
+*/
+SELECT COUNT(*) FROM employees;
+SELECT COUNT(department_id) FROM employees;
+SELECT COUNT(DISTINCT department_id) FROM employees;
+
 /* group by : row들을 grouping 해서 function 적용
 group by 사용시 주의할 점은, select 항목에 row 하나에 해당하는 정보가 오면 안 된다. 
 group에 대한 정보가 올 수는 있다.

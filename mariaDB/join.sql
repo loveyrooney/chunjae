@@ -13,19 +13,23 @@
 3NF - 2NF 를 만족하며 이행함수 종속을 제거.  
 */
 
+#join이 subquery보다 빠르다. 
 
 USE hr;
 
-# cross join : 양쪽 테이블의 모든 자료를 대응한다. (count(R) * count(L))
+# cross join : 양쪽 테이블의 모든 자료를 대응한다. 
+# (count(R) * count(L), 카티션 곱)
 SELECT *
 	FROM employees CROSS JOIN departments; 
-# from employees, departments;
+# 축약 : from employees, departments;
+
 
 # inner join : join 하는 테이블 안에 있는 자료만 보여준다.(일대일 대응)
 SELECT employee_id, first_name, salary
 	, e.department_id, department_name, location_id
 FROM employees e INNER JOIN departments d
 	ON e.department_id = d.department_id;
+# 축약 : employees e join departments d
 	
 # equi join, 동등 조인 (==inner join)
 SELECT * 
@@ -54,9 +58,101 @@ SELECT employee_id,first_name, salary, s_degree
 FROM employees, salgrade
 WHERE salary>lowsal AND salary <highsal;
 
+
 # self join
 SELECT e1.employee_id, e1.first_name AS Me
 	,e2.employee_id, e2.first_name AS Boss 
 FROM employees e1 INNER JOIN employees e2
-	ON e1.manager_id = e2.employee_id
+	ON e1.manager_id = e2.employee_id;
 
+/*
+CREATE TABLE book(
+	id INT PRIMARY KEY auto_increment
+	,title VARCHAR(20)
+	,price INT
+);
+
+INSERT INTO book(title,price) VALUES('a1',100);
+INSERT INTO book(title,price) VALUES('a2',200);
+INSERT INTO book(title,price) VALUES('a3',500);
+INSERT INTO book(title,price) VALUES('a1',250),('a4',300);
+*/
+
+# 비식별관계의 self join 
+SELECT b1.title, b1.price, b2.title, b2.price
+FROM book b1 INNER JOIN book b2
+	ON b1.title = b2.title
+WHERE b1.price <> b2.price;
+
+
+/* outer join : join 하는 테이블의 left/right 지정하면 
+지정한 테이블의 모든 자료를 보여준다. */
+
+SELECT e.employee_id, e.first_name, e.department_id 
+FROM employees e LEFT OUTER JOIN departments d
+	ON e.department_id = d.department_id;
+# 부서가 없는 사원도 출력
+# 축약 : from employees e left join departments d 
+	
+SELECT e.employee_id, e.first_name, d.department_name
+FROM departments d LEFT OUTER JOIN employees e
+	ON d.department_id = e.department_id;
+# 사원이 없는 부서도 출력
+
+/* oracle에서는 equi join 으로 outer join 가능 
+SELECT e.employee_id, e.first_name, d.department_name
+FROM departments, employees e
+where d.department_id(+) = e.department_id;
+*/
+
+# full outer join : 양쪽 모두를 보여준다. (mariaDB는 지원 x) 
+# cross join은 좌우의 교집합, full outer join은 좌우의 합집합이다. 
+
+/* Union : 두 자료를 위아래로 합친 것 (join은 두 자료를 양옆으로 합친 것)
+union의 주의할 점은, 컬럼 타입을 맞춰줘야 함. 
+타입이 다르면 mariaDB의 경우 형변환, oracle은 동작하지 않는다. 
+*/
+SELECT employee_id, first_name, department_id
+FROM employees
+WHERE department_id=10
+UNION
+SELECT employee_id, first_name, department_id
+FROM employees
+WHERE department_id=30;
+
+# mariaDB의 full outer join은 left와 right를 union 해서 출력
+SELECT e.employee_id, e.first_name, d.department_name
+FROM departments d LEFT OUTER JOIN employees e
+	ON d.department_id = e.department_id
+union
+SELECT e.employee_id, e.first_name, d.department_name
+FROM departments d right OUTER JOIN employees e
+	ON d.department_id = e.department_id;
+	
+	
+# subquery 
+
+# (dinel과 같은 급여)를 받는 사원정보
+SELECT employee_id, first_name, salary, hire_date
+FROM employees
+WHERE salary=(
+	SELECT salary
+	FROM employees
+	WHERE first_name = 'Daniel'
+);
+
+# (평균급여)보다 많이 받는 사원정보
+SELECT employee_id, first_name, salary, hire_date
+FROM employees
+WHERE salary>(
+	SELECT AVG(salary)
+	FROM employees
+);
+
+# (전화번호가 515인 사람'들')의 사원정보
+SELECT e.employee_id, e.first_name, e.hire_date
+WHERE e.employee_id IN (
+	SELECT employee_id
+	FROM employees
+	WHERE phone_number LIKE '515%'
+);
