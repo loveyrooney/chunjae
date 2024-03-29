@@ -132,6 +132,12 @@ FROM departments d right OUTER JOIN employees e
 	
 # subquery 
 
+# 사원정보들은 개별자료, 평균급여는 그룹 자료 이므로 성격이 다름. 
+# 그래서 그룹 자료를 select에 나란히 놓지 않고 subquery를 통해 출력
+SELECT employee_id, first_name, salary
+	,(SELECT AVG(salary) FROM employees) AS avg_salary
+FROM employees;
+
 # (dinel과 같은 급여)를 받는 사원정보
 SELECT employee_id, first_name, salary, hire_date
 FROM employees
@@ -156,3 +162,37 @@ WHERE e.employee_id IN (
 	FROM employees
 	WHERE phone_number LIKE '515%'
 );
+
+
+/*
+CREATE TABLE sample(
+	id int PRIMARY KEY auto_increment
+	,price int
+	,groupId int
+);
+
+INSERT INTO sample(price, groupId) VALUES(100,1),(200,2),(200,2),(100,3),(100,3),(200,3),(200,3);
+*/
+
+SELECT * FROM sample;
+
+# 서브쿼리 내의 그룹핑이 본쿼리에 적용되지 않는다.
+SELECT *
+FROM sample
+WHERE price in (SELECT AVG(price)
+					 FROM sample
+					 GROUP BY groupId);
+
+# 서브쿼리와 본쿼리의 그룹기준을 연결한다. 
+SELECT *
+FROM sample s1
+WHERE price in (SELECT AVG(price)
+					 FROM sample
+					 WHERE s1.groupId = groupId);
+					 
+					 
+# subquery를 from절에 쓰기 
+SELECT t.*
+FROM ( SELECT department_id, CONCAT_WS(' ',first_name,last_name) AS NAME
+		 FROM employees
+		 WHERE department_id = 30 ) t;

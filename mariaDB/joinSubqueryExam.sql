@@ -320,3 +320,212 @@ FROM departments d INNER JOIN employees e
 	ON d.department_id = e.department_id
 GROUP BY department_name
 HAVING COUNT(*)>=10;
+
+
+# join & subquery
+
+SELECT e.employee_id, e.first_name, e.hire_date, e.salary, d.department_name
+FROM departments d INNER JOIN employees e
+	ON d.department_id = e.department_id
+WHERE d.department_name LIKE 'P%';
+
+SELECT employee_id, first_name, hire_date, salary, department_id
+FROM employees
+WHERE department_id IN (SELECT department_id
+								FROM departments
+								WHERE department_name LIKE 'P%');
+	
+# 급여 top 3 직원정보 
+SELECT first_name, job_id, salary, hire_date
+FROM employees 
+ORDER BY salary DESC
+LIMIT 0,3;
+
+# 급여 top 3-5 직원정보
+SELECT first_name, department_id, hire_date, salary
+FROM employees
+ORDER BY salary DESC
+LIMIT 2,3;
+
+# 부하 없는 직원 정보
+# join
+SELECT e1.employee_id, e1.first_name, e1.hire_date, e1.job_id
+FROM employees e1 LEFT OUTER JOIN employees e2
+	ON e1.employee_id = e2.manager_id
+WHERE e2.employee_id IS NULL;
+# subquery
+SELECT employee_id, first_name, hire_date, job_id
+FROM employees
+WHERE employee_id not IN (SELECT distinct nvl(manager_id,0)
+									FROM employees);
+# in 안에 들어오는 항목에 null이 있으면 오류는 안나지만 출력되지 않는다.
+
+# lex와 상사가 같은 직원정보 - subquery
+SELECT e.employee_id, e.first_name, d.department_name, e.hire_date, e.manager_id 
+FROM employees e INNER JOIN departments d
+	ON e.department_id = d.department_id
+WHERE e.manager_id = (SELECT manager_id
+							 FROM employees
+							 WHERE first_name = 'Lex');
+# lex와 상사가 같은 직원정보 - join 
+SELECT e1.employee_id, e1.first_name, d.department_name, e1.hire_date, e1.manager_id, e2.manager_id 
+FROM employees e1 INNER JOIN employees e2
+	ON e1.manager_id = e2.manager_id
+	INNER JOIN departments d
+	ON e1.department_id = d.department_id
+WHERE e2.first_name = 'Lex';
+# 같은 쿼리결과라도 서브쿼리와 조인은 정렬이 달라질 수 있다. 
+
+# lex의 부하정보 - subquery
+SELECT e.employee_id, e.first_name, d.department_name, e.hire_date 
+FROM employees e INNER JOIN departments d
+	ON e.department_id = d.department_id
+WHERE e.manager_id = (SELECT employee_id
+							 FROM employees
+							 WHERE first_name = 'Lex');
+# lex의 부하정보 - join
+SELECT e1.employee_id, e1.first_name, d.department_name, e1.hire_date
+FROM employees e1 INNER JOIN employees e2
+	ON e1.manager_id = e2.employee_id
+	INNER JOIN departments d
+	ON e1.department_id = d.department_id
+WHERE e2.first_name = 'Lex';
+
+# IT부서 근무 직원정보 subquery
+SELECT employee_id, first_name, email, hire_date
+FROM employees 
+WHERE department_id = (SELECT department_id
+							  FROM departments
+							  WHERE department_name = 'IT');
+# IT부서 근무 직원정보 join
+SELECT e.employee_id, e.first_name, e.email, e.hire_date
+FROM employees e INNER JOIN departments d
+ ON e.department_id = d.department_id
+WHERE d.department_name = 'IT';
+
+# 평균급여보다 많이 받는 직원정보
+SELECT e.employee_id, e.first_name, e.salary, e.hire_date, d.department_name, e.job_id
+FROM employees e INNER JOIN departments d
+	ON e.department_id = d.department_id
+WHERE salary > (SELECT avg(salary)
+					 FROM employees);
+# 평균급여는 그룹자료, 직원정보는 개인자료므로 inner join 불가
+
+# David와 입사일이 같은 직원정보 - subquery
+SELECT employee_id, salary, hire_date, department_id, job_id
+FROM employees
+WHERE hire_date IN (SELECT hire_date
+						  FROM employees
+						  WHERE first_name = 'David');
+# David와 입사일이 같은 직원정보 - join
+SELECT e2.employee_id, e2.salary, e2.hire_date, e2.department_id, e2.job_id 
+FROM employees e1 INNER JOIN employees e2
+	ON e1.hire_date = e2.hire_date
+WHERE e1.first_name = 'David';
+
+
+# diana와 직책이 같은 직원의 최소급여와 최대급여 
+SELECT e.employee_id, e.first_name, j.min_salary, j.max_salary
+FROM employees e INNER JOIN jobs j
+	ON e.job_id = j.job_id
+WHERE j.job_id = (SELECT job_id
+						FROM employees
+						WHERE first_name = 'Diana');
+# diana와 직책이 같은 직원 중 최소 지급된 급여와 최대 지급돤 급여 
+SELECT job_id, MIN(salary), MAX(salary)
+FROM employees 
+WHERE job_id = (SELECT job_id
+					 FROM employees
+					 WHERE first_name = 'Diana');	
+
+# 최고급여자의 직원, 부서, 직책정보
+SELECT e.employee_id, e.first_name, e.salary, e.hire_date, j.job_title, d.department_name
+FROM employees e INNER JOIN departments d
+	ON e.department_id = d.department_id
+	INNER JOIN jobs j
+	ON e.job_id = j.job_id
+WHERE salary = (SELECT MAX(salary)
+					 FROM employees);
+
+# 최고급여자 5~8위
+SELECT employee_id, first_name, hire_date, salary
+FROM employees
+ORDER BY salary DESC
+LIMIT 4,4;
+
+# 부하가 있는 상사정보
+SELECT distinct e1.first_name, e1.hire_date, d.department_name
+FROM employees e1 INNER JOIN employees e2
+	ON e1.employee_id = e2.manager_id
+	INNER JOIN departments d
+	ON e1.department_id = d.department_id;	
+
+# 부하가 없는 직원정보 
+SELECT e1.employee_id, e1.first_name, e1.hire_date
+FROM employees e1 LEFT OUTER JOIN employees e2
+	ON e1.employee_id = e2.manager_id
+WHERE e2.manager_id IS NULL;
+
+
+# subquery with grouping
+
+# 소속부서 평균급여 추가 직원정보 
+SELECT e1.employee_id, e1.first_name 
+	,(SELECT round(avg(salary),1)
+	  FROM employees
+	  WHERE e1.department_id = department_id) AS department_avg_salary
+	,hire_date
+FROM employees e1; 
+
+# 우리회사 평균 급여컬럼 추가 직원정보 
+SELECT employee_id, first_name
+	,(SELECT round(AVG(salary),1)
+	  FROM employees) AS AVG_salary
+	, hire_date  
+FROM employees;
+
+# 부서별 최소 급여자 직원, 부서, 직책정보 
+SELECT e1.employee_id, e1.first_name, d.department_id, d.department_name, j.job_title
+	,e1.salary, e1.hire_date 
+FROM employees e1 INNER JOIN departments d
+	ON e1.department_id = d.department_id
+	INNER JOIN jobs j
+	ON e1.job_id = j.job_id
+WHERE salary = (SELECT MIN(salary)
+   				 FROM employees
+   				 WHERE e1.department_id = department_id);
+   				 
+   				 
+# 종합 문제 
+
+# executive 부서 직원정보
+SELECT e.employee_id, e.last_name, e.department_id, e.job_id
+FROM employees e INNER JOIN departments d
+	ON e.department_id = d.department_id
+WHERE d.department_name = 'Executive';
+
+# 부서코드가 60인 부서의 최고 급여자보다 더 많이 받는 직원정보
+SELECT last_name, department_id, salary
+FROM employees
+WHERE e1.salary > ( SELECT max(salary)
+						  FROM employees
+						  WHERE department_id = 60);
+
+# 평균급여보다 높게 받고 성에 u가 포함된 사람이 속한 부서들의 직원정보
+SELECT e2.employee_id, e2.last_name, e2.salary, e2.department_id
+FROM employees e1 INNER JOIN employees e2
+	ON e1.department_id = e2.department_id
+WHERE e1.salary > ( SELECT AVG(salary)
+					     FROM employees )
+	AND e1.last_name LIKE '%u%';
+	
+# 각 부서의 평균 급여보다 많이 받는 사원의 사원코드, 성, 급여, 부서코드
+SELECT e1.employee_id, e1.last_name, e1.salary, e1.department_id 
+FROM employees e1 
+WHERE e1.salary > ( SELECT AVG(salary)
+					  	  FROM employees
+					  	  WHERE e1.department_id = department_id );
+					  	  
+# 직책 코드가 AD_PRES 이면 A, ST_MAN이면 B, IT_PROG이면 C, 나머지 OTHERS
+SELECT job_id, decode_oracle(job_id,'AD_PRES','A','ST_MAN','B','IT_PROG','C','OTHERS')
+FROM employees;
