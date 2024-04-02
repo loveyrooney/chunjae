@@ -1,0 +1,9 @@
+ul li {
+    list-style: none;
+    padding: 5px 0px;
+}
+
+ul li label {
+    display: inline-block;
+    width: 100px;
+}
