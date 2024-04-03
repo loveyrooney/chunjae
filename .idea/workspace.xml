@@ -6,6 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="f4b70b40-813a-422f-a26f-96b48f9e748a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsp2/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsp2/src/jspServlet/lifeCycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/src/jspServlet/lifeCycle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsp2/src/jspServlet/mydata.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/src/jspServlet/mydata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsp2/src/jspServlet/result.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/src/jspServlet/result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsp2/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/web/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsp2/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/web/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsp2/web/jspServlet/jsptest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/web/jspServlet/jsptest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsp2/web/jspServlet/myform.css" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/web/jspServlet/myform.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsp2/web/jspServlet/myform.html" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/web/jspServlet/myform.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsp2/web/jspServlet/result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/web/jspServlet/result.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mariaDB/assignment_0322.sql" beforeDir="false" afterPath="$PROJECT_DIR$/mariaDB/assignment_0322.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +39,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/edumon",
+    "last_opened_file_path": "D:/chunjae/jsp/jsp2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -53,6 +64,8 @@
       <workItem from="1711669047772" duration="3951000" />
       <workItem from="1711956961412" duration="3237000" />
       <workItem from="1712015690186" duration="73000" />
+      <workItem from="1712053333289" duration="569000" />
+      <workItem from="1712133905526" duration="307000" />
     </task>
     <servers />
   </component>

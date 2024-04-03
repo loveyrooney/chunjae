@@ -4,6 +4,8 @@ SHOW TABLES;
 
 DESC employees;
 
+#0322
+
 # Q1
 SELECT emp_no, first_name, gender
 FROM employees
@@ -30,4 +32,47 @@ SELECT emp_no, first_name, last_name, gender, hire_date
 FROM employees
 WHERE last_name = 'Swiss'
 ORDER BY hire_date DESC;
+
+
+#0401
+
+CREATE TABLE user_jobs(
+	job_id VARCHAR(10) PRIMARY KEY 
+	,job_title VARCHAR(35) NOT NULL
+	,min_salary DECIMAL(8,0) 
+	,max_salary DECIMAL(8,0) 
+);
+
+CREATE TABLE user_departments(
+	department_id INT PRIMARY KEY
+	,department_name VARCHAR(30) NOT NULL
+	,manager_id INT 
+	,location_id INT
+);
+
+CREATE TABLE user_employees(
+	employee_id INT 
+	,first_name VARCHAR(20) NOT NULL
+	,last_name VARCHAR(25)
+	,email VARCHAR(25)
+	,phone_number VARCHAR(20) NOT NULL
+	,hire_date DATE 
+	,job_id VARCHAR(10)
+	,salary DECIMAL(8,2) 
+	,commission_pct DECIMAL(2,2)
+	,manager_id INT 
+	,department_id INT 
+	,CONSTRAINT PRIMARY KEY(employee_id)
+	,CONSTRAINT jobs_fk FOREIGN KEY(job_id)
+	 REFERENCES user_jobs(job_id)
+	,CONSTRAINT emp_fk FOREIGN KEY(manager_id)
+	 REFERENCES user_employees(employee_id)
+	,CONSTRAINT dept_fk FOREIGN KEY(department_id)
+	 REFERENCES user_departments(department_id)
+	
+);
+
+ALTER table user_departments
+	ADD constraint manager_fk FOREIGN KEY(manager_id)
+	REFERENCES user_employees(employee_id);
 
