@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.chunjae.DTO.BoardDTO;
 
@@ -32,8 +33,8 @@ public class BoardDAO {
         if(pstmt != null) try{pstmt.close();} catch(Exception e){}
         if(conn != null) try{conn.close();} catch(Exception e){}
     }
-
-    public ArrayList<BoardDTO> getList(){
+    // 만들 때는 ArrayList 였지만 리턴을 List로 하는 이유는 다른 list 계열의 클래스도 문제 없이 사용할 수 있도록
+    public List<BoardDTO> getList(){
         Connection conn = null;
         PreparedStatement pstmt = null;
         StringBuilder sql = new StringBuilder();

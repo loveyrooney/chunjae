@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+    <!-- DBCP (Database Connection Pool)
+         미리 연결 객체를 만들어 주고 요청시 사용하도록 제공하는 연결방식.
+         DriveManager 는 요청이 올 때마다 커넥션을 시도하므로 연결에 시간이 너무 오래 걸린다.
+         type : JNDI 객체의 타입
+         maxTotal : 만들 수 있는 최대 커넥션 수
+         maxIdle : 대기시키고 있는 최대 커넥션 수
+         maxWaitMillis : 커넥션 풀이 모두 연결중일 때 최대 대기 시간, -1로 설정 시 무한대기
+    -->
+    <Resource name="jdbc/myDB" auth="Container" type="javax.sql.DataSource"
+              maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+              username="root" password="mariadb" driverClassName="org.mariadb.jdbc.Driver"
+              url="jdbc:mariadb://localhost:3306/hr"/>
+</Context>

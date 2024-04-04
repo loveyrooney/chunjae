@@ -6,17 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f4b70b40-813a-422f-a26f-96b48f9e748a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsp2/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsp2/src/jspServlet/lifeCycle.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/src/jspServlet/lifeCycle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsp2/src/jspServlet/mydata.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/src/jspServlet/mydata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsp2/src/jspServlet/result.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/src/jspServlet/result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsp2/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsp2/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/web/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsp2/web/jspServlet/jsptest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/web/jspServlet/jsptest.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsp2/web/jspServlet/myform.css" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/web/jspServlet/myform.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsp2/web/jspServlet/myform.html" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/web/jspServlet/myform.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jsp2/web/jspServlet/result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp2/web/jspServlet/result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mariaDB/assignment_0322.sql" beforeDir="false" afterPath="$PROJECT_DIR$/mariaDB/assignment_0322.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsp/jsp3/src/com/chunjae/DAO/BoardDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp3/src/com/chunjae/DAO/BoardDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsp/jsp3/web/board/board.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp3/web/board/board.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsp/jsp3/web/dbtest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/jsp/jsp3/web/dbtest.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +31,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/chunjae/jsp/jsp2",
+    "last_opened_file_path": "D:/dbcp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -47,6 +39,11 @@
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\chunjae\jsp" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -65,7 +62,8 @@
       <workItem from="1711956961412" duration="3237000" />
       <workItem from="1712015690186" duration="73000" />
       <workItem from="1712053333289" duration="569000" />
-      <workItem from="1712133905526" duration="307000" />
+      <workItem from="1712133905526" duration="455000" />
+      <workItem from="1712223342617" duration="622000" />
     </task>
     <servers />
   </component>

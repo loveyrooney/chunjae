@@ -1,6 +1,7 @@
 <%@ page import="com.chunjae.DAO.BoardDAO" %>
 <%@ page import="com.chunjae.DTO.BoardDTO" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: user
   Date: 2024-04-03

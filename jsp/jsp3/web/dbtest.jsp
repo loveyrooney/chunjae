@@ -44,6 +44,7 @@
             pstmt = conn.prepareStatement(sql.toString());
             //pstmt.setString(1,"Steven"); // 쿼리문의 첫 번째 ?에 "Steven"이란 값을 넣는다.
             /* PreparedStatement 클래스
+               Statement 인터페이스를 상속, Statement 는 매회 sql 컴파일, PreparedStatement 는 미리 컴파일해서 저장해둠
                executeUpdate : DML(insert, update, delete)의 row 개수 리턴,
                                DDL(create, alter, drop)은 0을 리턴한다.
                executeQuery : select 결과 집합으로 ResultSet 을 리턴한다. */
@@ -59,6 +60,7 @@
         } catch(Exception e){
             System.out.println(e);
         } finally {
+            // 모든 작업이 끝난 후에는 항상 커넥션을 닫아 주어야 한다.
             if(rs != null) try{rs.close();} catch(Exception e){}
             if(pstmt != null) try{pstmt.close();} catch(Exception e){}
             if(conn != null) try{conn.close();} catch(Exception e){}
