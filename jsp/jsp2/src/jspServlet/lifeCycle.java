@@ -16,8 +16,14 @@ java server page (JSP)
 jsp2 (webapp 명)
 src : java, servlet(웹으로 동작하는 java file)
 web
-   WEB-INF : 배치 서술자 (Deployment Descriptor)
    html, css, js
+   META-INF
+      context.xml : db 커넥션 관련
+   WEB-INF
+      classes : .class 파일
+      lib : .jar 라이브러리 파일
+      web.xml : 배치 서술자 (Deployment Descriptor)
+
 
 2. jsp -> servlet -> class
      parsing    compile
