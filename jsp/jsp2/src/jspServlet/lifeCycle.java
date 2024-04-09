@@ -1,13 +1,13 @@
 package jspServlet;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.ServletException;
 import java.io.IOException;
+import java.util.Enumeration;
 
 /*
 java server page (JSP)
@@ -39,22 +39,39 @@ web
  destroy : 서블릿 객체가 없어질 때 1회 동작 (서버가 종료될 때)
 */
 
-@WebServlet(urlPatterns = "/jspServlet/life")
+@WebServlet(urlPatterns = "/jspServlet/life"
+            ,initParams ={@WebInitParam(name="irum",value="hong gil dong")
+                         ,@WebInitParam(name="age",value = "20")})
 public class lifeCycle extends HttpServlet {
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        // init 메서드에서는 ServletContext 나 ServletConfig 를 통해 초기 세팅에 필요한 것을 할 수 있다.
+        ServletContext context = config.getServletContext();
+        String contextPath = context.getContextPath();
+        System.out.println(contextPath);
 
+        // config initParam 을 하나만 받아올 때
+//        String name = config.getServletName();
+//        String value = config.getInitParameter("irum");
+//        System.out.println(name+", "+value);
+
+        // config initParam 을 여러개 받아올 때
+        Enumeration enu = config.getInitParameterNames();
+        while(enu.hasMoreElements()){
+            String name = (String) enu.nextElement();
+            String value = config.getInitParameter(name);
+            System.out.println(name+", "+value);
+        }
+    }
+    
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-        System.out.println("service");
+        //System.out.println("service");
     }
 
     @Override
     public void destroy() {
-        System.out.println("destroy");
+        //System.out.println("destroy");
     }
-
-    @Override
-    public void init() throws ServletException {
-        System.out.println("init");
-    }
-
+    
 }
