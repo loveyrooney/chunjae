@@ -6,6 +6,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -35,8 +36,8 @@ public class EmpDAO {
     public int countEmp(String search, String input) {
         int result = 0;
         StringBuilder sql = new StringBuilder();
-                sql.append(" select count(*)         ");
-                sql.append(" from tb_sample          ");
+        sql.append(" select count(*)         ");
+        sql.append(" from tb_sample          ");
         if(!"".equals(search) && !"".equals(input)){
             if("employee_id".equals(search))
                 sql.append(" where employee_id = ?   ");
@@ -70,12 +71,12 @@ public class EmpDAO {
 
     public List<EmpDTO> findEmpList(int startRow, int pageSize, String search, String input) {
         StringBuilder sql = new StringBuilder();
-                sql.append(" select employee_id      ");
-                sql.append("        ,first_name      ");
-                sql.append("        ,last_name       ");
-                sql.append("        ,salary          ");
-                sql.append("        ,hire_date       ");
-                sql.append(" from tb_sample          ");
+        sql.append(" select employee_id      ");
+        sql.append("        ,first_name      ");
+        sql.append("        ,last_name       ");
+        sql.append("        ,salary          ");
+        sql.append("        ,hire_date       ");
+        sql.append(" from tb_sample          ");
         if(!"".equals(search) && !"".equals(input)){
             if("employee_id".equals(search))
                 sql.append(" where employee_id = ?   ");
@@ -84,7 +85,7 @@ public class EmpDAO {
             else
                 sql.append(" where hire_date like ?  ");
         }
-                sql.append(" limit ? , ?             ");
+        sql.append(" limit ? , ?             ");
         ResultSet rs = null;
         ArrayList<EmpDTO> list = new ArrayList<>();
         try(Connection conn = getConnection();
@@ -120,7 +121,7 @@ public class EmpDAO {
         return list;
     }
 
-    public EmpDTO findOne(int emp_no) {
+    public EmpDTO findEmp(int emp_no) {
         StringBuilder sql = new StringBuilder();
         sql.append(" select employee_id      ");
         sql.append("        ,first_name      ");
@@ -152,20 +153,54 @@ public class EmpDAO {
         return dto;
     }
 
-    public int deleteOne(int emp_no) {
+    public void deleteEmp(int emp_no) {
         StringBuilder sql = new StringBuilder();
         sql.append(" delete from tb_sample ");
         sql.append(" where employee_id = ? ");
-        int result = 0;
         try(Connection conn = getConnection();
             PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
             pstmt.setInt(1,emp_no);
-            result = pstmt.executeUpdate();
-            if(result>0)
-                result = emp_no;
+            pstmt.executeUpdate();
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-        return result;
+    }
+
+    public void insertEmp(EmpDTO dto) {
+        StringBuilder sql = new StringBuilder();
+        sql.append(" insert into tb_sample(employee_id ,first_name ,last_name ,salary ,hire_date) ");
+        sql.append(" values(? ,? ,? ,? ,?) ");
+        try(Connection conn = getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+            pstmt.setInt(1,dto.getEmployee_id());
+            pstmt.setString(2,dto.getFirst_name());
+            pstmt.setString(3,dto.getLast_name());
+            pstmt.setFloat(4,dto.getSalary());
+            pstmt.setDate(5, Date.valueOf(dto.getHire_date()));
+            pstmt.executeUpdate();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void updateEmp(EmpDTO dto) {
+        StringBuilder sql = new StringBuilder();
+        sql.append(" update tb_sample      ");
+        sql.append(" set first_name = ?    ");
+        sql.append("     , last_name = ?   ");
+        sql.append("     , salary = ?      ");
+        sql.append("     , hire_date = ?   ");
+        sql.append(" where employee_id = ? ");
+        try(Connection conn = getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+            pstmt.setString(1,dto.getFirst_name());
+            pstmt.setString(2,dto.getLast_name());
+            pstmt.setFloat(3,dto.getSalary());
+            pstmt.setDate(4, Date.valueOf(dto.getHire_date()));
+            pstmt.setInt(5,dto.getEmployee_id());
+            pstmt.executeUpdate();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

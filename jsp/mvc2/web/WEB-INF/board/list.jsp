@@ -22,6 +22,7 @@
     String input = (String) request.getAttribute("input");
 %>
 <a href="list">HOME</a>
+<a href="insert?curr=<%=currPage%>">사원추가</a>
 <ul>
     <% for(EmpDTO dto:list) { %>
     <li>

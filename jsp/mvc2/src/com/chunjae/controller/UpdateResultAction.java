@@ -9,16 +9,28 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
-public class DetailAction implements Action {
+public class UpdateResultAction implements Action {
     @Override
     public Forward execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int emp_no = Integer.parseInt(req.getParameter("id"));
+        req.setCharacterEncoding("utf-8");
         int curr = Integer.parseInt(req.getParameter("curr"));
+        int employee_id = Integer.parseInt(req.getParameter("employee_id"));
+        String first_name = req.getParameter("first_name");
+        String last_name = req.getParameter("last_name");
+        float salary = Float.parseFloat(req.getParameter("salary"));
+        LocalDate hire_date = LocalDate.parse(req.getParameter("hire_date"));
+        EmpDTO dto = new EmpDTO();
+        dto.setEmployee_id(employee_id);
+        dto.setFirst_name(first_name);
+        dto.setLast_name(last_name);
+        dto.setSalary(salary);
+        dto.setHire_date(hire_date);
         EmpDAO dao = EmpDAO.getInstance();
-        EmpDTO dto = dao.findEmp(emp_no);
-        req.setAttribute("dto",dto);
+        dao.updateEmp(dto);
         req.setAttribute("curr",curr);
+        req.setAttribute("dto",dto);
         Forward forward = new Forward();
         forward.setForward(true);
         forward.setPath("/WEB-INF/board/detail.jsp");

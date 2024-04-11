@@ -24,7 +24,7 @@
         <%=dto.getHire_date()%>
     </li>
 </ul>
-<a href="mod?id=<%=dto.getEmployee_id()%>">수정</a>
+<a href="upd?curr=<%=currPage%>&id=<%=dto.getEmployee_id()%>">수정</a>
 <a href="del?id=<%=dto.getEmployee_id()%>">삭제</a>
 <a href="list?curr=<%=currPage%>">목록</a>
 </body>

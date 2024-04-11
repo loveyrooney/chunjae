@@ -38,6 +38,7 @@ public class FrontController extends HttpServlet {
                 String key = (String) enu.nextElement();
                 // getProperty() 메서드는 hashTable 에서 get(Object key) 과 같다.
                 String value = properties.getProperty(key);
+                System.out.println(key+", "+value);
                 // properties value 를 통해 해당 라우터 클래스 Reflection
                 Class routerClass = Class.forName(value);
                 Constructor constructor = routerClass.getConstructor();
