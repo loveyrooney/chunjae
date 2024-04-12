@@ -49,7 +49,8 @@ public class ListAction implements Action {
         // forward 객체로 결과를 리턴한다.
         Forward f = new Forward();
         f.setForward(true);
-        f.setPath("/WEB-INF/board/list.jsp");
+        //f.setPath("/WEB-INF/board/list.jsp");
+        f.setPath("/WEB-INF/board/list2.jsp");
         return f;
     }
 }

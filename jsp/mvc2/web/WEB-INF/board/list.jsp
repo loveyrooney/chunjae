@@ -36,7 +36,7 @@
 </ul>
 <form method="get" action="list">
     <select name="search">
-        <option value="empployee_id">사원번호</option>
+        <option value="employee_id">사원번호</option>
         <option value="first_name">이름</option>
         <option value="hire_date">입사일</option>
     </select>
