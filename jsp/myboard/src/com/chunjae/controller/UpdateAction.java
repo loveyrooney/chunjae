@@ -9,12 +9,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class DetailAction implements Action{
+public class UpdateAction implements Action{
     @Override
     public Forward execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int boardno = Integer.parseInt(req.getParameter("id"));
+        req.setCharacterEncoding("utf-8");
+        int boardno = Integer.parseInt(req.getParameter("boardno"));
+        String title = req.getParameter("title");
+        String content = req.getParameter("content");
+        String writer = req.getParameter("writer");
+        BoardDTO dto = new BoardDTO();
+        dto.setBoardno(boardno);
+        dto.setTitle(title);
+        dto.setContent(content);
+        dto.setWriter(writer);
         BoardService service = BoardService.getService();
-        BoardDTO board = service.readBoard(boardno);
+        BoardDTO board = service.updateBoard(dto);
         req.setAttribute("board",board);
         Forward forward = new Forward();
         forward.setForward(true);

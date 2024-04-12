@@ -5,6 +5,7 @@ import com.chunjae.dto.BoardDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class BoardDAO {
     }
     private BoardDAO() {
     }
-    public List<BoardDTO> findAll(Connection conn){
+    public List<BoardDTO> findAll(Connection conn) throws SQLException{
         StringBuilder sql = new StringBuilder();
         sql.append(" SELECT boardno   ");
         sql.append("       ,title     ");
@@ -36,15 +37,13 @@ public class BoardDAO {
                 dto.setReadno(rs.getInt("readno"));
                 list.add(dto);
             }
-        }catch (Exception e){
-            System.out.println(e);
         }finally {
             if(rs!=null)try{rs.close();}catch (Exception e){}
         }
         return list;
     }
 
-    public BoardDTO findOne(Connection conn, int boardno) {
+    public BoardDTO findOne(Connection conn, int boardno) throws SQLException {
         StringBuilder sql = new StringBuilder();
         sql.append(" SELECT boardno    ");
         sql.append("       ,title      ");
@@ -67,11 +66,58 @@ public class BoardDAO {
                 dto.setWritedate(rs.getDate("writedate").toLocalDate());
                 dto.setReadno(rs.getInt("readno"));
             }
-        }catch (Exception e){
-            System.out.println(e);
         }finally {
             if(rs!=null)try{rs.close();}catch (Exception e){}
         }
         return dto;
+    }
+    public void addReadCount(Connection conn,int boardno) throws SQLException {
+        StringBuilder sql = new StringBuilder();
+        sql.append(" UPDATE myboard               ");
+        sql.append(" SET readno = nvl(readno,0)+1 ");
+        sql.append(" WHERE boardno = ?            ");
+        try(PreparedStatement pstmt= conn.prepareStatement(sql.toString());){
+            pstmt.setInt(1,boardno);
+            pstmt.executeUpdate();
+        }
+    }
+
+    public void insertBoard(Connection conn, BoardDTO dto) throws SQLException {
+        StringBuilder sql = new StringBuilder();
+        sql.append(" INSERT INTO myboard ( title       ");
+        sql.append("                      ,content     ");
+        sql.append("                      ,writer      ");
+        sql.append("                      ,writedate ) ");
+        sql.append(" VALUES ( ? ,? ,? ,DATE(NOW()) )   ");
+        try(PreparedStatement pstmt= conn.prepareStatement(sql.toString());){
+            pstmt.setString(1,dto.getTitle());
+            pstmt.setString(2,dto.getContent());
+            pstmt.setString(3,dto.getWriter());
+            pstmt.executeUpdate();
+        }
+    }
+
+    public void updateBoard(Connection conn, BoardDTO dto) throws SQLException {
+        StringBuilder sql = new StringBuilder();
+        sql.append(" UPDATE myboard    ");
+        sql.append(" SET title = ?     ");
+        sql.append("    , content = ?  ");
+        sql.append(" WHERE boardno = ? ");
+        try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+            pstmt.setString(1,dto.getTitle());
+            pstmt.setString(2,dto.getContent());
+            pstmt.setInt(3,dto.getBoardno());
+            pstmt.executeUpdate();
+        }
+    }
+
+    public void deleteBoard(Connection conn, int boardno) throws SQLException {
+        StringBuilder sql = new StringBuilder();
+        sql.append(" DELETE FROM myboard ");
+        sql.append(" WHERE boardno = ?   ");
+        try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());){
+            pstmt.setInt(1,boardno);
+            pstmt.executeUpdate();
+        }
     }
 }

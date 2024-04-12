@@ -10,11 +10,12 @@
 <html>
 <head>
     <title>myboard - detail</title>
+    <link rel="stylesheet" href="css/detail.css">
 </head>
 <body>
 <a href="list">HOME</a>
 <ul>
-  <li>No. ${board.boardno} | 작성자 ${board.writer} | 작성일 ${board.writedate} | ${board.readno}</li>
+  <li>No. ${requestScope.board.boardno} | 작성자 ${board.writer} | 작성일 ${board.writedate} | ${board.readno}</li>
   <li>${board.title}</li>
   <li>${board.content}</li>
 </ul>

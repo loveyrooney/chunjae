@@ -10,10 +10,11 @@
 <html>
 <head>
     <title>myboard - list</title>
+    <link rel="stylesheet" href="css/write.css">
 </head>
 <body>
 <a href="list">HOME</a>
-<a href="insert">글쓰기</a>
+<a href="write">글쓰기</a>
 <table>
     <thead>
         <tr>

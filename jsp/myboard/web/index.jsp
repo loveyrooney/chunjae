@@ -9,8 +9,9 @@
 <html>
   <head>
     <title>$Title$</title>
+    <link rel="stylesheet" href="/myboard/css/write.css">
   </head>
   <body>
-  $END$
+  <a href="/myboard">home</a>
   </body>
 </html>
