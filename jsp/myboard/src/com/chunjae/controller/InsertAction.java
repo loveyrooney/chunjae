@@ -12,7 +12,6 @@ import java.io.IOException;
 public class InsertAction implements Action{
     @Override
     public Forward execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("utf-8");
         String title = req.getParameter("title");
         String writer = req.getParameter("writer");
         String content = req.getParameter("content");

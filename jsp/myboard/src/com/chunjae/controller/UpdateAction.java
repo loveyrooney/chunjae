@@ -12,7 +12,6 @@ import java.io.IOException;
 public class UpdateAction implements Action{
     @Override
     public Forward execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("utf-8");
         int boardno = Integer.parseInt(req.getParameter("boardno"));
         String title = req.getParameter("title");
         String content = req.getParameter("content");
