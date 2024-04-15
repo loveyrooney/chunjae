@@ -24,6 +24,10 @@ public class DownloadController extends HttpServlet {
     }
 
     private void doReq(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+        /*  download 시 파일 제목에 특수문자 때문에 적용 안될 때는
+        tomcat 설치 파일 -> conf -> server.xml 파일에서 -> Connector port="8080" 인 태그내에 아래 속성 추가
+        relaxedQueryChars ="해당특수문자, 해당특수문자2"
+         */
         String f = req.getParameter("file");
         String folder = req.getServletContext().getRealPath("upload");
         String filePath = folder+"/"+f;
