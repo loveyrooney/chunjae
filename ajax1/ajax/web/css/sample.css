@@ -1,0 +1,13 @@
+table{
+    width: 50%;
+    border-collapse: collapse;
+}
+tr td{
+    border: 1px solid silver;
+}
+tbody tr:nth-child(2n) td{
+    background-color: cornflowerblue;
+}
+tbody tr:nth-child(2n-1) td{
+    background-color: lightgray;
+}
