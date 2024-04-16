@@ -31,11 +31,12 @@ public class UploadResultAction implements Action {
         dto.setBimg(file);
 
         ImgService service = ImgService.getService();
-        service.writeBoard(dto);
+        ImgDTO board = service.writeBoard(dto);
+        req.setAttribute("board",board);
 
         Forward forward = new Forward();
-        forward.setForward(false);
-        forward.setUrl("list.do");
+        forward.setForward(true);
+        forward.setUrl("/WEB-INF/board/main.jsp?page=imgBoard.jsp");
         return forward;
     }
 }

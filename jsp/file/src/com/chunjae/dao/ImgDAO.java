@@ -35,10 +35,9 @@ public class ImgDAO {
         sql.append("        ,btitle ");
         sql.append("        ,readno ");
         sql.append(" FROM imgboard  ");
-        ResultSet rs = null;
         ArrayList<ImgDTO> list = new ArrayList<>();
-        try(PreparedStatement pstmt = conn.prepareStatement(sql.toString())){
-            rs = pstmt.executeQuery();
+        try(PreparedStatement pstmt = conn.prepareStatement(sql.toString());
+            ResultSet rs = pstmt.executeQuery();){
             while(rs.next()){
                 ImgDTO dto = new ImgDTO();
                 dto.setBno(rs.getInt("bno"));
@@ -46,25 +45,29 @@ public class ImgDAO {
                 dto.setReadno(rs.getInt("readno"));
                 list.add(dto);
             }
-        }finally {
-            if(rs!=null)try{rs.close();}catch (Exception e){}
         }
         return list;
     }
 
     public ImgDTO findImgBoard(Connection conn, int bno) throws SQLException{
         StringBuilder sql = new StringBuilder();
-        sql.append(" SELECT bno       ");
-        sql.append("        ,btitle   ");
-        sql.append("        ,bcontent ");
-        sql.append("        ,bimg     ");
-        sql.append("        ,readno   ");
-        sql.append(" FROM imgboard    ");
-        sql.append(" WHERE bno = ?    ");
+            sql.append(" SELECT bno                    ");
+            sql.append("        ,btitle                ");
+            sql.append("        ,bcontent              ");
+            sql.append("        ,bimg                  ");
+            sql.append("        ,readno                ");
+            sql.append(" FROM imgboard                 ");
+        if(bno!=-1)
+            sql.append(" WHERE bno = ?                 ");
+        else {
+            sql.append(" WHERE bno = ( SELECT MAX(bno) ");
+            sql.append("               FROM imgboard ) ");
+        }
         ResultSet rs = null;
         ImgDTO dto = new ImgDTO();
         try(PreparedStatement pstmt = conn.prepareStatement(sql.toString())){
-            pstmt.setInt(1,bno);
+            if(bno!=-1)
+                pstmt.setInt(1,bno);
             rs = pstmt.executeQuery();
             while(rs.next()){
                 dto.setBno(rs.getInt("bno"));
@@ -84,6 +87,16 @@ public class ImgDAO {
         sql.append(" UPDATE imgboard              ");
         sql.append(" SET readno = nvl(readno,0)+1 ");
         sql.append(" WHERE bno = ?                ");
+        try(PreparedStatement pstmt = conn.prepareStatement(sql.toString())){
+            pstmt.setInt(1,bno);
+            pstmt.executeUpdate();
+        }
+    }
+
+    public void deleteImgBoard(Connection conn, int bno) throws SQLException {
+        StringBuilder sql = new StringBuilder();
+        sql.append(" DELETE FROM imgboard ");
+        sql.append(" WHERE bno = ?        ");
         try(PreparedStatement pstmt = conn.prepareStatement(sql.toString())){
             pstmt.setInt(1,bno);
             pstmt.executeUpdate();

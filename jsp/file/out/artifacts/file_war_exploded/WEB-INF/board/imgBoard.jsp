@@ -17,7 +17,15 @@
   <li>번호 : ${board.bno} | 조회수 : ${board.readno}</li>
   <li>제목 : ${board.btitle}</li>
   <li>내용 : ${board.bcontent}</li>
-  <li>파일 : <img src="upload/${board.bimg}" alt="${board.bimg}"></li>
+  <c:choose>
+      <c:when test="${empty board.bimg}">
+          <li>파일 : 이미지가 없습니다.</li>
+      </c:when>
+      <c:otherwise>
+          <li>파일 : <img src="upload/${board.bimg}" alt="${board.bimg}"></li>
+      </c:otherwise>
+  </c:choose>
 </ul>
+<a href="delete.do?id=${board.bno}&img=${board.bimg}">삭제</a>
 </body>
 </html>

@@ -20,7 +20,6 @@
 --%>
 
 제목 : ${requestScope.title}<br>
-파일 : <a href="download.do?file=${requestScope.file}">${requestScope.file}</a><br>
-오리지널 파일 : ${requestScope.originalFile}
+파일 : <a href="download?file=${requestScope.file}">${requestScope.file}</a>
 </body>
 </html>

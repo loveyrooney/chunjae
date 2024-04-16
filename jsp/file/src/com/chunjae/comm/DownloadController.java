@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletException;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -32,25 +33,25 @@ public class DownloadController extends HttpServlet {
         String folder = req.getServletContext().getRealPath("upload");
         String filePath = folder+"/"+f;
         System.out.println(filePath);
-        FileInputStream fis = null;
+        BufferedInputStream bis = null;
         try {
             File file = new File(filePath);
-            byte[] b = new byte[4000];
+            byte[] buffer = new byte[4096]; // 버퍼 기본값
             resp.setContentType("application/octet-stream");
             String encoding = new String(f.getBytes("utf-8"),"8859_1");
             resp.setHeader("Content-Disposition","attachment;filename="+encoding);
             if(file.isFile()){
-                fis=new FileInputStream(filePath);
+                bis= new BufferedInputStream(new FileInputStream(filePath));
                 ServletOutputStream output = resp.getOutputStream();
                 int readnum;
-                while((readnum = fis.read(b,0,b.length)) != -1){
-                    output.write(b,0,readnum);
+                while((readnum = bis.read(buffer,0,buffer.length)) != -1){
+                    output.write(buffer,0,readnum);
                 }
             }
         }catch (Exception e){
             System.out.println(e);
         }finally{
-            if(fis!=null)try{fis.close();}catch (Exception e){}
+            if(bis!=null)try{bis.close();}catch (Exception e){}
         }
 
     }
