@@ -53,9 +53,12 @@
         ,headers : {"Content-Type" : "application/x-www-form-urlencoded" ,"Accept" : "text/json"}
     }).then(res=>res.json())
         .then((data)=>{
+            let no = 0;
             data.forEach(d=>{
                 console.log(d);
                 let ele_li = document.createElement("li");
+                no+=1;
+                ele_li.setAttribute("id","li"+no);
                 let ele_span1 = document.createElement("span");
                 let ele_span2 = document.createElement("span");
                 let writer = document.createTextNode(d.writer);
