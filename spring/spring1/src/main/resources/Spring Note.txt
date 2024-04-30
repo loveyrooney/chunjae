@@ -1,0 +1,38 @@
+Spring Note
+
+라이브러리 의존성 : 한 라이브러리를 사용하기위해 필요한 다른 라이브러리를 한꺼번에 가져온다. 
+
+gradle 프로젝트 구조 
+-src 
+  -main : 동작하는 소스 작성 
+     -java : java 소스를 작성하는 디렉토리 
+     -resources : classpath에 *.properties나 *.xml 들의 리소스 파일을 두는 디렉토리 
+  -test : 테스트 용도의 소스 작성 (여기에도 java, resources) 
+  build.gradle : 라이브러리 및 자바 버전 등 환경정보 저장
+
+
+Ioc Inversion of Control, 제어 역전
+DI Dependency Injection, 의존성 주입
+1) Setter Injection 
+2) Constructor Injection
+3) Method Injection
+
+
+스프링 빈(객체)를 만드는 방법 
+1) xml : xml -> spring config 파일
+ GenericXmlApplicationContext : xml을 설정 정보로 사용하는 스프링 컨테이너
+ AnnotationConfigApplicationContext : 자바코드를 설정정보로 사용하는 스프링 컨테이너
+ XmlWebApplicationContext : 웹 어플리케이션에 위치한 xml 파일로부터 설정정보 로딩
+ AnnotationConfigApplicationContext : 웹 어플리케이션 개발시 사용 자바코드를 설정정보로 사용
+
+2) annotation
+
+
+Junit, 테스트 도구 
+테스트 클래스 내에서 존재하는 각 테스트 메서드를 실행하는 클래스 
+@ExtendWith 
+@Test 
+@beforeEach
+@afterEach
+@beforeAll
+@afterAll

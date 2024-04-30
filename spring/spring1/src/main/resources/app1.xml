@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 기본생성자로 만들기 MemberDTO plain = new MemberDTO(); -->
+    <bean name="plain" class="com.chunjae.list.MemberDTO"/>
+    <bean name="plain2" class="com.chunjae.list.MemberDTO"/>
+    <!-- primitive 매개변수 생성자로 만들기 MemberDTO ins = new MemberDTO("hong",10); -->
+    <bean name="ins" class="com.chunjae.list.MemberDTO">
+        <constructor-arg name="name" value="hong"/>
+        <constructor-arg name="age" value="10"/>
+    </bean>
+    <!-- 기본 생성자로 만든 후 setter로 내용 넣기 -->
+    <bean name="ins2" class="com.chunjae.list.MemberDTO">
+        <property name="name" value="hong2"/>
+        <property name="age" value="12"/>
+    </bean>
+    <!-- reference 매개변수 생성자로 만들기
+         변수 만들어서 넣기 Jumsu jumsu1 = new Jumsu(80,60,90); Student student = new Student("lee",23,jumsu1); -->
+    <bean name="jumsu1" class="com.chunjae.list.Jumsu">
+        <constructor-arg name="kor" value="80"/>
+        <constructor-arg name="eng" value="60"/>
+        <constructor-arg name="math" value="90"/>
+    </bean>
+    <bean name="student1" class="com.chunjae.list.Student">
+        <constructor-arg name="name" value="lee"/>
+        <constructor-arg name="age" value="23"/>
+        <constructor-arg name="jumsu" ref="jumsu1">
+        </constructor-arg>
+    </bean>
+    <!-- 아예 매개변수 안에서 선언하기 Student student = new Student("lee",25,new Jumsu(90,80,70)); -->
+    <bean name="student2" class="com.chunjae.list.Student">
+        <constructor-arg name="name" value="lee"/>
+        <constructor-arg name="age" value="25"/>
+        <constructor-arg name="jumsu">
+            <bean class="com.chunjae.list.Jumsu">
+                <constructor-arg name="kor" value="90"/>
+                <constructor-arg name="eng" value="80"/>
+                <constructor-arg name="math" value="70"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+    <!-- Student student3 = new Student(new ArrayList<String>("a1","a2","a3")); -->
+    <bean name="student3" class="com.chunjae.list.Student">
+        <constructor-arg name="items">
+            <list>
+                <value>a1</value>
+                <value>a2</value>
+                <value>a3</value>
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>

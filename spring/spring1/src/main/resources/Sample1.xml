@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- Member member = new Member(); member.setItem(new HashMap<String,Category>()); -->
+    <bean name="ctg" class="com.chunjae.map.Category" c:category_id="2" c:category_name="가구/장비"/>
+    <bean id="member" class="com.chunjae.map.Member">
+        <property name="item">
+            <map>
+                <!-- Map 타입 주입 방법 1. 전체를 하드코딩(3), 밸류를 c활용한 후 참조(2), 밸류만 c활용(1) -->
+                <entry>
+                    <key><value>1</value></key>
+                    <bean class="com.chunjae.map.Category" c:category_id="1" c:category_name="도서"/>
+                </entry>
+                <entry key="2" value-ref="ctg"/>
+                <entry key="3">
+                    <bean class="com.chunjae.map.Category">
+                        <constructor-arg name="category_id" value="3"/>
+                        <constructor-arg name="category_name" value="학습준비물"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <!-- SetString set1 = new SetString(new HashSet<String>()) -->
+    <bean id="set1" class="com.chunjae.set.SetString">
+        <constructor-arg name="strings">
+            <set>
+                <value>hong</value>
+                <value>hong2</value>
+            </set>
+        </constructor-arg>
+    </bean>
+    <!-- set2 = new SetString(); set2.SetStrings(new HashSet<String>()) -->
+    <bean id="set2" class="com.chunjae.set.SetString">
+        <property name="strings">
+            <set>
+                <value>kim</value>
+                <value>kim2</value>
+            </set>
+        </property>
+    </bean>
+    <!-- set3 = new SetPerson(); set3.SetPersons(new HashSet<Person>()) -->
+    <bean name="set3" class="com.chunjae.set.SetPerson">
+        <property name="personSet">
+            <set>
+                <bean name="person" class="com.chunjae.cast.Student1"/>
+                <bean name="man" class="com.chunjae.cast.Man"/>
+            </set>
+        </property>
+    </bean>
+    <!-- set4 = new SetPerson(new HashSet<MemberDTO>()) -->
+    <bean name="set4" class="com.chunjae.set.SetPerson">
+        <constructor-arg name="memberDTOSet">
+            <set>
+                <bean name="mem1" class="com.chunjae.list.MemberDTO" c:name="park" c:age="10"/>
+                <bean name="mem2" class="com.chunjae.list.MemberDTO" p:name="song" p:age="20"/>
+            </set>
+        </constructor-arg>
+    </bean>
+</beans>

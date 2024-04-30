@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group 'com.chunjae'
+version '1.0-SNAPSHOT'
+// 개발하는 java version
+sourceCompatibility="1.11"
+// 서비스 이용 대상의 java version 호환가능 범위
+targetCompatibility="1.11"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.projectlombok:lombok:1.18.22'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'org.springframework:spring-context:5.3.15'
+    testImplementation 'org.springframework:spring-test:5.3.15'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+}
+
+test {
+    useJUnitPlatform()
+}
