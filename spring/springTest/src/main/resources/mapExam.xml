@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean name="net" class="com.chunjae.dto.MemberDTO" p:name="lee" p:age="30"/>
+    <bean name="setMemMap" class="com.chunjae.dto.MemberMap">
+        <property name="memberMap">
+            <map>
+                <entry key="운영체제">
+                    <bean class="com.chunjae.dto.MemberDTO" c:name="bahn" c:age="40"/>
+                </entry>
+                <entry key="네트워크">
+                    <ref bean="net"></ref>
+                </entry>
+                <entry key="자료구조">
+                    <bean class="com.chunjae.dto.MemberDTO">
+                        <constructor-arg name="name" value="nam"/>
+                        <constructor-arg name="age" value="50"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>

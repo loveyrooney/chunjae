@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    <bean id="info1" class="com.chunjae.auto.Info"/>-->
+<!--    <bean name="byName" class="com.chunjae.auto.Autowire1" autowire="byName"/>-->
+<!--    <bean id="Info" class="com.chunjae.auto.Info"/>-->
+<!--    <bean name="byType" class="com.chunjae.auto.Autowire1" autowire="byType"/>-->
+    <bean id="i" class="com.chunjae.auto.Info"/>
+    <bean name="byConstructor" class="com.chunjae.auto.Autowire1" autowire="constructor"/>
+
+</beans>

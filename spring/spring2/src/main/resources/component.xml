@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+<!-- 빈을 하나씩 등록하지 않고, 한꺼번에 등록하기 위함. 빈을 만들 클래스에 @Component 써주고 패키지 지정하면 그 안에 있는 모든 컴포넌트의 빈 생성 -->
+    <context:component-scan base-package="com.chunjae"/>
+</beans>
