@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunjae.dao.MemberDAO">
+    <!-- resultType 은 각 row 의 type 을 써주면 된다.
+         sql 쿼리문에 쓰는 column 이름과 리턴 dto 의 필드 이름이 같아야 한다. -->
+    <select id="findMembers" resultType="com.chunjae.dto.MemberDTO">
+        select memberId, name, age, addr
+        from member
+    </select>
+    <!-- 쿼리문 내의 parameter 전달은 #{} 로 가능 -->
+    <select id="findMember" parameterType="int"
+            resultType="com.chunjae.dto.MemberDTO">
+        select memberId, name, age, addr
+        from member
+        where memberId = #{mid}
+    </select>
+    <delete id="deleteMember" parameterType="int">
+        delete from member
+        where memberId = #{mid}
+    </delete>
+    <!-- 복수 개의 parameter 사용불가. dto 에 넣어서 하나로 만들어 주어야 하고,
+         필드 이름을 전달 시, dto.get필드이름() 처럼 동작한다. -->
+    <insert id="insertMember" parameterType="com.chunjae.dto.MemberDTO">
+        insert into member ( name, age, addr )
+        values ( #{name}, #{age}, #{addr} )
+    </insert>
+    <!-- 와일드 카드는 파라미터 문자열 안에서 넣기 -->
+    <select id="findMembersContainsName" parameterType="string" resultType="com.chunjae.dto.MemberDTO">
+        select memberId, name, age, addr
+        from member
+        where name Like #{s}
+    </select>
+    <!-- 함수 오버로딩 불가 -->
+    <delete id="deleteMemberWithName" parameterType="string">
+        delete from member
+        where name = #{name}
+    </delete>
+    <update id="updateMember" parameterType="com.chunjae.dto.MemberDTO">
+        update member
+        set age = #{age}, addr = #{addr}
+        where memberId = #{memberId}
+    </update>
+</mapper>

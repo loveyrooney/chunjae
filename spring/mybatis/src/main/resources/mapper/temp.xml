@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunjae.dao.TempDAO">
+    <resultMap id="dto" type="com.chunjae.dto.TempDTO">
+        <result column="employee_id" property="eid"/>
+        <result column="first_name" property="fname"/>
+    </resultMap>
+    <!-- 쿼리 내에서 as 사용하여 컬럼 이름 변경 -->
+    <select id="findTemps" resultType="com.chunjae.dto.TempDTO">
+        select employee_id as eid
+              , first_name as fname
+              , salary
+              , email
+        from temp
+    </select>
+    <!-- resultMap 을 사용하여 변경한 컬럼 이름 매핑, dto 리턴이 안 되면 사용. 느리다. -->
+<!--    <select id="findTemps" resultMap="dto">-->
+<!--        select employee_id, first_name-->
+<!--        from temp-->
+<!--    </select>-->
+</mapper>
