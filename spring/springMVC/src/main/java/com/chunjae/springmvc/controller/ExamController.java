@@ -19,8 +19,8 @@ public class ExamController {
     public String myresult(@RequestParam String name, @RequestParam String idnum, Model model){
         String birth = idnum.split("-")[0];
         String key = idnum.split("-")[1].substring(0,1);
-        String gender = "";
-        int age = 0;
+        String gender;
+        int age;
         if("3".equals(key) || "4".equals(key)){
             birth = "20"+birth;
             age = LocalDate.now().getYear()-Integer.parseInt(birth.substring(0,4));
