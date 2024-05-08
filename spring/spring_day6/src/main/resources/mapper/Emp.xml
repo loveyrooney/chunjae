@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunjae.spring_day6.dao.EmpMapper">
+ <select id="findEmplist"
+         resultType="com.chunjae.spring_day6.dto.EmpDTO">
+      select employee_id
+             , first_name
+             , hire_date
+             , salary
+             , department_id
+     from temp
+ </select>
+    <insert id="insertEmp" parameterType="com.chunjae.spring_day6.dto.EmpDTO">
+        insert into temp (employee_id, first_name, hire_date, salary, department_id)
+        values ( #{employee_id}, #{first_name}, #{hire_date}, #{salary}, #{department_id})
+    </insert>
+    <select id="findEmp" parameterType="string" resultType="com.chunjae.spring_day6.dto.EmpDTO">
+        select employee_id, first_name, hire_date, salary, department_id
+        from temp
+        where employee_id = #{eid}
+    </select>
+</mapper>
