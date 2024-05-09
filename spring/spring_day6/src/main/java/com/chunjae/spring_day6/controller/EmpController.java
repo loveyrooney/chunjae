@@ -26,8 +26,7 @@ public class EmpController {
    }
 
    @GetMapping("/insert")
-    public String insert(Model model){
-      model.addAttribute("isUpdate",false);
+    public String insert(){
       return "insertform";
    }
 
@@ -38,7 +37,7 @@ public class EmpController {
    }
 
    @GetMapping("/detail/{eid}")
-    public String detail(@PathVariable String eid, Model model){
+    public String detail(@PathVariable int eid, Model model){
       EmpDTO dto = empService.detail(eid);
       if(dto!=null) {
           model.addAttribute("dto", dto);
@@ -49,7 +48,18 @@ public class EmpController {
       return "detail";
    }
 
-    // update 리턴 isNull 설정해서 보내기
-    // css, js 404 해결하기
+   @PostMapping("/update_result")
+    public String update(EmpDTO dto){
+       empService.updateEmp(dto);
+       return "redirect:/detail/"+dto.getEmployee_id();
+   }
+
+   @GetMapping("/del/{eid}")
+    public String delEmp(@PathVariable int eid){
+      empService.delEmp(eid);
+      return "redirect:/list";
+   }
+
+
 
 }

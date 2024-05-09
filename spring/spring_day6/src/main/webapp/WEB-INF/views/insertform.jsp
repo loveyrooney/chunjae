@@ -12,25 +12,11 @@
     <title>Title</title>
 </head>
 <body>
-<c:choose>
-  <c:when test="${isUpdate}">
-    <form method="post" action="/update_result">
-  </c:when>
-    <c:otherwise>
-      <form method="post" action="/insert_result">
-    </c:otherwise>
-</c:choose>
+  <form method="post" action="/insert_result">
     <ul>
       <li>
         <label for="eid">사원번호</label>
-        <c:choose>
-          <c:when test="${isUpdate}">
-            <input type="text" name="employee_id" id="eid" readonly/>
-          </c:when>
-          <c:otherwise>
-            <input type="text" name="employee_id" id="eid"/>
-          </c:otherwise>
-        </c:choose>
+        <input type="text" name="employee_id" id="eid"/>
       </li>
       <li>
         <label for="first">이름</label>

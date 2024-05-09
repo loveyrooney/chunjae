@@ -16,9 +16,21 @@
         insert into temp (employee_id, first_name, hire_date, salary, department_id)
         values ( #{employee_id}, #{first_name}, #{hire_date}, #{salary}, #{department_id})
     </insert>
-    <select id="findEmp" parameterType="string" resultType="com.chunjae.spring_day6.dto.EmpDTO">
+    <select id="findEmp" parameterType="int" resultType="com.chunjae.spring_day6.dto.EmpDTO">
         select employee_id, first_name, hire_date, salary, department_id
         from temp
         where employee_id = #{eid}
     </select>
+    <update id="updateEmp" parameterType="com.chunjae.spring_day6.dto.EmpDTO">
+        update temp
+        set first_name = #{first_name}
+            ,hire_date = #{hire_date}
+            ,salary = #{salary}
+            ,department_id = #{department_id}
+        where employee_id = #{employee_id}
+    </update>
+    <delete id="delEmp" parameterType="int">
+        delete from temp
+        where employee_id = #{eid}
+    </delete>
 </mapper>

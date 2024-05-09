@@ -9,5 +9,7 @@ import java.util.List;
 public interface EmpService {
    List<EmpDTO> list();
     int insert(EmpDTO dto);
-    EmpDTO detail(String eid);
+    EmpDTO detail(int eid);
+    void delEmp(int eid);
+    void updateEmp(EmpDTO dto);
 }

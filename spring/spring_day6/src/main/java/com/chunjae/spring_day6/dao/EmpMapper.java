@@ -7,5 +7,7 @@ import java.util.List;
 public interface EmpMapper {
     List<EmpDTO> findEmplist();
     int insertEmp(EmpDTO dto);
-    EmpDTO findEmp(String eid);
+    EmpDTO findEmp(int eid);
+    void delEmp(int eid);
+    void updateEmp(EmpDTO dto);
 }

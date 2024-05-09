@@ -39,9 +39,21 @@ public class EmpServiceImple implements  EmpService {
     }
 
     @Override
-    public EmpDTO detail(String eid) {
+    public EmpDTO detail(int eid) {
         EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
         EmpDTO dto = mapper.findEmp(eid);
         return dto;
+    }
+
+    @Override
+    public void updateEmp(EmpDTO dto) {
+        EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
+        mapper.updateEmp(dto);
+    }
+
+    @Override
+    public void delEmp(int eid) {
+        EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
+        mapper.delEmp(eid);
     }
 }
