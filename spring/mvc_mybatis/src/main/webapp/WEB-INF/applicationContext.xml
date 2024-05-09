@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+     <context:property-placeholder location="classpath:db.properties"/>
+    <bean name="dbconf" class="com.zaxxer.hikari.HikariConfig">
+        <property name="driverClassName" value="${db.driver}"/>
+        <property name="jdbcUrl" value="${db.url}"/>
+        <property name="username" value="${db.user}"/>
+        <property name="password" value="${db.pwd}"/>
+    </bean>
+<bean name="ds"
+      class="com.zaxxer.hikari.HikariDataSource"
+      destroy-method="close">
+    <constructor-arg ref="dbconf"/>
+</bean>
+<bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+       <property name="dataSource" ref="ds"/>
+       <property name="mapperLocations" value="classpath:mapper/**/*.xml"/>
+</bean>
+    <context:component-scan base-package="com.chunjae.mvc_mybatis.service"/>
+    <!-- mybatis:scan 만 사용하고 mapper interface 에 @Mapper 만 넣어도 되는데
+         안될 경우 component-scan 추가하고 interface 에 @Repository 추가
+         이렇게 하면 service 단에서 sqlSession.getMappter(EmpMapper.class) 사용 안해도 되고 Mapper 빈을 주입할 수 있다. -->
+    <context:component-scan base-package="com.chunjae.mvc_mybatis.dao"/>
+    <mybatis:scan base-package="com.chunjae.mvc_mybatis.dao"/>
+</beans>
