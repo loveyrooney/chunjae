@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunjae.spring7.dao.EmpMapper">
+    <select id="countEmpList" parameterType="hashmap" resultType="int">
+        select count(*)
+        from temp3
+        <where>
+            <if test="searchTxt!=null and !searchTxt.equals('')">
+            <choose>
+                <when test="search.equals('employee_id')">
+                    and employee_id = #{searchTxt}
+                </when>
+                <when test="search.equals('department_id')">
+                    and department_id = #{searchTxt}
+                </when>
+                <when test="search.equals('hire_date')">
+                    and hire_date like concat('%',#{searchTxt},'%')
+                </when>
+                <otherwise>
+                    and first_name like concat('%',#{searchTxt},'%')
+                </otherwise>
+            </choose>
+            </if>
+        </where>
+    </select>
+    <select id="findEmpList" parameterType="hashmap" resultType="com.chunjae.spring7.dto.EmpDTO">
+        select employee_id
+              ,first_name
+              ,hire_date
+              ,department_id
+        from temp3
+        <where>
+            <if test="searchTxt!=null and !searchTxt.equals('')">
+                <choose>
+                    <when test="search.equals('employee_id')">
+                        and employee_id = #{searchTxt}
+                    </when>
+                    <when test="search.equals('department_id')">
+                        and department_id = #{searchTxt}
+                    </when>
+                    <when test="search.equals('hire_date')">
+                        and hire_date like concat('%',#{searchTxt},'%')
+                    </when>
+                    <otherwise>
+                        and first_name like concat('%',#{searchTxt},'%')
+                    </otherwise>
+                </choose>
+            </if>
+        </where>
+        order by employee_id
+        limit #{startRow}, #{pageSize}
+    </select>
+    <select id="findEmp" parameterType="int" resultType="com.chunjae.spring7.dto.EmpDTO">
+        select employee_id
+                ,first_name
+                ,hire_date
+                ,department_id
+        from temp3
+        where employee_id = #{employee_id}
+    </select>
+</mapper>
