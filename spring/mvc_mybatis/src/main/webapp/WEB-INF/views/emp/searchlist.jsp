@@ -12,13 +12,8 @@
     <title>Title</title>
 </head>
 <body>
-    <table>
-        <thead>
-            <tr><th>사원번호</th><th>사원명</th><th>부서명</th></tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
+<c:forEach var="i" items="${listWithMap}">
+    ${i.employee_id} ${i.first_name} ${i.salary} ${i.department_name} <br>
+</c:forEach>
 </body>
 </html>

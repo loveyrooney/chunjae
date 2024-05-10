@@ -3,6 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chunjae.mvc_mybatis.dao.SearchEmpMapper">
+    <!-- hashmap 타입의 파라미터가 매퍼 인터페이스에 있는 경우 select 속성에 parameterType
+         만약 없다면 여기서 <parameterMap id="hashmap" type="java.util.HashMap"> 으로
+          만들고 여기서 맵에 파라미터 추가 한 뒤 select 속성은 parameterMap -->
     <select id="totalCount" parameterType="hashmap" resultType="int">
         select count(*)
         from temp2
@@ -22,5 +25,38 @@
                 </choose>
             </if>
         </where>
+    </select>
+    <select id="findSearchList" parameterType="hashmap" resultType="com.chunjae.mvc_mybatis.dto.EmpDTO">
+        select employee_id
+                ,first_name
+                ,salary
+                ,department_name
+        from temp2
+        <where>
+            <if test="search_txt!=null and !search_txt.equals('')">
+                <choose>
+                    <when test="search.equals('employee_id')">
+                        and employee_id = #{search_txt}
+                    </when>
+                    <when test="search.equals('first_name')">
+                        and first_name like concat('%',#{search_txt},'%')
+                    </when>
+                    <otherwise>
+                        and department_name like concat('%',#{search_txt},'%')
+                    </otherwise>
+                </choose>
+            </if>
+        </where>
+        <![CDATA[
+            order by employee_id
+            limit #{start_row}, #{page_size}
+        ]]>
+    </select>
+    <select id="searchEmpListReturnedMap" resultType="hashmap">
+        select employee_id
+                ,first_name
+                ,salary
+                ,department_name
+        from temp2
     </select>
 </mapper>
