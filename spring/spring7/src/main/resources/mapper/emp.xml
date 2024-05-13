@@ -60,4 +60,15 @@
         from temp3
         where employee_id = #{employee_id}
     </select>
+    <update id="updateEmp" parameterType="com.chunjae.spring7.dto.EmpDTO">
+        update temp3
+        set first_name = #{first_name}
+            ,hire_date = #{hire_date}
+            ,department_id = #{department_id}
+        where employee_id = #{employee_id}
+    </update>
+    <delete id="deleteEmp" parameterType="int">
+        delete from temp3
+        where employee_id = #{eid}
+    </delete>
 </mapper>

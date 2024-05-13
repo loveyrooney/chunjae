@@ -8,4 +8,6 @@ public interface EmpService {
     int countEmpList(String search, String searchTxt);
     List<EmpDTO> empList(String search, String searchTxt, int startRow, int pageSize);
     EmpDTO detailEmp(int employee_id);
+    void updateEmp(EmpDTO dto);
+    void deleteEmp(int eid);
 }

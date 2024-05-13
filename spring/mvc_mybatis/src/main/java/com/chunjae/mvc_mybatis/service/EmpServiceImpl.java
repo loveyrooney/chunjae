@@ -11,6 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EmpServiceImpl implements EmpService{
     private final EmpMapper empMapper;
+
     @Override
     public List<EmpDTO> empList() {
         List<EmpDTO> emp_list = empMapper.findEmpList();

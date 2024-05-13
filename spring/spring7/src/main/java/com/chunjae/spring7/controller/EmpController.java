@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -32,6 +33,9 @@ public class EmpController {
             model.addAttribute("searchTxt",searchTxt);
         }
         int currPage = (curr!=null) ? Integer.parseInt(curr) : 1;
+        // startRow 는 count 와 상관 없기 때문에 count 메서드를 따로 만들지 않으려고 했으나,
+        // 애초에 페이징 개념은 각 페이지마다 새로운 sql 이 적용되는 것이기 때문에 불가능했다.
+        // 전체를 한번에 불러와서 각각의 페이지마다 10개씩 뿌려주는 방법은 다시 생각해 볼것.
         int totalCount = empService.countEmpList(search,searchTxt);
         PageConstructor page = new PageConstructor(currPage,totalCount);
         List<EmpDTO> list = empService.empList(search,searchTxt,page.getStartRow(),PageConstructor.getPageSize());
@@ -51,5 +55,19 @@ public class EmpController {
         else
             model.addAttribute("isNull",false);
         return "emp/detail";
+    }
+
+    // 업데이트 안됨 으악
+    @PostMapping("/update")
+    public String update(EmpDTO dto){
+        System.out.println(dto);
+        //empService.updateEmp(dto);
+        return "redirect:/list";
+    }
+
+    @GetMapping("/del/{eid}")
+    public String del(@PathVariable int eid){
+        empService.deleteEmp(eid);
+        return "redirect:/list";
     }
 }

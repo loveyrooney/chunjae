@@ -21,9 +21,9 @@
         <form method="post" action="/update">
             <ul id="view" class="detail_mode">
                 <li>사원번호 : <input type="text" name="employee_id" value="${emp.employee_id}" readonly></li>
-                <li class="modify">이름 : <input type="text" name="first_name" value="${emp.first_name}" readonly></li>
-                <li class="modify">입사일 : <input type="text" name="hire_date" value="${emp.hire_date}" readonly></li>
-                <li class="modify">부서번호 : <input type="text" name="department_id" value="${emp.department_id}" readonly></li>
+                <li>이름 : <input class="modify" type="text" name="first_name" value="${emp.first_name}" readonly></li>
+                <li>입사일 : <input class="modify" type="date" name="hire_date" value="${emp.hire_date}" readonly></li>
+                <li>부서번호 : <input class="modify" type="text" name="department_id" value="${emp.department_id}" readonly></li>
             </ul>
             <button type="submit" id="upd" hidden>수정</button>
             <button type="button" onclick="delConfirm(${emp.employee_id})">삭제</button>
@@ -32,8 +32,11 @@
 </c:choose>
 <script>
     const convert = function() {
-        // 인풋들 리드온리 토글처리 추가 
         document.getElementById("upd").toggleAttribute("hidden");
+        const mod_inputs = document.getElementsByClassName("modify");
+        for(i=0; i<mod_inputs.length; i++){
+            mod_inputs.item(i).toggleAttribute("readonly");
+        }
         const view = document.getElementById("view");
         if(view.className === "detail_mode")
             view.setAttribute("class","update_mode");

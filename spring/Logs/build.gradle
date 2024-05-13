@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.chunjae'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.8.2'
+}
+
+sourceCompatibility = '1.11'
+targetCompatibility = '1.11'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    compileOnly('javax.servlet:javax.servlet-api:4.0.1')
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    // 아래 두 개가 classic 에 딸려오는 의존 라이브러리들 인데 독립적으로 지정
+    implementation 'org.slf4j:slf4j-api:1.7.31'
+    implementation 'ch.qos.logback:logback-core:1.2.3'
+    implementation 'org.logback-extensions:logback-ext-spring:0.1.4'
+    // 라이브러리 의존성이 정확하지 않을 수 있어서 딸려오는 의존 라이브러리들은 exclude 처리
+    implementation ('ch.qos.logback:logback-classic:1.2.3'){
+        exclude group: 'ch.qos.logback', module: 'logback-core'
+        exclude group: 'org.slf4j', module: 'slf4j-api'
+    }
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.springframework:spring-context:5.3.15'
+    testImplementation 'org.springframework:spring-test:5.3.15'
+    implementation 'org.springframework:spring-jcl:5.3.15'
+    implementation 'org.springframework:spring-web:5.3.15'
+    implementation 'org.springframework:spring-webmvc:5.3.15'
+    implementation 'javax.servlet:jstl:1.2'
+    // @ResponseBody 쓰려면 필요한 것, 리턴 객체 json 으로 바꿔주는 라이브러리
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
+
+}
+
+test {
+    useJUnitPlatform()
+}

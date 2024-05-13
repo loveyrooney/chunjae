@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @ExtendWith(SpringExtension.class)
@@ -48,5 +52,17 @@ public class EmpTest {
         Assertions.assertEquals(null,empService.detailEmp(0));
         System.out.println(empService.detailEmp(0));
         //Assertions.assertEquals("Steven",empService.detailEmp(100).getFirst_name());
+    }
+
+    @Test
+    public void updateEmpTest(){
+        EmpDTO dto = new EmpDTO();
+        dto.setEmployee_id(101);
+        dto.setFirst_name("흥민");
+        dto.setHire_date(LocalDate.now());
+        dto.setDepartment_id(90);
+        Assertions.assertThrows(Exception.class,()->{
+            empService.updateEmp(dto);
+        });
     }
 }

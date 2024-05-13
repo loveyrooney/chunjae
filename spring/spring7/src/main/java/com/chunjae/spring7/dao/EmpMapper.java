@@ -13,4 +13,7 @@ public interface EmpMapper {
     int countEmpList(HashMap<String,Object> param);
     List<EmpDTO> findEmpList(HashMap<String,Object> param);
     EmpDTO findEmp(int employee_id);
+
+    void updateEmp(EmpDTO dto);
+    void deleteEmp(int eid);
 }

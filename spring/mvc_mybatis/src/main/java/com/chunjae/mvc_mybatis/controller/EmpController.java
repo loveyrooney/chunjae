@@ -18,9 +18,9 @@ import java.util.regex.Pattern;
 @Controller
 @RequiredArgsConstructor
 public class EmpController {
-    private final EmpService service;
-    private final EmpSearchService searchService;
+    private final EmpService empService;
 
+    private final EmpSearchService empSearchService;
     @GetMapping("/hello")
     public String sayHello(){
         return "hello";
@@ -28,7 +28,7 @@ public class EmpController {
 
     @GetMapping("/list")
     public String list(Model model){
-        List<EmpDTO> emplist = service.empList();
+        List<EmpDTO> emplist = empService.empList();
         model.addAttribute("emplist",emplist);
         return "emp/emplist";
     }
@@ -49,9 +49,9 @@ public class EmpController {
         }
         int pageSize = 10;
         int blockSize = 5;
-        int totalCount = searchService.totalCount(search_ctg,search_txt);
+        int totalCount = empSearchService.totalCount(search_ctg,search_txt);
         PageConstructor page = new PageConstructor(currPage,totalCount,pageSize,blockSize);
-        List<EmpDTO> searchlist = searchService.searchEmpList(search_ctg,search_txt,page.getStartRow(),pageSize);
+        List<EmpDTO> searchlist = empSearchService.searchEmpList(search_ctg,search_txt,page.getStartRow(),pageSize);
         model.addAttribute("page",page);
         model.addAttribute("search",search_ctg);
         model.addAttribute("search_txt",search_txt);
@@ -61,7 +61,7 @@ public class EmpController {
 
     @GetMapping("/emplist2")
     public String searchlist2(Model model){
-        List<HashMap<String,Object>> listWithMap = searchService.searchEmpListReturnedMap();
+        List<HashMap<String,Object>> listWithMap = empSearchService.searchEmpListReturnedMap();
         model.addAttribute("listWithMap",listWithMap);
         return "emp/searchlist";
     }

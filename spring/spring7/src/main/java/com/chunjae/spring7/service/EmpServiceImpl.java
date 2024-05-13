@@ -40,4 +40,14 @@ public class EmpServiceImpl implements EmpService {
         EmpDTO emp = mapper.findEmp(employee_id);
         return emp;
     }
+
+    @Override
+    public void updateEmp(EmpDTO dto) {
+        mapper.updateEmp(dto);
+    }
+
+    @Override
+    public void deleteEmp(int eid) {
+        mapper.deleteEmp(eid);
+    }
 }

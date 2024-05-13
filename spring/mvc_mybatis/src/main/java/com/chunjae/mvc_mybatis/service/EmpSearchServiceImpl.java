@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class EmpSearchServiceImpl implements EmpSearchService{
     private final SearchEmpMapper searchEmpMapper;
-    private final EmpMapper empMapper;
+
     // q1. count 를 db 까지 갔다 와야 하나? 그냥 list 받아서 페이지 단위로 자르면 안되는건가
     @Override
     public int totalCount(String search, String search_txt) {
