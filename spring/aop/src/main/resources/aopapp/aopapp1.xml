@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <bean name="target1" class="com.chunjae.aop.target.Target1"/>
+    <bean name="target2" class="com.chunjae.aop.target.Target2"/>
+    <bean name="advice1" class="com.chunjae.aop.aspect1.Advice1"/>
+
+    <!-- aop advisor : advice 와 pointcut 을 묶어 표현 -->
+    <aop:config>
+        <aop:aspect id="aspect1" ref="advice1">
+            <!-- joinpoint 는 execution 범위에 해당하는 메서드들에 적용할 것임 -->
+            <aop:pointcut id="point1" expression="execution(* com.chunjae.aop.target.*.*(..))"/>
+            <!-- advice1 에 있는 before 메서드를 joinpoint 메서드로 삼을 것임 -->
+            <aop:before method="before" pointcut-ref="point1"/>
+        </aop:aspect>
+    </aop:config>
+
+    <context:component-scan base-package="com.chunjae.aop.service"/>
+    <aop:config>
+        <aop:aspect id="aspect2" ref="advice1">
+            <aop:pointcut id="point2" expression="execution(* com.chunjae.aop.service.Service1.*(..))"/>
+            <aop:after method="after" pointcut-ref="point2"/>
+        </aop:aspect>
+    </aop:config>
+
+    <aop:config>
+        <aop:aspect id="aspect3" ref="advice1">
+            <aop:pointcut id="point3" expression="execution(* com..service.*.*(..))"/>
+            <!-- 정상 동작하는 메서드들에만 적용 -->
+            <aop:after-returning method="after2" pointcut-ref="point3" returning="o"/>
+            <!-- 예외 발생 메서드에 적용 -->
+            <aop:after-throwing method="after1" pointcut-ref="point3" throwing="ex"/>
+        </aop:aspect>
+    </aop:config>
+
+    <bean name="advice2" class="com.chunjae.aop.aspect1.Advice2"/>
+    <aop:config>
+        <aop:aspect id="aspect4" ref="advice2">
+            <aop:pointcut id="point4" expression="execution(* com.chunjae..service.*.*(..))"/>
+            <aop:around method="around" pointcut-ref="point4"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

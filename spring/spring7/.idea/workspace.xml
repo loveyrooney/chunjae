@@ -10,31 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00dccf02-54a0-4a2a-9930-27d0cb053c6a" name="Changes" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/../mvc_mybatis/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc_mybatis/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvc_mybatis/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc_mybatis/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvc_mybatis/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc_mybatis/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvc_mybatis/src/main/java/com/chunjae/mvc_mybatis/controller/EmpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc_mybatis/src/main/java/com/chunjae/mvc_mybatis/controller/EmpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvc_mybatis/src/main/java/com/chunjae/mvc_mybatis/service/EmpSearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc_mybatis/src/main/java/com/chunjae/mvc_mybatis/service/EmpSearchServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mvc_mybatis/src/main/java/com/chunjae/mvc_mybatis/service/EmpServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mvc_mybatis/src/main/java/com/chunjae/mvc_mybatis/service/EmpServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chunjae/spring7/controller/EmpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chunjae/spring7/controller/EmpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chunjae/spring7/dao/EmpMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chunjae/spring7/dao/EmpMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chunjae/spring7/service/EmpService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chunjae/spring7/service/EmpService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/chunjae/spring7/service/EmpServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/chunjae/spring7/service/EmpServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/emp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/emp.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/emp/detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/emp/detail.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/EmpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EmpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../springTest/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../springTest/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spring_day6/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring_day6/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spring_day6/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring_day6/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spring_day6/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../spring_day6/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +58,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/spring/spring8",
+    "last_opened_file_path": "D:/chunjae/spring/spring7",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -244,7 +220,9 @@
       <workItem from="1715563800236" duration="230000" />
       <workItem from="1715564039621" duration="522000" />
       <workItem from="1715564576611" duration="3253000" />
-      <workItem from="1715567943074" duration="8527000" />
+      <workItem from="1715567943074" duration="8751000" />
+      <workItem from="1715644338164" duration="1368000" />
+      <workItem from="1715660096123" duration="683000" />
     </task>
     <servers />
   </component>
