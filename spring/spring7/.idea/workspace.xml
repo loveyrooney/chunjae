@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00dccf02-54a0-4a2a-9930-27d0cb053c6a" name="Changes" comment="Changes">
+      <change afterPath="$PROJECT_DIR$/../.idea/spring.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,8 +58,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/chunjae/spring/spring7",
+    "last_opened_file_path": "D:/chunjae/spring/transaction",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -223,6 +225,7 @@
       <workItem from="1715567943074" duration="8751000" />
       <workItem from="1715644338164" duration="1368000" />
       <workItem from="1715660096123" duration="683000" />
+      <workItem from="1715817453654" duration="49000" />
     </task>
     <servers />
   </component>

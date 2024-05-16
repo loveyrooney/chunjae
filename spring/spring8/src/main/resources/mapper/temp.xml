@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chunjae.spring8.dao.TempMapper">
+    <select id="findTempList" resultType="com.chunjae.spring8.dto.TempDTO">
+        select employee_id
+               ,first_name
+               ,hire_date
+               ,salary
+               ,department_id
+        from temp
+        where department_id = #{did}
+    </select>
+<!--    <select id="find" parameterType="int" resultType="com.chunjae.spring8.dto.UserDeptDTO">-->
+<!--        select department_id-->
+<!--        ,department_name-->
+<!--        from user_dept-->
+<!--        where department_id = #{did}-->
+<!--    </select>-->
+        <insert id="insertTemp" parameterType="hashmap">
+            <!-- 어떤 쿼리를 동작하기 전이나 후에 조회하고 싶은 경우 이렇게 쓸 수 있다. subquery 사용할 필요가 없어지는?-->
+            <selectKey keyProperty="eid" order="BEFORE" resultType="int">
+                select MAX(employee_id)+1 AS eid
+                from temp
+            </selectKey>
+            insert into temp ( employee_id, first_name, hire_date, salary, department_id )
+            values ( #{eid}, #{first_name}, DATE(NOW()), #{salary}, #{department_id})
+        </insert>
+    <!--    <update id="updateEmp" parameterType="hashmap">-->
+    <!--        update useremp-->
+    <!--        set last_name = #{last_name}-->
+    <!--            ,email = #{email}-->
+    <!--        where employee_id = #{employee_id}-->
+    <!--    </update>-->
+    <!--    <delete id="deleteEmp" parameterType="int">-->
+    <!--        delete from useremp-->
+    <!--        where employee_id = #{eid}-->
+    <!--    </delete>-->
+</mapper>
