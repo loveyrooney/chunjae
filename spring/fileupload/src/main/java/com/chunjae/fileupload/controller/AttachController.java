@@ -27,7 +27,6 @@ public class AttachController {
 
         String path="uploadImg";
         String realpath=  request.getSession().getServletContext().getRealPath(path);
-
         String fname= URLEncoder.encode(filename, StandardCharsets.UTF_8).replace("+","%20");
 
         File file=new File(realpath+"/" + fname);
