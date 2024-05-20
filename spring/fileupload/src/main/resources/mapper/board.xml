@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.chunjae.fileupload.dao.BoardMapper">
+   <insert id="insert" parameterType="hashmap" useGeneratedKeys="true"
+   keyProperty="id" keyColumn="infoId">
+      insert into info(infotitle)
+      values(#{dto.title})
+   </insert>
+  <insert id="subinsert" parameterType="hashmap">
+     insert into subinfo(filename,infoId)
+    values
+   <foreach collection="filenames" item="item"
+             separator=",">
+      (
+       #{item}
+       , #{id}
+       )
+   </foreach>
+
+  </insert>
+    
+    <select id="list" resultType="com.chunjae.fileupload.dto.BoardDTO">
+        SELECT  infoId, infotitle, (select group_concat( filename) as filenames
+                                    FROM subinfo
+                                    WHERE subinfo.infoId=info.infoId
+                                    ) as filenames
+        FROM info
+    </select>
+
+
+  </mapper>
+  
+  
+  
+  
+  
+  
+  
+  

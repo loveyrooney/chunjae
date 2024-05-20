@@ -1,0 +1,11 @@
+create table info(
+  infoId int primary key auto_increment
+  , infotitle varchar(100)
+  );
+
+  create table subinfo(
+    subinfo int primary key auto_increment
+    ,filename varchar(100)
+    , infoId int
+    , constraint foreign key(infoId) references info(infoId)
+    )
