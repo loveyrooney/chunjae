@@ -62,7 +62,6 @@ public class FileUploadController {
 //
     @GetMapping("/list")
       public String list(Model model){
-
            List<BoardDTO> list=service.list();
             model.addAttribute("list", list);
             return "boardlist";
