@@ -47,7 +47,6 @@ public class FileUploadController {
       @PostMapping("/formresult")
       public String result(HttpServletRequest request, InfoDTO dto, Model model){
           String base="/uploadImg";
-
           String realpath= request.getSession().getServletContext().getRealPath(base);
           System.out.println("realpath....."+realpath);
            try {
