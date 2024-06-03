@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility='1.17'
+targetCompatibility='1.17'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    compileOnly{
+        extendsFrom annotationProcessor
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir("src/main/resources/META-INF")
+            output.resourcesDir=file("build/classes/")
+        }
+    }
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    // lombok
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+    // jpa
+    implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.4'
+    implementation 'org.hibernate.orm:hibernate-core:6.3.2.Final'
+    implementation 'org.hibernate.orm:hibernate-community-dialects:6.3.2.Final'
+}
+
+test {
+    useJUnitPlatform()
+}
