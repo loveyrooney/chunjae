@@ -1,25 +1,20 @@
-package comchunjae.entity;
+package comchunjae.entity.cascade;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
-
+@Entity
 @Table(name="reply")
 @Getter @Setter
-public class RepBoard {
+public class RepBoard extends BoardBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="reply_id")
-    private Long rid;
-    private String writer;
-    private String content;
-    @Column(name="write_date")
-    private LocalDateTime writedate;
+    private Long repId;
 
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="board_id")
     private Board board;
 

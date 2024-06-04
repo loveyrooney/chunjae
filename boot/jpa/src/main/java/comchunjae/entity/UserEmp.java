@@ -6,8 +6,10 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
+//@Entity
 @Table(name="useremp")
 @Getter @Setter
 public class UserEmp {
@@ -29,4 +31,20 @@ public class UserEmp {
     private BigDecimal salary;
     @Column(name="commission_pct",precision = 2,scale = 2)
     private BigDecimal commissionPct;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="department_id")
+    private UserDept userDept;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="job_id")
+    private UserJob userJob;
+
+    // 셀프 조인도 ManyToOne, OneToMany 로 설정 가능
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="manager_id")  // 이 이름으로 객체를 연결할 것이다.
+    private UserEmp manager;  // 이 객체를 연결할 것이다.
+
+    @OneToMany(mappedBy = "manager") // 이 변수명인 객체와 짝을 이루는 리스트
+    private List<UserEmp> deptEmps = new ArrayList<>();
+
 }

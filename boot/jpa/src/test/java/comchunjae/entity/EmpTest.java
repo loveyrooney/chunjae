@@ -23,9 +23,6 @@ public class EmpTest {
 ////            System.out.println(e1.getFirst_name());
 ////            System.out.println(e1.getDepartments().getDepartment_name());
 //
-////            Departments d1 = new Departments();
-////            d1.setDepartment_name("dept-3");
-////            em.persist(d1);
 ////            System.out.println("===============");
 ////            Employees e2 = new Employees();
 ////            e2.setFirst_name("성용");
@@ -39,14 +36,26 @@ public class EmpTest {
 ////            e3.setDepartments(d1);
 ////            em.persist(e3);
 //
-//            Departments d2 = em.find(Departments.class,1L);
-//            System.out.println("부서명: "+d2.getDepartment_name());
-//            for(Employees e:d2.getEmployees()){
-//                System.out.println("사원명: "+e.getFirst_name());
-//            }
-////            Departments d3 = em.find(Departments.class,4L);
-////            d3.setDepartment_name("dept-4");
-////            System.out.println(d3.getDepartment_name());
+////            Departments d2 = em.find(Departments.class,4L);
+////            System.out.println("부서명: "+d2.getDepartment_name());
+////            for(Employees e:d2.getEmployees()){
+////                System.out.println("사원명: "+e.getFirst_name());
+////            }
+//
+////            Employees e1 = em.find(Employees.class,4L);
+////            System.out.println(e1.getFirst_name());
+////            Departments d1 = new Departments();
+////            d1.setDepartment_name("dept-5");
+////            em.persist(d1);
+////            e1.setDepartments(d1); // 캐시에 e1이 이미 있으므로 set 만 해도 update 동작함
+////            System.out.println(e1.getDepartments().getDepartment_name());
+//
+//            // OneToMany 리스트에서 추가를 하면 관계성이 부여된 insert 가 일어나지 않고 e1의 정보만 insert.
+//            Departments d1 = em.find(Departments.class,1L);
+//            Employees e1 = new Employees();
+//            e1.setFirst_name("남일");
+//            em.persist(e1);
+//            d1.getEmployees().add(e1);
 //            tx.commit();
 //        }catch (Exception e){
 //            tx.rollback();

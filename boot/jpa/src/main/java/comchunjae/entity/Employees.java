@@ -17,7 +17,7 @@ public class Employees {
 
     // 객체지향적 엔티티를 만들기 위해 참조관계의 테이블 객체를 가져와서 참조 컬럼을 지정해 준다.
     // 해당 엔티티 기준으로 다대일 이므로 어떤 컬럼으로 조인할지 지정해 준다.
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="department_id")
     private Departments departments;
 }

@@ -32,6 +32,9 @@ EntityManager : 영속성 컨텍스트에 접근하는 객체
 
 객체와 테이블의 외래키 매핑
 일대일 @OneToOne
-일대다 @OneToMany
-다대일 @ManyToOne
+일대다 @OneToMany : mappedBy 속성을 지정하여 객체와 연결
+다대일 @ManyToOne : @JoinColumn 을 지정하여 연결
 다대다 @ManyToMany => @ManyToOne , @OneToMany 로 분리해서 사용
+
+FetchType.EAGER : 객체가 연결되어 있는 엔티티에서 모든 연관된 엔티티를 항상 join
+FetchType.LAZY : 연관된 엔티티의 정보가 필요한 경우에만 해당 엔티티를 한번 더 select
