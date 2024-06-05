@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 링크의 경로는 resources/static 이 기본 -->
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>번호</th>
+        <th>글제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item:${list}">
+        <td th:text="${item.BoardId}"/>
+        <td><a th:href="@{|/detail/${item.boardId}|}" th:text="${item.title}"/></td>
+        <td th:text="${item.writer}"/>
+        <td th:text="${#temporals.format(item.writeDate, 'yyyy-MM-dd')}"/>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

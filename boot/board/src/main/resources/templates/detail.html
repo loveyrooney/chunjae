@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+   <li th:text="|번호: ${dto.boardId} 작성날짜: ${#temporals.format(dto.writeDate,'yyyy-MM-dd')}|"/>
+   <li th:text="|제목: ${dto.title}|"/>
+   <li th:text="|작성자: ${dto.writer} 급여: ${dto.salary}|"/>
+   <li th:text="|내용: ${dto.content}|"/>
+</ul>
+</body>
+</html>

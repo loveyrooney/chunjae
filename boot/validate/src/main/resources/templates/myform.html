@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" th:action="@{/myform}" th:object="${member}">
+    <table>
+        <tr>
+            <td>id</td>
+            <td><input type="text" th:field="*{id}"></td>
+            <td th:if="${#fields.hasErrors('id')}" th:errors="*{id}">id</td>
+        </tr>
+        <tr>
+            <td>pwd</td>
+            <td><input type="password" th:field="*{pwd}"></td>
+            <td th:if="${#fields.hasErrors('pwd')}" th:errors="*{pwd}">pwd</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td><input type="text" th:field="*{name}"></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name</td>
+        </tr>
+        <tr>
+            <td>nickname</td>
+            <td><input type="text" th:field="*{nickname}"></td>
+            <td th:if="${#fields.hasErrors('nickname')}" th:errors="*{nickname}">nickname</td>
+        </tr>
+        <tr>
+            <td>age</td>
+            <td><input type="text" th:field="*{age}"></td>
+            <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">age</td>
+        </tr>
+        <tr>
+            <td><button type="submit">전송</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
