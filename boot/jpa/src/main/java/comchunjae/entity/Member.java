@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 //@Entity
 @Getter @Setter
+// 제약조건은 컬럼에 달지 말고 테이블 위에서 지정하여 제약조건명을 갖도록 해 주는 게 좋다.
 @Table(name="tbmember"
         , uniqueConstraints = {@UniqueConstraint(name = "uk_name", columnNames = "name")})
 public class Member {

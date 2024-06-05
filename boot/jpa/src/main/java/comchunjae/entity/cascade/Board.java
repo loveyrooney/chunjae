@@ -21,9 +21,10 @@ public class Board extends BoardBase {
     , orphanRemoval = true)
     private List<RepBoard> replies=new ArrayList<>();
 
-    public void addChild(RepBoard repBoard){
-        replies.add(repBoard);
-        repBoard.setBoard(this);
+    // JPA 영속성 컨텍스트 관리를 위한 편의 메서드
+    public void appendRep(RepBoard repBoard){
+        replies.add(repBoard);  // OneToMay 리스트에 댓글 추가
+        repBoard.setBoard(this);  // ManyToOne 댓글에 보드 추가
     }
 
 

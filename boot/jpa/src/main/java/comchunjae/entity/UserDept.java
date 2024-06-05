@@ -22,7 +22,7 @@ public class UserDept {
     @JoinColumn(name="location_id")
     private UserLoc userLoc;
 
-    @OneToMany(mappedBy = "userDept") // oneToMany 에는 lazy 가 default 처리 되어 있다.
+    @OneToMany(mappedBy = "userDept")
     private List<UserEmp> allDeptEmps = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY)
