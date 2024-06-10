@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)  // JPA 에서 자동으로 필드 값 채우기
-public class UserBoard {
+public class UserBoard extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="board_id")
@@ -26,12 +26,6 @@ public class UserBoard {
     private String content;
     @Column(length = 30)
     private String writer;
-    @Column(name="write_date")
-    @CreatedDate  // 자동으로 작성 날짜 생성
-    private LocalDateTime writeDate;
-    @Column(name="update_date")
-    @LastModifiedDate  // 자동으로 수정 날짜 생성
-    private LocalDateTime updateDate;
     private Float salary;
 
 }

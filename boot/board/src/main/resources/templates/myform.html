@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{'/myform'}" th:object="${board}" method="post">
+  <ul>
+      <li>
+          <span>제목</span>
+          <span><input type="text" th:field="*{title}"></span>
+          <span><th:block th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/></span>
+      </li>
+      <li>
+          <span>내용</span>
+          <textarea type="text" th:field="*{content}" cols="20" rows="3"></textarea>
+          <span><th:block th:if="${#fields.hasErrors('content')}" th:errors="*{content}"/></span>
+      </li>
+      <li>
+          <span>작성자</span>
+          <span><input type="text" th:field="*{writer}"></span>
+          <span><th:block th:if="${#fields.hasErrors('writer')}" th:errors="*{writer}"/></span>
+      </li>
+      <li>
+          <span>급여</span>
+          <span><input type="text" th:field="*{salary}"></span>
+          <span><th:block th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"/></span>
+      </li>
+      <li><button type="submit">등록</button><button type="reset">취소</button></li>
+  </ul>
+</form>
+</body>
+</html>

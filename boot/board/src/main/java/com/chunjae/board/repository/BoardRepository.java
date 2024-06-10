@@ -14,4 +14,12 @@ public interface BoardRepository extends JpaRepository<UserBoard,Long> {
 
     @Override
     Optional<UserBoard> findById(Long aLong);
+
+    @Override
+    UserBoard save(UserBoard board);
+
+    @Override
+    void deleteById(Long aLong);
+
+
 }

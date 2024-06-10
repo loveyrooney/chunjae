@@ -3,13 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .d-none { display: none;}
+    </style>
 </head>
 <body>
-<ul>
-   <li th:text="|번호: ${dto.boardId} 작성날짜: ${#temporals.format(dto.writeDate,'yyyy-MM-dd')}|"/>
+<a th:href="@{/list}" th:text="HOME"/>
+<ul id="detail" class="detail">
+   <li th:text="|번호: ${dto.boardId} 작성날짜: ${#temporals.format(dto.createDate,'yyyy-MM-dd')} 수정날짜: ${#temporals.format(dto.updateDate,'yyyy-MM-dd')}|"/>
    <li th:text="|제목: ${dto.title}|"/>
    <li th:text="|작성자: ${dto.writer} 급여: ${dto.salary}|"/>
    <li th:text="|내용: ${dto.content}|"/>
 </ul>
+<form th:action="@{'/mod/'+${dto.boardId}}" th:object="${dto}" method="post">
+    <ul id="mod_form" class="d-none">
+        <li th:text="|번호: ${dto.boardId} 작성날짜: ${#temporals.format(dto.createDate,'yyyy-MM-dd')}|"/>
+        <input type="text" th:field="${dto.boardId}" hidden>
+        <li>
+            제목: <input type="text" th:field="${dto.title}">
+            <span><th:block th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/></span>
+        </li>
+        <li>작성자: <input type="text" th:field="${dto.writer}"></li>
+        <li>급여: <input type="number" th:field="${dto.salary}"></li>
+        <li>내용: <textarea th:field="${dto.content}" cols="20" rows="3"></textarea></li>
+    </ul>
+    <button id="mod_result" type="submit" hidden>수정하기</button>
+</form>
+<button id="mod" type="button">수정</button>
+<button id="del" type="button">삭제</button>
+<script>
+    document.querySelector("#mod").onclick=function () {
+        document.querySelector("#detail").classList.toggle("d-none");
+        document.querySelector("#mod_form").classList.toggle("d-none");
+        document.querySelector("#mod_result").toggleAttribute("hidden");
+    }
+
+    document.querySelector("#del").onclick=function () {
+        let bid = [[${dto.boardId}]];
+        fetch("/del/"+bid,{
+            method : "get"
+            ,headers : { ContentType: "application/json", Accept: "application/json"}
+        }).then(res=>{
+            if(!res.ok)
+                throw new Error();
+            else
+                return res.json();
+        }).then(data=>{
+            alert(data);
+            location.href="/list";
+        }).catch(error=>{
+            console.log(error);
+        });
+    }
+</script>
 </body>
 </html>

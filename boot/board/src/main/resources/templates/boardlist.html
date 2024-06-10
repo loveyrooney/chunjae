@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/list.css}">
 </head>
 <body>
+<a th:href="@{/myform}">신규등록</a>
 <table>
     <thead>
     <tr>
@@ -14,6 +15,7 @@
         <th>글제목</th>
         <th>작성자</th>
         <th>작성일</th>
+        <th>수정일</th>
     </tr>
     </thead>
     <tbody>
@@ -21,7 +23,8 @@
         <td th:text="${item.BoardId}"/>
         <td><a th:href="@{|/detail/${item.boardId}|}" th:text="${item.title}"/></td>
         <td th:text="${item.writer}"/>
-        <td th:text="${#temporals.format(item.writeDate, 'yyyy-MM-dd')}"/>
+        <td th:text="${#temporals.format(item.createDate, 'yyyy-MM-dd')}"/>
+        <td th:text="${#temporals.format(item.updateDate, 'yyyy-MM-dd')}"/>
     </tr>
     </tbody>
 </table>
