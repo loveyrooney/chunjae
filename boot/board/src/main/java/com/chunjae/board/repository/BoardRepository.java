@@ -21,5 +21,9 @@ public interface BoardRepository extends JpaRepository<UserBoard,Long> {
     @Override
     void deleteById(Long aLong);
 
+    // 다양한 방식의 select 메서드
+    Optional<UserBoard> findByTitle(String title);
+    List<UserBoard> findByTitleContaining(String title);
+
 
 }

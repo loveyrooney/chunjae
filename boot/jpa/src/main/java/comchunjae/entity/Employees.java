@@ -16,10 +16,13 @@ public class Employees {
     // RDBMS 에서는 조인을 할 컬럼을 설정해 연결하는 방식이지만,
     //private Long department_id;
 
-    // JPA 는 객체지향적 엔티티를 만들기 위해 참조관계의 테이블 객체를 가져와서 참조 컬럼을 지정해 준다.
-    // 해당 엔티티 기준으로 다대일 관계이므로 ManyToOne, 어떤 컬럼으로 조인할지 이름을 임의로 지정해 준다.
-    // ManyToOne 은 fetchType EAGER 가 default 이다.
-    // ManyToOne 입장에서 Board 는 반드시 필요하지만, OneToMany 입장에서는 List<UserEmp> 가 반드시 필요한 것은 아니다.
+    /* RDBMS 는 테이블 간 관계, JPA 는 엔티티 간 관계
+    RDBMS : 테이블 간 관계에 있어서 참조할 테이블 기본 키를 해당 테이블의 외래 키로 가져온다. (컬럼)
+    JPA : 객체지향적 엔티티를 만들기 위해, 참조할 엔티티 객체 전체를 가져온다. (필드)
+     @ManyToOne - 해당 엔티티 입장에서의 관계. fetchType EAGER 가 default 이다. (영속성 컨텍스트를 위한 설정)
+     @JoinColumn - 참조관계의 테이블 기본키를 현재 테이블의 외래키로 가져오며, 이름은 임의로 지정할 수 있다. (db 를 위한 설정)
+     ManyToOne 입장에서 Board 는 반드시 필요하지만, OneToMany 입장에서는 List<UserEmp> 가 반드시 필요한 것은 아니다.
+    */
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="department_id")
     private Departments departments;
