@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+</head>
+<body>
+<form action="/list" method="get">
+    <input type="text" name="title">
+    <button type="submit">검색</button>
+</form>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>글제목</th>
+                <th>작성일</th>
+                <th>수정일</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="i:${list}">
+                <td th:text="${i.boardId}"/>
+                <td><a th:href="@{|/detail/${i.boardId}|}" th:text="${i.title}"/></td>
+                <td th:text="${#temporals.format(i.writeDate,'yyyy-MM-dd')}"/>
+                <td th:text="${#temporals.format(i.updateDate,'yyyy-MM-dd')}"/>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

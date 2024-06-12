@@ -1,13 +1,16 @@
 package com.chunjae.domain;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name ="user_employees")
-@Getter
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UserEmployees {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +26,5 @@ public class UserEmployees {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="department_id")
     private UserDepartments empDept;
-
 
 }

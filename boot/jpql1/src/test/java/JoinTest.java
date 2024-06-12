@@ -1,3 +1,5 @@
+import com.chunjae.domain.UserDepartments;
+import com.chunjae.domain.UserEmployees;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -44,6 +46,16 @@ public class JoinTest {
             List<Object[]> thetalist = em.createQuery(sql4,Object[].class).getResultList();
             for(Object[] o:thetalist){
                 System.out.println(o[0]+","+o[1]);
+            }
+
+            // fetch join (lazy 로딩 시 쿼리문이 반복되며 생기는 n+1 문제에 대해, 쿼리를 한번에 동작하도록 해주는)
+            String sql7 = "select d from UserDepartments d inner join fetch d.deptEmpsList e where d.dname = 'Marketing'";
+            List<UserDepartments> deptemplist = em.createQuery(sql7, UserDepartments.class).getResultList();
+            for(UserDepartments d : deptemplist){
+                System.out.printf("%d, %s\n",d.getDid(),d.getDname());
+                for(UserEmployees e : d.getDeptEmpsList()){
+                    System.out.println(e.getFirstName());
+                }
             }
 
             // aggregate function
