@@ -55,6 +55,7 @@ public class JoinTest {
             String sql6 = "select count(e) from UserEmployees e where e.salary > (select avg(e2.salary) from UserEmployees e2)";
             Long subresult = em.createQuery(sql6,Long.class).getSingleResult();
             System.out.println(subresult);
+
             tx.commit();
         }catch (Exception e){
             tx.rollback();
