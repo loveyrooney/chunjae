@@ -36,15 +36,17 @@ public class BoardController {
         if(title==null) // required false 므로 title 이 없는 경우
             title="";  // 빈 문자열은 쿼리에서는 like '%%' 으로 적용, 이것은 select * 의 결과와 같다.
         Page<MyBoardDTO> searchlist = boardService.findTitles(pageable,title);
+        // pageable.getPageNumber() 는 현재 페이지이나, start idx 가 적용되지 않은 본래의 현재 페이지.
         log.info("currPage... {}",pageable.getPageNumber());
+        // Page 객체 생성 시에 각각의 페이지 단위의 list.size()를 넣었다면 처음부터 현재까지 누적된 것을 기록,
+        // 전체 리스트의 size 를 넣었다면 고정값이 된다.
         log.info("getTotalPage...{}",searchlist.getTotalPages());
         log.info("totalElement...{}",searchlist.getTotalElements());
         int pagePerBlock = 5;
         int startPage = (pageable.getPageNumber()/pagePerBlock)*pagePerBlock+1;
-        int totalElements = boardService.listCount(title);
-        int totalPage = (int)Math.ceil(totalElements/(double)pageable.getPageSize());
-        log.info("totalPage..{}",totalPage);
-        int endPage = (totalPage!=startPage)?startPage+pagePerBlock-1:startPage;
+        int endPage = startPage+pagePerBlock-1;
+        if(searchlist.getTotalPages()<endPage)
+            endPage = searchlist.getTotalPages();
         log.info("startPage, endPage...{},{}",startPage,endPage);
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);

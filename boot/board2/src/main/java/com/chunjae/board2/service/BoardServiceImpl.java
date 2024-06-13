@@ -34,14 +34,19 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
+    @Transactional
     public Page<MyBoardDTO> findTitles(Pageable pageable, String title) {
+        int count = listCount(title);
         List<MyBoard> titlelist = boardRepository.findTitles(pageable,title);
         List<MyBoardDTO> list = new ArrayList<>();
         if(titlelist.isEmpty())
-            return new PageImpl<>(list,pageable,list.size());
+            return new PageImpl<>(list,pageable,count);
         list = titlelist.stream().map(item->modelMapper.map(item,MyBoardDTO.class))
                 .collect(Collectors.toList());
-        return new PageImpl<>(list,pageable,list.size());
+        // PageImpl<> 객체의 생성자에는 list, pageable 객체, list 길이 를 넣을 수 있다.
+        // list.size()는 해당 page 단위로 분절된 리스트의 사이즈이다.
+        // 마지막 페이지 구현을 위해 전체 리스트의 사이즈를 count 쿼리로 계산하였다.
+        return new PageImpl<>(list,pageable,count);
     }
 
     @Override

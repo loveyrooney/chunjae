@@ -43,7 +43,7 @@
             <a th:href="@{/list(page=${idx},title=${title})}" th:text="${idx}"/>
         </span>
     </th:block>
-    <th:block th:if="${endPage>=list.totalPages}">
+    <th:block th:if="${endPage<list.totalPages}">
         <a th:href="@{/list(page=${endPage+1},title=${title})}" th:text="다음"/>
     </th:block>
 </div>
