@@ -1,0 +1,22 @@
+body {
+    margin: 0 10%;
+}
+
+header,.btns {
+    padding: 2%;
+    text-align: center;
+}
+
+.detail {
+    margin: 2% 10%;
+}
+
+.detail ul {
+    margin: 0;
+    padding: 0;
+}
+
+.detail ul li {
+    list-style: none;
+    padding: 2px;
+}

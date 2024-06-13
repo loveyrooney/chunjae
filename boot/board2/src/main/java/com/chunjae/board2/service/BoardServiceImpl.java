@@ -3,19 +3,24 @@ package com.chunjae.board2.service;
 import com.chunjae.board2.domain.MyBoard;
 import com.chunjae.board2.dto.MyBoardDTO;
 import com.chunjae.board2.repository.BoardRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BoardServiceImpl implements BoardService{
     private final BoardRepository boardRepository;
     private final ModelMapper modelMapper;
@@ -51,7 +56,40 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
+    public int listCount(String title) {
+        return boardRepository.listCount(title);
+    }
+
+    @Override
     public int modify(Long bid) {
         return boardRepository.modify(bid);
+    }
+
+    @Override
+    @Transactional
+    public void updateData(MyBoardDTO dto) {
+        Optional<MyBoard> target = boardRepository.findById(dto.getBoardId());
+        MyBoard board = target.orElseThrow(()->{throw new RuntimeException();});
+        board.setTitle(dto.getTitle());
+        board.setContent(dto.getContent());
+    }
+
+    @Override
+    public MyBoardDTO detail(Long boardId) {
+        Optional<MyBoard> board = boardRepository.findById(boardId);
+        MyBoardDTO dto = board.stream().map(item->modelMapper.map(item,MyBoardDTO.class))
+                .findAny().orElseThrow();
+        return dto;
+    }
+
+    @Override
+    public void writeNew(MyBoardDTO dto) {
+        MyBoard board = modelMapper.map(dto,MyBoard.class);
+        boardRepository.save(board);
+    }
+
+    @Override
+    public void deleteData(Long boardId) {
+        boardRepository.deleteById(boardId);
     }
 }

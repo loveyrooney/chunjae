@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/detail.css}">
+</head>
+<body>
+<header>
+    <a th:href="@{/list}" th:text="HOME"/>
+</header>
+<div class="detail">
+    <ul th:object="${dto}">
+        <li th:text="|번호 : *{boardId}|"/>
+        <li th:text="|작성일 : ${#temporals.format(dto.writeDate,'yyyy-MM-dd HH:mm:ss')}|"/>
+        <li th:text="|수정일 : ${#temporals.format(dto.updateDate,'yyyy-MM-dd HH:mm:ss')}|"/>
+        <li th:text="|제목 : *{title}|"/>
+        <li th:text="|내용 : *{content}|"/>
+    </ul>
+</div>
+<div class="btns">
+    <a th:href="@{|/modify/${dto.boardId}|}" th:text="수정"/>
+    <button type="button" id="del">삭제</button>
+</div>
+<script>
+    document.querySelector("#del").onclick=function () {
+        fetch("/del/"+[[${dto.boardId}]],{
+            method : "get"
+            ,headers : { Accept : "application/json", ContentType: "application/json"}
+        }).then(res=>{
+            console.log(res);
+            if(!res.ok)
+                throw new Error();
+            else
+                return res.text();
+        }).then(data=>{
+            alert(data);
+            location.href="/list";
+        }).catch(error=>{
+            console.log(error);
+        });
+    }
+</script>
+</body>
+</html>

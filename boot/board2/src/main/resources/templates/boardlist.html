@@ -6,27 +6,46 @@
     <link rel="stylesheet" th:href="@{/css/list.css}">
 </head>
 <body>
-<form action="/list" method="get">
-    <input type="text" name="title">
-    <button type="submit">검색</button>
-</form>
+<header>
+    <form action="/list" method="get">
+        <input type="text" name="title" placeholder="글제목을 검색하세요">
+        <button type="submit">검색</button>
+    </form>
+    <a href="/write">신규등록</a>
+</header>
+<div class="list">
     <table>
         <thead>
-            <tr>
-                <th>번호</th>
-                <th>글제목</th>
-                <th>작성일</th>
-                <th>수정일</th>
-            </tr>
+        <tr>
+            <th>번호</th>
+            <th>글제목</th>
+            <th>작성일</th>
+            <th>수정일</th>
+        </tr>
         </thead>
         <tbody>
-            <tr th:each="i:${list}">
-                <td th:text="${i.boardId}"/>
-                <td><a th:href="@{|/detail/${i.boardId}|}" th:text="${i.title}"/></td>
-                <td th:text="${#temporals.format(i.writeDate,'yyyy-MM-dd')}"/>
-                <td th:text="${#temporals.format(i.updateDate,'yyyy-MM-dd')}"/>
-            </tr>
+        <tr th:each="i:${list}">
+            <td th:text="${i.boardId}"/>
+            <td><a th:href="@{|/detail/${i.boardId}|}" th:text="${i.title}"/></td>
+            <td th:text="${#temporals.format(i.writeDate,'yyyy-MM-dd')}"/>
+            <td th:text="${#temporals.format(i.updateDate,'yyyy-MM-dd')}"/>
+        </tr>
         </tbody>
     </table>
+</div>
+<div class="pageblock">
+    <th:block th:if="${startPage>1}">
+        <a th:href="@{/list(page=${startPage}-1,title=${title})}" th:text="이전"/>
+    </th:block>
+    <th:block th:each="idx:${#numbers.sequence(startPage,endPage)}">
+        <span class="curr" th:if="${idx==list.pageable.getPageNumber()+1}" th:text="${idx}"/>
+        <span th:if="${idx!=list.pageable.getPageNumber()+1}">
+            <a th:href="@{/list(page=${idx},title=${title})}" th:text="${idx}"/>
+        </span>
+    </th:block>
+    <th:block th:if="${endPage>=list.totalPages}">
+        <a th:href="@{/list(page=${endPage+1},title=${title})}" th:text="다음"/>
+    </th:block>
+</div>
 </body>
 </html>

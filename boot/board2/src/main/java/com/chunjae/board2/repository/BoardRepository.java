@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface BoardRepository extends JpaRepository<MyBoard,Long> {
@@ -23,7 +24,16 @@ public interface BoardRepository extends JpaRepository<MyBoard,Long> {
     @Query("select b.boardId, b.title, b.content from MyBoard b where b.title = :title")
     List<Object[]> findData(@Param("title") String title);
 
+    @Query("select count(b) from MyBoard b where b.title like concat('%', :title, '%')")
+    Integer listCount(String title);
+
     @Modifying(clearAutomatically = true) // 쿼리로 update 시 em.clear() 해주는 설정
     @Query("update MyBoard b set b.title = concat('',:boardId) where b.boardId = :boardId")
     int modify(@Param("boardId") Long bid);
+
+    @Override
+    Optional<MyBoard> findById(Long aLong);
+
+    @Override
+    MyBoard save(MyBoard board);
 }
