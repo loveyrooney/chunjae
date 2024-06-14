@@ -5,13 +5,17 @@ import static com.chunjae.querydsl1.domain.QMyBoard.myBoard;
 
 import static com.chunjae.querydsl1.domain.QUserEmployees.userEmployees;
 
+import com.chunjae.querydsl1.domain.UserDepartments;
 import com.chunjae.querydsl1.domain.UserEmployees;
+import com.chunjae.querydsl1.dto.EmpDTO;
 import com.querydsl.core.Tuple;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import static org.assertj.core.api.Assertions.*;
 
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -140,7 +144,46 @@ public class QueryDSLTest {
             System.out.println(os[0]);
         }
 
+    }
+
+    @Test
+    public void returnWithDTO(){
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+        // DTO 로 받기 위해서 Projections.bean() 을 사용하면, DTO 생성자를 이용함.
+        List<EmpDTO> list = queryFactory
+                .select(Projections.bean(EmpDTO.class
+                        ,userEmployees.eid
+                        ,userEmployees.firstName
+                        ,userEmployees.hireDate
+                        ,userEmployees.salary))  // AllArgs 로 생성한 것과 같다.
+                .from(userEmployees)
+                .where(userEmployees.hireDate.year().eq(2024))
+                .fetch();
+        for(EmpDTO t:list){
+            System.out.printf("%d, %s, %s, %.1f\n",t.getEid(),t.getFirstName(),t.getHireDate(),t.getSalary());
+        }
 
     }
+
+    @Test
+    public void returnWithDTO2(){
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+        // Projections.fields() 을 사용하면 생성자나 setter 없이도 만들어 줄 수 있다.
+        List<EmpDTO> list = queryFactory
+                .select(Projections.fields(EmpDTO.class
+                        ,userEmployees.eid        // dto 필드 이름과 entity 필드 이름이 다른 경우에 .as("dto 필드명")
+                        ,userEmployees.firstName  // 여기서의 as 는 DB 에서 컬럼이나 테이블에 alias 붙이는 것과 다른 의미이다.
+                        ,userEmployees.hireDate
+                        ,userEmployees.salary))
+                .from(userEmployees)
+                .where(userEmployees.hireDate.year().eq(2024))
+                .fetch();
+        for(EmpDTO t:list){
+            System.out.printf("%d, %s, %s, %.1f\n",t.getEid(),t.getFirstName(),t.getHireDate(),t.getSalary());
+        }
+
+    }
+
+
 
 }

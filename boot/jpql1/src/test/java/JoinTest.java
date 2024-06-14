@@ -12,7 +12,7 @@ public class JoinTest {
         try{
             tx.begin();
             // Natural join (식별 관계 조인)
-            // select e.empDept.dname from UserEmployees 로 가져오지 말고 join 처리를 해 줄 것.
+            // select e.empDept.dname from UserEmployees 로 가져오지 말고 연관 객체를 join 처리 해 줄 것.
             // hibernate 5 버전 이하에서 inner join 시 2개씩 나오는 문제. distinct 넣어서 써줘야 함. 6버전부터 개선됨.
             String sql = "select e.firstName, d.dname from UserEmployees e inner join e.empDept d where e.eid >200";
             List<Object[]> joinlist = em.createQuery(sql,Object[].class).getResultList();
@@ -42,6 +42,7 @@ public class JoinTest {
             }
 
             // Theta join (비 식별 관계 조인)
+            // 세타 조인은 기본키==외래키 관계가 아닌 컬럼들을 매칭하는 것이다. cross join 방식, inner join 방식 모두 가능
             String sql4 = "select e.firstName, d.dname from UserEmployees e inner join UserDepartments d on e.salary < d.did";
             List<Object[]> thetalist = em.createQuery(sql4,Object[].class).getResultList();
             for(Object[] o:thetalist){
@@ -49,6 +50,7 @@ public class JoinTest {
             }
 
             // fetch join (lazy 로딩 시 쿼리문이 반복되며 생기는 n+1 문제에 대해, 쿼리를 한번에 동작하도록 해주는)
+            // fetch 를 쓰지 않으면 (select d + select e) 를 count(*) 번 반복하게 된다.
             String sql7 = "select d from UserDepartments d inner join fetch d.deptEmpsList e where d.dname = 'Marketing'";
             List<UserDepartments> deptemplist = em.createQuery(sql7, UserDepartments.class).getResultList();
             for(UserDepartments d : deptemplist){
