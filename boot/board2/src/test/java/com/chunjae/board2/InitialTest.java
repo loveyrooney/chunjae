@@ -6,6 +6,7 @@ import com.chunjae.board2.service.BoardService;
 import static org.assertj.core.api.Assertions.*;
 
 import jakarta.transaction.Transactional;
+import net.bytebuddy.build.ToStringPlugin;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,7 +61,8 @@ public class InitialTest {
         dto.setContent("hello");
         boardService.writeNew(dto);
         assertThat(boardService.findData("hellooo")).isNotNull();
-        logger.info("hellooo...{}",boardService.findData("hellooo").get(0).getTitle());
+        // getWriteDate() 는 null 이 나오는데 실행시 정상적으로 날짜 적용된다.. 이유뭘까
+        logger.info("hellooo...{}",boardService.findData("hellooo").get(0).getBoardId());
     }
 
     @Test
@@ -68,4 +70,10 @@ public class InitialTest {
         boardService.deleteData(100L);
         logger.info("del...{}",boardService.findData("Steven").size());
     }
+
+    @Test
+    public void detail(){
+        assertThat(boardService.detail(100L).getTitle()).isEqualTo("Steven");
+    }
+
 }

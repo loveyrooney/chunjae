@@ -3,6 +3,7 @@ package com.chunjae.board2.service;
 import com.chunjae.board2.domain.MyBoard;
 import com.chunjae.board2.dto.MyBoardDTO;
 import com.chunjae.board2.repository.BoardRepository;
+import com.chunjae.board2.repository.SubRepo;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +13,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class BoardServiceImpl implements BoardService{
     private final BoardRepository boardRepository;
+    private final SubRepo subRepo;
     private final ModelMapper modelMapper;
 
     @Override
@@ -81,16 +82,26 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public MyBoardDTO detail(Long boardId) {
-        Optional<MyBoard> board = boardRepository.findById(boardId);
-        MyBoardDTO dto = board.stream().map(item->modelMapper.map(item,MyBoardDTO.class))
-                .findAny().orElseThrow();
+//        Optional<MyBoard> board = boardRepository.findById(boardId);
+//        MyBoardDTO dto = board.stream().map(item->modelMapper.map(item,MyBoardDTO.class))
+//                .findAny().orElseThrow();
+          MyBoardDTO dto = subRepo.detail(boardId);
         return dto;
     }
 
     @Override
     public void writeNew(MyBoardDTO dto) {
-        MyBoard board = modelMapper.map(dto,MyBoard.class);
-        boardRepository.save(board);
+        // modelMapper.map(MyBoard.class) 를 하게 되면 엔티티의 모든 필드가 db와 연결된다.
+        // 만약 엔티티의 필드들 중 db와 연결될 필요 없는 부분들이 있으면 빌더 패턴으로 필요한 필드만 설정
+        // setter 를 엔티티에 사용하는 것 지양할 것.
+        MyBoard newBoard = MyBoard.builder()
+                .boardId(dto.getBoardId())
+                .title(dto.getTitle())
+                .content(dto.getContent())
+                .writeDate(dto.getWriteDate())
+                .updateDate(dto.getUpdateDate())
+                .build();
+        boardRepository.save(newBoard);
     }
 
     @Override

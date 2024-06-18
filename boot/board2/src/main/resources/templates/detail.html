@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/css/detail.css}">
+    <script th:src="@{/js/detail.js}"></script>
+    <script th:inline="javascript">
+        document.addEventListener("DOMContentLoaded",function () {
+            init([[${dto.boardId}]]);
+        })
+    </script>
 </head>
 <body>
 <header>
@@ -20,26 +26,17 @@
 </div>
 <div class="btns">
     <a th:href="@{|/modify/${dto.boardId}|}" th:text="수정"/>
-    <button type="button" id="del">삭제</button>
+    <button type="button" th:boardId="${dto.boardId}" th:onclick="delData(this.getAttribute('boardId'))">삭제</button>
 </div>
-<script>
-    document.querySelector("#del").onclick=function () {
-        fetch("/del/"+[[${dto.boardId}]],{
-            method : "get"
-            ,headers : { Accept : "application/json", ContentType: "application/json"}
-        }).then(res=>{
-            console.log(res);
-            if(!res.ok)
-                throw new Error();
-            else
-                return res.text();
-        }).then(data=>{
-            alert(data);
-            location.href="/list";
-        }).catch(error=>{
-            console.log(error);
-        });
-    }
-</script>
+<div class="subs">
+    <form>
+        <input type="text" name="content" placeholder="댓글을 작성하세요">
+        <button type="button" th:onclick="writeSub()">댓글</button>
+    </form>
+    <div>
+        <ul id="sublist"></ul>
+    </div>
+</div>
+
 </body>
 </html>
