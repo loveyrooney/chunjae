@@ -3,11 +3,14 @@ package com.chunjae.board2.repository;
 import static com.chunjae.board2.domain.QMyBoard.*;
 import static com.chunjae.board2.domain.QSubBoard.*;
 
+import com.chunjae.board2.domain.SubBoard;
 import com.chunjae.board2.dto.MyBoardDTO;
 import com.chunjae.board2.dto.SubDTO;
 import com.querydsl.core.types.Projections;
+import com.querydsl.jpa.impl.JPAInsertClause;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -41,8 +44,8 @@ public class SubRepoImpl implements SubRepo {
                 ,subBoard.content))
                 .from(subBoard)
                 .where(subBoard.board.boardId.eq(boardId))
-                .orderBy(subBoard.subId.desc())
                 .fetch();
         return list;
     }
+
 }

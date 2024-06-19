@@ -1,10 +1,13 @@
 package com.chunjae.board2;
 
+import com.chunjae.board2.domain.MyBoard;
 import com.chunjae.board2.dto.MyBoardDTO;
+import com.chunjae.board2.dto.SubDTO;
 import com.chunjae.board2.repository.BoardRepository;
 import com.chunjae.board2.service.BoardService;
 import static org.assertj.core.api.Assertions.*;
 
+import com.chunjae.board2.service.SubService;
 import jakarta.transaction.Transactional;
 import net.bytebuddy.build.ToStringPlugin;
 import org.junit.jupiter.api.Test;
@@ -18,6 +21,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class InitialTest {
     @Autowired
     private BoardService boardService;
+
+    @Autowired
+    private SubService subService;
 
     private Logger logger = LoggerFactory.getLogger(InitialTest.class);
 
@@ -76,4 +82,12 @@ public class InitialTest {
         assertThat(boardService.detail(100L).getTitle()).isEqualTo("Steven");
     }
 
+    @Test
+    public void insertSub(){
+        SubDTO dto = SubDTO.builder()
+                .content("hello")
+                .boardId(100L)
+                .build();
+        assertThat(subService.insertSub(dto)).isEqualTo(1L);
+    }
 }

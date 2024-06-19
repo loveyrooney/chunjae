@@ -4,9 +4,7 @@ import com.chunjae.board2.dto.SubDTO;
 import com.chunjae.board2.service.SubService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,5 +17,11 @@ public class SubController {
     public ResponseEntity<List<SubDTO>> sublist(@PathVariable Long boardId){
         List<SubDTO> sublist = subService.sublist(boardId);
         return ResponseEntity.ok().body(sublist);
+    }
+
+    @PostMapping("/insertsub")
+    public ResponseEntity<Long> insertsub(@RequestBody SubDTO dto){
+        Long subId = subService.insertSub(dto);
+        return ResponseEntity.ok().body(subId);
     }
 }

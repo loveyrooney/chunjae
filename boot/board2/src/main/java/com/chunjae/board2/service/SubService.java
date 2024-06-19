@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface SubService {
     List<SubDTO> sublist(Long boardId);
+    Long insertSub(SubDTO dto);
 }

@@ -101,7 +101,8 @@ public class BoardServiceImpl implements BoardService{
                 .writeDate(dto.getWriteDate())
                 .updateDate(dto.getUpdateDate())
                 .build();
-        boardRepository.save(newBoard);
+        MyBoard board = boardRepository.save(newBoard);
+        log.info("insert board...{}",board.getBoardId()+board.getTitle());
     }
 
     @Override
