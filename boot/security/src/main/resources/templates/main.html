@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+<h1>Hello, security</h1>
+<a th:href="@{/list}" th:text="list"/><br>
+<a th:href="@{/admin}" th:text="admin"/><br>
+<a th:href="@{/userlist}" th:text="userlist"/><br>
+</body>
+</html>

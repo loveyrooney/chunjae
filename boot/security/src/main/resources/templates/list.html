@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.springframework.org/schema/security">
+<head>
+    <meta charset="UTF-8">
+    <title>security - list</title>
+</head>
+<body>
+<h1>Hello, list</h1>
+<div>사용자</div>
+<div sec:authentication="name"></div>
+<div sec:authorize="hasRole('ADMIN')">
+    <p><span sec:authentication="name"/> 님 어서오세요</p>
+</div>
+<div sec:authorize="isAuthenticated()">
+    인증이 완료되었습니다.
+</div>
+<div>인증객체</div>
+<div sec:authentication="principal"></div>
+<div>권한</div>
+<div sec:authentication="principal.authorities"></div>
+<form method="post" th:action="@{/logout}">
+<!--    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">-->
+    <button type="submit">로그아웃</button>
+</form>
+</body>
+</html>
