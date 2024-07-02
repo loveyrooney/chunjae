@@ -1,0 +1,10 @@
+jsx : javascript 확장 문법
+React.createElement 호출을 반복해야 하는 불편 해소
+
+jsx -> transfiler -> javascript -> browser
+babel : jsx -> React.createElement 호출로 compile
+
+component : react 로 만들어진 앱을 이루는 최소 단위
+대문자로 작성해야 함. 소문자로 작성시 html 태그로 인식. ex) <Component/>
+UI를 재사용 가능한 개별적인 여러 조각으로 나누고 각 조각을 개별적으로 작업
+

@@ -1,0 +1,12 @@
+.header_ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.header_ul li {
+    font-weight: 600;
+}
+
+header nav {
+    padding: 5%;
+}

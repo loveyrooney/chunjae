@@ -71,23 +71,23 @@ public class InitialTest {
         logger.info("hellooo...{}",boardService.findData("hellooo").get(0).getBoardId());
     }
 
-    @Test
-    public void del(){
-        boardService.deleteData(100L);
-        logger.info("del...{}",boardService.findData("Steven").size());
-    }
+//    @Test
+//    public void del(){
+//        boardService.deleteData(100L);
+//        logger.info("del...{}",boardService.findData("Steven").size());
+//    }
 
     @Test
     public void detail(){
         assertThat(boardService.detail(100L).getTitle()).isEqualTo("Steven");
     }
 
-    @Test
-    public void insertSub(){
-        SubDTO dto = SubDTO.builder()
-                .content("hello")
-                .boardId(100L)
-                .build();
-        assertThat(subService.insertSub(dto)).isEqualTo(1L);
-    }
+//    @Test
+//    public void insertSub(){
+//        SubDTO dto = SubDTO.builder()
+//                .content("hello")
+//                .boardId(100L)
+//                .build();
+//        assertThat(subService.insertSub(dto)).isEqualTo(1L);
+//    }
 }

@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4b70b40-813a-422f-a26f-96b48f9e748a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ajax1/ajax/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react/.idea/react.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boot/board2/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/boot/board2/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boot/board2/src/test/java/com/chunjae/board2/InitialTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/boot/board2/src/test/java/com/chunjae/board2/InitialTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,20 +30,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/chunjae&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/chunjae",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\chunjae" />
+      <recent name="D:\chunjae\spring\springTest" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\chunjae\jsp" />
     </key>
@@ -62,6 +73,9 @@
       <workItem from="1712133905526" duration="455000" />
       <workItem from="1712223342617" duration="737000" />
       <workItem from="1713253696311" duration="222000" />
+      <workItem from="1714639695952" duration="131000" />
+      <workItem from="1714693693604" duration="21000" />
+      <workItem from="1719910334149" duration="249000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,19 @@
+.tbody td:nth-child(1) {
+    width: 5vw;
+}
+
+.tbody td:nth-child(2) {
+    width: 20vw;
+}
+
+.tbody td:nth-child(3) {
+    width: 10vw;
+}
+
+.tbody td:nth-child(4) {
+    width: 10vw;
+}
+
+.tbody td {
+    text-align: center;
+}
