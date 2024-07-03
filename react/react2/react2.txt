@@ -1,0 +1,27 @@
+event handler component
+: input, textarea, select 와 같이 사용자 입력 기반, 상태관리 및 업데이트 필요
+  모든 데이터를 state 에서 관리. 입력할 때마다 렌더링을 하고, 데이터 유지
+
+useRef
+: DOM 요소에 접근하거나 다른 mutable 값을 저장하는데 사용.
+  ** useState 와는 달리 ref 값이 바뀌어도 리렌더링 되지 않음.
+
+useEffect
+: 주로 컴포넌트가 렌더링 될 때 하고싶은 내용을 작성. api 호출, dom 조작 등
+
+
+life cycle
+: mount -> update -> unmount
+  함수형 컴포넌트에서는 useEffect 로 활용가능
+
+mount : 화면에 component 를 보여줄 때
+    constructor : component 생성자
+    render : class component 에서 반드시 구현되어야 할 메서드, 렌더링 => 초기화면
+    componentDidMount : mount 직후 dom 속성 읽거나 변경
+
+update : 리렌더링 될 때
+    componentDidUpdate : update 직후 dom 조작
+
+unmount : 화면에서 component 가 사라질 때
+    componentWillUnmount
+
