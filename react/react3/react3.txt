@@ -1,0 +1,42 @@
+SPA (Single Page Application)
+: 원천 html 페이지는 하나이고, 데이터가 변경이 될 때마다
+해당 element 를 갈아끼우는 방식으로 동작한다.
+
+** <a> vs <Link>
+a 태그는 페이지를 이동시키고, Link 컴포넌트는 컴포넌트를 이동시킨다.
+
+ex) "/a/1" 이라는 url 로 연결하려고 할 때
+a 태그는 해당 경로로 지정된 새로운 페이지로 이동하고,
+Link 태그는 해당 경로로 지정된 컴포넌트로 element 를 갈아끼운다.
+
+
+useMemo
+: 동일한 값을 반환하는 함수를 반복적으로 호출해야 할 때,
+처음 계산한 값을 메모리에 저장해 필요할 때마다 계산하지 않고 꺼내 재사용하는 훅
+함수형 컴포넌트 내의 변수 값을 저장해 두는 용도.
+
+useCallback
+: 콜백 함수 자체를 memorization 하는 훅
+const fun1 = useCallback(num=>{
+    return num+1;
+},[data]);
+data 값이 변경 시 새로 만들어진 함수 객체로 새로 할당을 받게 된다.
+
+
+restful API
+
+Get : select
+Post : insert
+Put : update
+Delete : delete
+
+html form 에서는 put, delete 메서드를 사용할 수 없다.
+ajax 요청으로만 사용가능.
+
+** put vs patch
+put 은 완전 대체, patch 는 일부 수정
+
+ex) { name: 'hong', age: 20 } 을 변경하려고 할 때
+    { age: 21 } 로 put 하는 경우, name 필드가 날아가고 아예 그 데이터는 {age:21}만 남음
+    name 을 유지하고 age 만 바꾸려는 시도는 patch 가 적절함.
+    기존 정보가 없는 경우 put 은 해당 요청으로 대체하고, patch 는 에러.
